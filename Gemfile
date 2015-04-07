@@ -25,6 +25,7 @@ gem 'backbone-on-rails'
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
+gem 'newrelic_rpm'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -51,4 +52,3 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
 end
-
