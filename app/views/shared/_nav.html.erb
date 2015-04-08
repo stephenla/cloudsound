@@ -7,17 +7,11 @@
       </a>
     </div>
     <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <% if current_user %>
-          <li>
-            <%= button_to "Sign Out", session_url, class: "sign-in btn btn-default navbar-btn", method: :delete%>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Sign In", new_session_url, class: "sign-in btn btn-default navbar-btn" %>
-          </li>
-        <% end %>
-      </ul>
+      <% if current_user %>
+        <%= render "shared/logged_in_nav" %>
+      <% else %>
+        <%= render "shared/logged_out_nav" %>
+      <% end %>
     </div>
   </div>
 </nav>
