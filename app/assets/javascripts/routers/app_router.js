@@ -1,20 +1,36 @@
 Cloudsound.Routers.Router = Backbone.Router.extend({
   routes: {
-    "users/:id": "userProfile"
+    "upload": "uploadTrack",
+    "user/:id": "userProfile",
+    "user/:id/account": "userAccount"
   },
   initialize: function () {
     this.$rootEl = $("#content");
+    this.users = new Cloudsound.Collections.Users();
   },
 
-  userProfile: function () {
-    var user = new Cloudsound.Models.User();
+  userProfile: function (id) {
+    var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.UserProfile({
       model: user
     });
     this._swapView(view);
   },
 
-  _swapView: function () {
+  userAccount: function (id) {
+    var user = new Cloudsound.Models.User({ id: id });
+    user.fetch();
+    var view = new Cloudsound.Views.UserAccount({
+      model: user
+    });
+    this._swapView(view);
+  },
+
+  uploadTrack: function () {
+    var track = new Soundcloud
+  },
+
+  _swapView: function (view) {
     if (this.currentView) {
       this.currentView.remove();
     }

@@ -1,11 +1,38 @@
 <ul class="nav navbar-nav navbar">
   <li>
-    <%= button_to "Upload", session_url, class: "sign-in btn btn-default navbar-btn", method: :delete%>
+    <%= link_to "Upload", "/#upload", class: "btn btn-default navbar-btn"%>
   </li>
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
+  <li class="dropdown">
+    <a data-target="#" class="dropdown-toggle btn btn-default navbar-btn" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+      <%= current_user.username %>
+      <span class="caret">
+      </span>
+    </a>
+    <ul class="dropdown-menu" role="menu">
+      <li>
+        <%=
+        link_to "Profile",
+        "/#user/#{ current_user.id }",
+        class: "btn btn-default navbar-btn"
+        %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%=
+        link_to "Account",
+        "/#user/#{ current_user.id }/account",
+        class: "btn btn-default navbar-btn"
+        %>
+      </li>
+      <li class="divider"></li>
+      <li>
+        <%= link_to "Sign Out", session_url, class: "btn btn-default navbar-btn", method: :delete%>
+      </li>
+    </ul>
+  </li>
   <li>
-    <%= button_to "Sign Out", session_url, class: "sign-in btn btn-default navbar-btn", method: :delete%>
   </li>
 </ul>

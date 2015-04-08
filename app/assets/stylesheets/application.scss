@@ -12,6 +12,12 @@
  *
  *= require_self
  */
+$text-color: black;
+$primary-color: #C4E9FD;
+$primary-font: 'Roboto', sans-serif;
+$button-hover-bg: #e6e6e6;
+
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import "bootstrap-custom";
+@import "globals";
 @import "nav";

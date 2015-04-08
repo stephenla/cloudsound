@@ -1,6 +1,6 @@
 <div class="sign-in row">
-  <ul>
-    <% @user.errors.full_messages.each do |err_msg| %>
+  <ul class="list-group">
+    <% flash.now[:errors].each do |err_msg| %>
       <li><%= err_msg %></li>
     <% end %>
   </ul>

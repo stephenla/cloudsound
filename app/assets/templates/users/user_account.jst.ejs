@@ -1,0 +1,31 @@
+<div class="user-profile row">
+  <aside class="col-sm-4">
+    <div class="page-header col-sm-4 col-sm-offset-4">
+      <h4 class="header-center">
+        <%= user.get("username") %>
+        <a href="/#user/<%= user.get('id') %>/edit">edit</a>
+      </h4>
+    </div>
+
+  </aside>
+
+  <div class="col-sm-8 row">
+
+    <div class="col-sm-6">
+      <div class="page-header col-sm-4 col-sm-offset-4">
+        <h4 class="header-center">
+          Tracks
+        </h4>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="page-header col-sm-4 col-sm-offset-4">
+        <h4 class="header-center">
+          Playlists
+        </h4>
+      </div>
+    </div>
+
+  </div>
+</div>

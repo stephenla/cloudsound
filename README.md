@@ -116,6 +116,8 @@ with TrackIndexItems will have drag and drop.
 
 ### Bonus Features (TBD)
 - [ ] Infinite scroll feed
+- [ ] Make custom urls
+- [ ] Customize user profile
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

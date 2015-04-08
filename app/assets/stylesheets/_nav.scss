@@ -1,12 +1,15 @@
+
 .navbar-default {
-  background: #757575;
+
+  background: url("nav-noise.png") repeat center;
   .navbar-header{
     .glyphicon-cloud{
-      color: #C4E9FD;
+      color: $primary-color;
     }
   }
   .navbar-nav {
-    .sign-in {
+
+    .navbar-btn{
       @include button-size(
         $padding-base-vertical,
         $padding-base-horizontal,
@@ -14,10 +17,14 @@
         $line-height-base,
         $border-radius-base
       );
-      &:hover {
-        background: #e6e6e6;
+      color: $btn-default-color;
+      background: $btn-default-bg;
+      &:hover, &:focus {
+        color: lighten($btn-default-color, 20%);
+        background: $button-hover-bg;
       }
     }
+
   }
 }
 
