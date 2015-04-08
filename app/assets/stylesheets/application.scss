@@ -10,34 +10,8 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
- @import "bootstrap";
-
-.navbar-default {
-  background: #C4E9FD;
-  .navbar-nav {
-    .sign-in {
-      @include button-size(
-        $padding-base-vertical,
-        $padding-base-horizontal,
-        $font-size-base,
-        $line-height-base,
-        $border-radius-base
-      );
-      &:hover {
-        background: #e6e6e6;
-      }
-    }
-  }
-}
-
-.sign-up{
-  text-align: center;
-}
-
-.sign-in {
-  text-align: center;
-}
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "nav";
