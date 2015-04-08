@@ -1,12 +1,11 @@
 class SessionsController < ApplicationController
   def create
-    @user = find_by_credentials(
+    @user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]
     )
     if @user
       log_in!(@user)
-      fail
       redirect_to root_url
     else
       flash.now[:errors] = @user.errors.full_messages

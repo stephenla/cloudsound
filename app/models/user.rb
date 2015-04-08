@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-  def self.find_by_redentials(username, password)
+  def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil if user.nil?
     if user.is_password?(password)
