@@ -1,15 +1,22 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      CloudSound
+
+      <a class="navbar-brand" href="/">
+        <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
+      </a>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="<%= new_user_url %>">
-            Sign in
-          </a>
-        </li>
+        <% if current_user %>
+          <li>
+            <%= button_to "Sign Out", session_url, class: "sign-in btn btn-default navbar-btn", method: :delete%>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Sign In", new_session_url, class: "sign-in btn btn-default navbar-btn" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>

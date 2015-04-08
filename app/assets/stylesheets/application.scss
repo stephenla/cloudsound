@@ -15,3 +15,29 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.navbar-default {
+  background: #C4E9FD;
+  .navbar-nav {
+    .sign-in {
+      @include button-size(
+        $padding-base-vertical,
+        $padding-base-horizontal,
+        $font-size-base,
+        $line-height-base,
+        $border-radius-base
+      );
+      &:hover {
+        background: #e6e6e6;
+      }
+    }
+  }
+}
+
+.sign-up{
+  text-align: center;
+}
+
+.sign-in {
+  text-align: center;
+}

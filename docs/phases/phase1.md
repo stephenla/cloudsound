@@ -4,8 +4,6 @@
 ### Models
 * User (has many tracks)
 * Track (belongs to user)
-* Playlist (belongs to user, has many tracks)
-* Comment
 
 ### Controllers
 * UsersController (create, new)
