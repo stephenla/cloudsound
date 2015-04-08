@@ -2,6 +2,8 @@
 
 ## Rails
 ### Models
+* User (has many liked_tracks, has many comments)
+* PlaylistLikes
 * Playlist (has many tracks)
 * Tracks (belongs to playlist)
 * TrackLike (belongs to track, belongs to user)

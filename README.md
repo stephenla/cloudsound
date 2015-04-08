@@ -14,24 +14,33 @@ Phase 1
 - [ ] Upload tracks
 
 Phase 2
-- [ ] View user profiles
+- [ ] User profile view
+- [ ] User account view
+- [ ] Index tracks
 - [ ] Show tracks
-- [ ] Track likes
-- [ ] Add comments to tracks
+- [ ] Delete tracks
+- [ ] Edit tracks
+- [ ] Play tracks
 
 Phase 3
 - [ ] Create playlists
+- [ ] Index playlists
 - [ ] Show playlists
-- [ ] Playlist likes
+- [ ] Delete playlists
+- [ ] Edit playlists
 - [ ] Add track to playlists
-- [ ] Follow users
 
 Phase 4
+- [ ] Add comments to tracks
+- [ ] Follow users
 - [ ] User feeds
-- [ ] User search
-- [ ] Track search
+- [ ] See other users feeds?
 
 Phase 5
+- [ ] Track likes
+- [ ] Playlist likes
+- [ ] User search
+- [ ] Track search
 - [ ] Drag n Drop tracks to playlists and likes
 
 ## Design Docs
@@ -51,39 +60,59 @@ app to Heroku and ensuring that everything works before moving on to phase 2.
 
 [Details][phase-one]
 
-### Phase 2: User Profile page. Track show page, track likes. Comments (~2 days)
+### Phase 2: User Profile page. User edit, delete. Track show, edit, create. (~3 days)
 Create the user profile page. The user profile page will show the users bio,
 uploaded tracks, likes, playlists, following, and followers.
+
+Create user account page, where user can edit and delete account. Add links to the user's tracks and playlists
+
 Track show page will show short owner bio, track comments, and users who liked
-the track. Implement like button for tracks and adding comments.
-Comment model, views and subviews. Create Comments
+the track.
+
+Implement track show, delete, edit.
+
 
 [Details][phase-two]
 
-### Phase 3: Playlist show, playlist likes. Following users (~ 2 day)
-Create Playlist link and form. Playlist show page will show short owner bio,
-tracks belonging to the playlist, and users who liked the playlist. Implement
-adding tracks to playlist and liking playlist.
-Allow users to follow other users. Add following and unfollowing button to user
-profile page. Add following and followed pages to user profile page.
+### Phase 3: Playlist create, show, edit, delete. Add track to playlist (~2 day)
+Create Playlist link and form.
+
+Playlist show page will show short user bio, tracks belonging to the playlist,
+and users who liked the playlist. Implement playlist create, show, edit, delete.
+
+Implement adding tracks to playlist.
+
 
 [Details][phase-three]
 
-### Phase 4: User Feeds (~2 days)
+### Phase 4: Comments, following, user Feeds. (~3 days)
+Implement adding comments to tracks.
+
+Implement following between users. Add following and unfollowing button to user
+profile page. Add following and followed pages to user profile page.
+
 The users feed will be the `''` index route. The feed will be a list of tracks
 that the users followings have posted in chronological order. Index page will
-also show current users likes and playlists.
+also show users likes and playlists.
+
+
+
+[Details][phase-four]
+
+### Phase 5: Likes for playlist and tracks. User and track search. (~2 days)
+Implement liking tracks and playlists.
 
 Create a `search` route that will render a search form. Search will search both
 users and tracks by default, can be filtered to show only users or only tracks.
 
-[Details][phase-four]
+[Details][phase-five]
 
-### Phase 5: Drag and drop tracks into likes or playlists (~2 days)
+
+### Phase 6: Drag and drop tracks into likes or playlists (~2 days)
 Add drag and drop for TrackIndexItems into playlists or likes list. Any view
 with TrackIndexItems will have drag and drop.
 
-[Details][phase-five]
+
 
 ### Bonus Features (TBD)
 - [ ] Infinite scroll feed

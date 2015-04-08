@@ -2,6 +2,7 @@
 
 ## Rails
 ### Models
+* Following (belongs to followed, belongs to following)
 * Tracks (has many followed tracks through followings)
 * User (has many tracks)
 
@@ -16,6 +17,7 @@
 
 ## Backbone
 ### Models
+* User (parses nested `followers` and `following` association)
 * User
 * Track
 

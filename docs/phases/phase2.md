@@ -2,33 +2,32 @@
 
 ## Rails
 ### Models
-* User (has many liked_tracks, has many comments)
-* TrackLikes
-* Track (has many likes, has many comments)
-* Comment (belongs to user, belongs to track)
+* User
+* Track
 
 ### Controllers
-* API::TracksController (index, create, new, show)
-* API::CommentsController (index, create, new, show)
+* API::TracksController (index, create, show, update, destroy)
+* API::UsersController (show, update, destroy)
 
 ### Views
 * user/show.json.jbuilder
-* tracks/index.json.jbuilder???
+* tracks/index.json.jbuilder
+* tracks/show.json.jbuilder
 
 ## Backbone
 ### Models
 * User (parses nested `tracks` association)
-* Track (parses nested `likes`, `comments`  association)
-* Comment
+* Track (parses nested `likes` and `comments`  association)
 
 ### Collections
 * Tracks
 
 ### Views
 * UserShow (composite view, contains TrackIndex subview)
-* TrackShow (composite view, contains CommentIndexItem subview)
+* UserAccount (composite view, contains TrackIndex and PlaylistIndex subview)
 * TrackIndex (composite view, contains TrackIndexItem subview)
 * TrackIndexItem
+* TrackShow (composite view, contains CommentIndexItem subview)
 * TrackForm
 
 ## Gems/Libraries
