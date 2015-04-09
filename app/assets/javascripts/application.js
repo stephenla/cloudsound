@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require jquery
-//= require bootstrap-sprockets
 //= require jquery_ujs
+//= require bootstrap-sprockets
+//= require jquery.remotipart
 //= require underscore
 //= require backbone
 //= require cloudsound

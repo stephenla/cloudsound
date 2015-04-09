@@ -1,6 +1,12 @@
-<%= form_for @track, :url => api_tracks_url, :html => { :multipart => true } do |form| %>
-  <input type="text" name="track[title]">
-  <input type="hidden" name="track[user_id]" value="<%= current_user.id %>">
-  <%= form.file_field :audio %>
-  <input type="submit" value="upload">
+
+<%= form_for @track, :html => { :multipart => true }, :remote => true do |f| %>
+  <div class="field">
+    <%= f.label :audio %>
+    <input type="text" name="track[title]">
+    <input type="hidden" name="track[user_id]" value="<%= current_user.id %>">
+    <%= f.file_field :audio %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>

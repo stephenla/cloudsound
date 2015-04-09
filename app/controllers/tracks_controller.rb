@@ -1,4 +1,4 @@
-class Api::TracksController < ApplicationController
+class TracksController < ApplicationController
   def index
 
   end
