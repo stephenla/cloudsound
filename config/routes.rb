@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :new]
   namespace :api do
     resources :users, only: [:show], defaults: { format: :json }
-    resources :tracks
+    resources :tracks, defaults: { format: :json }
+    resources :current_users, only: [:show], defaults: { format: :json }
   end
 
   root to: "static_pages#index"
