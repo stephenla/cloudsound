@@ -27,7 +27,9 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   uploadTrack: function () {
-    var track = new Soundcloud
+    var track = new Cloudsound.Models.Track();
+    var view = new Cloudsound.Views.TrackNew({ model: track });
+    this._swapView(view);
   },
 
   _swapView: function (view) {
