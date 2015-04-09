@@ -1,18 +1,17 @@
-
-
-<form class="new_track" id="new_track"
+<!-- gem remotipart -->
+<form
+  class="new_track"
+  id="new_track"
   enctype="multipart/form-data"
   action="/api/tracks"
   accept-charset="UTF-8"
   data-remote="true"
   method="post">
-
   <input name="utf8" type="hidden" value="✓">
-
-    <label for="track_audio">Audio</label>
-    <input type="text" name="track[title]">
-    <input type="hidden" name="track[user_id]" value="<%= user.get("current_user") %>">
-    <input type="file" name="track[audio]" id="track_audio">
+  <label for="track_audio">Audio</label>
+  <input type="text" name="track[title]">
+  <input type="hidden" name="track[user_id]" value="<%= user.get("current_user") %>">
+  <input type="file" name="track[audio]" id="track_audio">
 
   <div class="actions">
     <input type="submit" name="commit" value="Create Track">

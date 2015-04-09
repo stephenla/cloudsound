@@ -17,8 +17,8 @@ $primary-color: #C4E9FD;
 $primary-font: 'Roboto', sans-serif;
 $button-hover-bg: #e6e6e6;
 
-@import "bootstrap-sprockets";
-@import "bootstrap-custom";
-@import "reset";
-@import "globals";
-@import "nav";
+@import "partials/bootstrap-sprockets";
+@import "partials/bootstrap-custom";
+@import "partials/reset";
+@import "partials/globals";
+@import "partials/nav";

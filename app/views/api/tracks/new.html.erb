@@ -1,4 +1,7 @@
-
+<%= form_for @track, :url => api_tracks_url, :html => { :multipart => true } do |form| %>
+  <%= form.file_field :audio %>
+  <input type="submit" value="upload">
+<% end %>
 <%= form_for @track, :html => { :multipart => true }, :remote => true do |f| %>
   <div class="field">
     <%= f.label :audio %>
