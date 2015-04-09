@@ -2,7 +2,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   routes: {
     "upload": "uploadTrack",
     "user/:id": "userProfile",
-    "user/:id/account": "userAccount"
+    "account": "userAccount"
   },
   initialize: function () {
     this.$rootEl = $("#content");
@@ -18,7 +18,8 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userAccount: function (id) {
-    var user = this.users.getOrFetch(id);
+    var user = new Cloudsound.Models.CurrentUser();
+    user.fetch();
     var view = new Cloudsound.Views.UserAccount({
       model: user
     });
@@ -27,7 +28,8 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
 
   uploadTrack: function () {
     var track = new Cloudsound.Models.Track();
-    var user = this.users.getOrFetch(1);
+    var user = new Cloudsound.Models.CurrentUser();
+    user.fetch();
     var view = new Cloudsound.Views.TrackNew({
       model: track,
       user: user

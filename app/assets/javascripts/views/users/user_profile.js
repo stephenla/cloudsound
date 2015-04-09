@@ -1,4 +1,4 @@
-Cloudsound.Views.UserProfile = Backbone.View.extend({
+Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
   template: JST["users/user_profile"],
 
   initialize: function () {
