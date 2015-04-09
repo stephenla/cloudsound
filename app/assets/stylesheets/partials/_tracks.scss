@@ -1,0 +1,20 @@
+// Place all the styles related to the api/tracks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#progress{
+  background: lightgray;
+  width: 350px;
+  margin-top: 15px;
+  padding: 0;
+  display: none;
+}
+.bar {
+    width: 0%;
+    height: 18px;
+    background: green;
+}
+#new_track {
+  #create-track {
+    margin-top: 10px;
+  }
+}

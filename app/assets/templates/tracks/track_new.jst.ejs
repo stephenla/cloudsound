@@ -1,19 +1,48 @@
 <!-- gem remotipart -->
-<form
-  class="new_track"
-  id="new_track"
-  enctype="multipart/form-data"
-  action="/api/tracks"
-  accept-charset="UTF-8"
-  data-remote="true"
-  method="post">
-  <input name="utf8" type="hidden" value="✓">
-  <label for="track_audio">Audio</label>
-  <input type="text" name="track[title]">
-  <input type="hidden" name="track[user_id]" value="<%= user.get("current_user") %>">
-  <input type="file" name="track[audio]" id="track_audio">
+<div class="row">
 
-  <div class="actions">
-    <input type="submit" name="commit" value="Create Track">
+  <form
+    class="new_track col-xs-4 col-xs-offset-4"
+    id="new_track"
+    enctype="multipart/form-data"
+    action="/api/tracks"
+    accept-charset="UTF-8"
+    data-remote="true"
+    method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <label for="track_audio">Audio</label>
+    <input type="text" name="track[title]">
+    <input type="hidden" name="track[user_id]" value="<%= user.get("current_user") %>">
+    <input type="file" name="track[audio]" id="track_audio">
+    <input id="create-track" type="submit" name="commit" value="Create Track">
+  </form>
+
+  <div id="progress" class="col-xs-4 col-xs-offset-4">
+      <div class="bar"></div>
   </div>
-</form>
+  <p id="progress-message" class="col-xs-4 col-xs-offset-4">
+  </p>
+  <script charset="utf-8">
+
+  $('#new_track').fileupload({
+    url: '/api/tracks',
+    replaceFileInput: false,
+    progress: function (e, data) {
+      var progress = parseInt(data.loaded / data.total * 100, 10);
+      $('#progress').css('display', "block");
+      $('#progress .bar').css('width', progress + '%');
+    },
+    add: function (e, data) {
+      data.context = $('#create-track').click(function () {
+        data.context = $('#progress-message').text('Uploading...').replaceAll($(this));
+        data.submit();
+      });
+    },
+    done: function (e, data) {
+      $("input[type='text']").val("");
+      data.context.text('Upload finished.');
+    }
+  });
+
+  </script>
+</div>
