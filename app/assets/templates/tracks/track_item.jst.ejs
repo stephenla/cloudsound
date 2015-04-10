@@ -1,0 +1,11 @@
+<div class="track_item">
+  <div>
+    <a href="/#tracks/<%= track.get("id") %>">
+      <%= track.get("title") %>
+    </a>
+  </div>
+  <audio controls>
+    <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
+      Your browser does not support the audio element.
+  </audio>
+</div>

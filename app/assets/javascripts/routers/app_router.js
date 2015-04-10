@@ -18,21 +18,21 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userAccount: function (id) {
-    var user = new Cloudsound.Models.CurrentUser();
+    var currentUser = new Cloudsound.Models.CurrentUser();
     user.fetch();
     var view = new Cloudsound.Views.UserAccount({
-      model: user
+      model: currentUser
     });
     this._swapView(view);
   },
 
   uploadTrack: function () {
     var track = new Cloudsound.Models.Track();
-    var user = new Cloudsound.Models.CurrentUser();
-    user.fetch();
+    var currentUser = new Cloudsound.Models.CurrentUser();
+    currentUser.fetch();
     var view = new Cloudsound.Views.TrackNew({
       model: track,
-      user: user
+      user: currentUser
       });
     this._swapView(view);
   },
