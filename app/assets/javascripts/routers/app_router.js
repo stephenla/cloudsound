@@ -21,7 +21,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
 
   userAccount: function (id) {
     var currentUser = new Cloudsound.Models.CurrentUser();
-    user.fetch();
+    currentUser.fetch();
     var view = new Cloudsound.Views.UserAccount({
       model: currentUser
     });
