@@ -1,9 +1,11 @@
 <div class="sign-in row">
-  <ul class="list-group">
-    <% flash.now[:errors].each do |err_msg| %>
-      <li><%= err_msg %></li>
-    <% end %>
-  </ul>
+  <% if flash.now[:errors] %>
+    <ul class="list-group">
+      <% flash.now[:errors].each do |err_msg| %>
+        <li><%= err_msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
 
   <div class="page-header col-sm-4 col-sm-offset-4">
     <h1 class="header-center">Log in</h1>
