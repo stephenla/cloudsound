@@ -14,7 +14,7 @@ gem 'jquery-ui-rails'
 gem 'newrelic_rpm'
 gem "remotipart", '~> 1.2'
 gem "paperclip", "~> 3.1"
-gem 'aws-sdk'
+gem 'aws-sdk', '<2.0'
 gem 'figaro'
 
 group :development, :test do
