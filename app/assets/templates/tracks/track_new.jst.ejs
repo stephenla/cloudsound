@@ -1,4 +1,9 @@
 <!-- gem remotipart -->
+
+  <div class="errors">
+
+  </div>
+
 <div class="row">
   <form
     class="new_track col-xs-4 col-xs-offset-4"
@@ -9,11 +14,11 @@
     data-remote="true"
     method="post">
     <input name="utf8" type="hidden" value="✓">
-    <label for="track_audio">Audio</label>
+    <label for="track_audio">Title*</label>
     <input type="text" name="track[title]">
     <input type="hidden" name="track[user_id]" value="<%= currentUser.get("id") %>">
     <input type="file" name="track[audio]" id="track_audio">
-    <input id="create-track" type="submit" name="commit" value="Create Track">
+    <input id="create-track" type="submit" name="commit" value="upload">
   </form>
 
   <div id="progress" class="col-xs-4 col-xs-offset-4">
@@ -39,7 +44,12 @@
     },
     done: function (e, data) {
       $("input[type='text']").val("");
+
       data.context.text('Upload finished.');
+    },
+    fail: function (e, data) {
+      $('#progress .bar').css('background', 'red');
+      $(".errors").addClass("alert alert-danger").text(data.jqXHR.responseJSON.audio);
     }
   });
 

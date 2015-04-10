@@ -8,7 +8,7 @@ class Api::TracksController < ApplicationController
     if @track.save
       render json: @track
     else
-      render @track.errors.full_messages, status: 422
+      render json: @track.errors, status: 422
     end
   end
 
