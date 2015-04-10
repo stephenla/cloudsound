@@ -18,8 +18,8 @@ class SessionsController < ApplicationController
     render :new
   end
 
-  def destroy
-    log_out!(current_user)
+  def destroy    
+    log_out!(current_user) if current_user
     redirect_to new_session_url
   end
 end
