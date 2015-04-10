@@ -2,7 +2,7 @@
   <aside class="col-sm-4">
     <div class="page-header col-sm-4 col-sm-offset-4">
       <h4 class="header-center">
-        <%= currentUser.get("username") %>
+        <%= user.get("username") %>
       </h4>
     </div>
 
@@ -11,20 +11,22 @@
 
   <div class="col-sm-8">
     <div class="page-header row">
-      <h4 class="header-center">
-        <%= track.get("title") %>
-      </h4>
+      <h1><%= track.get("title") %></h1>
     </div>
     <div class="track-player row">
+      <div class="track_item">
+        <audio controls>
+          <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
+            Your browser does not support the audio element.
+        </audio>
+      </div>
 
     </div>
 
     <div class="track-comments row">
-      <div class="page-header row">
-        <h4 class="header-center">
-          Comments
-        </h4>
-      </div>
+      <h4 class="header-center">
+        Comments
+      </h4>
     </div>
   </div>
 

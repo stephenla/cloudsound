@@ -4,7 +4,9 @@ Cloudsound.Collections.Tracks = Backbone.Collection.extend({
   url: 'api/tracks',
 
   initialize: function (models, options) {
-    this.user = options.user;
+    if (options){
+      this.user = options.user;
+    }
   },
 
   getOrFetch: function (id) {
