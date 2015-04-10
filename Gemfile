@@ -13,8 +13,10 @@ gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'newrelic_rpm'
 gem "remotipart", '~> 1.2'
-
 gem "paperclip", "~> 3.1"
+gem 'aws-sdk'
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
