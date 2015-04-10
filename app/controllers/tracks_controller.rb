@@ -19,11 +19,16 @@ class TracksController < ApplicationController
   end
   def new
     @track = Track.new
-    render :new
-
+    render template: :new
   end
 
   def show
+    @track = Track.find(params[:id])
+    if @track
+      render :show
+    else
+      render json: @track.errors.full_messages
+    end
   end
 
   def edit

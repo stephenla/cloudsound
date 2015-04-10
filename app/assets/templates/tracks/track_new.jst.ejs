@@ -11,7 +11,7 @@
     <input name="utf8" type="hidden" value="✓">
     <label for="track_audio">Audio</label>
     <input type="text" name="track[title]">
-    <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
+    <input type="hidden" name="track[user_id]" value="<%= currentUser.get("id") %>">
     <input type="file" name="track[audio]" id="track_audio">
     <input id="create-track" type="submit" name="commit" value="Create Track">
   </form>
