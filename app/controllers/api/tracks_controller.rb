@@ -26,7 +26,7 @@ class Api::TracksController < ApplicationController
   def show
     @track = Track.find(params[:id])
     if @track
-      render json: :show
+      render :show
     else
       render json: @track.errors.full_messages, status: 422
     end

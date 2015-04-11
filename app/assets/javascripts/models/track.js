@@ -1,13 +1,7 @@
 Cloudsound.Models.Track = Backbone.Model.extend({
   urlRoot: "/api/tracks",
 
-  user: function () {
-    if (this._user) {
-      return this._user;
-    }
-    this._user = new Cloudsound.Models.User(this.get("user_id"));
-    return this._user;
-  },
+
 
   // comments: function () {
   //   if (this._comments) {
@@ -22,7 +16,7 @@ Cloudsound.Models.Track = Backbone.Model.extend({
       this.comments().set(response.comments, { parse: true });
       delete response.comments;
     }
-    
+
     return response;
   }
 });

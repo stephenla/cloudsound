@@ -7,3 +7,5 @@ json.extract! @track,
 :audio_content_type,
 :audio_file_size,
 :audio_updated_at
+
+json.user @track.user, :id, :username, :created_at

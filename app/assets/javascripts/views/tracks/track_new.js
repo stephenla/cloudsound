@@ -51,8 +51,8 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
         $("input[type='text']").val("");
         $('#create-track').css("display", "block");
         $('#progress-message').text('Upload finished.');
-        this.render();
-        debugger
+        Backbone.history.navigate("track/" + data.result.id, { trigger: true });
+
       },
 
       fail: function (e, data) {
