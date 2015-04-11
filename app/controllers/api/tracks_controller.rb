@@ -6,7 +6,7 @@ class Api::TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
     if @track.save
-      render json: @track
+      render :show
     else
       render json: @track.errors, status: 422
     end
@@ -26,7 +26,7 @@ class Api::TracksController < ApplicationController
   def show
     @track = Track.find(params[:id])
     if @track
-      render :show
+      render json: :show
     else
       render json: @track.errors.full_messages, status: 422
     end

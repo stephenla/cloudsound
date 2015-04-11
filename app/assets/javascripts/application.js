@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require jquery.remotipart
-//= require jquery.ui.all
+//= require jquery.ui.widget
+//= require jquery.ui.effect
+//= require jquery.ui.effect-shake
 //= require underscore
 //= require backbone
 //= require cloudsound

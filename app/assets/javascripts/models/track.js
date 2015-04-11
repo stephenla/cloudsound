@@ -7,7 +7,7 @@ Cloudsound.Models.Track = Backbone.Model.extend({
     }
     this._user = new Cloudsound.Models.User(this.get("user_id"));
     return this._user;
-  }
+  },
 
   // comments: function () {
   //   if (this._comments) {
@@ -17,12 +17,12 @@ Cloudsound.Models.Track = Backbone.Model.extend({
   //   return this._comments;
   // },
   //
-  // parse: function (response) {
-  //   if (response.comments) {
-  //     this.comments().set(response.comments, { parse: true });
-  //     delete response.comments;
-  //   }
-  //
-  //   return response;
-  // }
+  parse: function (response) {
+    if (response.comments) {
+      this.comments().set(response.comments, { parse: true });
+      delete response.comments;
+    }
+    
+    return response;
+  }
 });

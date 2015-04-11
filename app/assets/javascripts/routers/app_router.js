@@ -32,7 +32,8 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     var currentUser = new Cloudsound.Models.CurrentUser();
     currentUser.fetch();
     var view = new Cloudsound.Views.TrackNew({
-      user: currentUser
+      user: currentUser,
+      model: new Cloudsound.Models.Track()
     });
     this._swapView(view);
   },

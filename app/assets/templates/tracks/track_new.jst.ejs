@@ -1,21 +1,29 @@
 <!-- gem remotipart -->
 
-  <div class="errors">
+  <div class="errors alert alert-danger alert-dismissible fade in">
+    <p class="title-error"> </p>
+    <p class="file-error"> </p>
+  </div>
 
+  <div class="file-type-error alert alert-danger alert-dismissible fade in">
   </div>
 
 <div class="row">
-  <form
+<form
     class="new_track col-xs-4 col-xs-offset-4"
     id="new_track"
     enctype="multipart/form-data"
     action="/api/tracks"
     accept-charset="UTF-8"
-    data-remote="true"
     method="post">
+    <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= AUTH_TOKEN %>">
     <input name="utf8" type="hidden" value="✓">
-    <label for="track_audio">Title*</label>
-    <input type="text" name="track[title]">
+    <label class="track-title-wrapper" for="track_audio">Title*
+      <input id='track-title' type="text" name="track[title]">
+    </label>
     <input type="hidden" name="track[user_id]" value="<%= currentUser.get("id") %>">
     <input type="file" name="track[audio]" id="track_audio">
     <input id="create-track" type="submit" name="commit" value="upload">
@@ -28,37 +36,7 @@
   </p>
   <script charset="utf-8">
 
-  $('#new_track').fileupload({
-    url: '/api/tracks',
-    replaceFileInput: false,
-    progress: function (e, data) {
-      var progress = parseInt(data.loaded / data.total * 100, 10);
-      $('#progress').css('display', "block");
-      $('#progress .bar').css('width', progress + '%');
-    },
 
-    add: function (e, data) {
-      $('#create-track').click(function () {
-        $('#progress-message').text('Uploading...');
-        $('#create-track').css("display", "none");
-        data.submit();
-      });
-    },
-
-    done: function (e, data) {
-      $("input[type='text']").val("");
-      $('#create-track').css("display", "none");
-      $('#progress-message').text('Upload finished.');
-    },
-
-    fail: function (e, data) {
-      $('#progress .bar').css('background', 'red');
-      $.each(data.jqXHR.responseJSON, function (key, val){
-        $(".errors").addClass("alert alert-danger").text(val);
-      });
-
-    }
-  });
 
   </script>
 </div>
