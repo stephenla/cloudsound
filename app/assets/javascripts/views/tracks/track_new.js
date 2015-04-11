@@ -20,18 +20,16 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
   uploadTrack: function (event) {
     $form = $(event.currentTarget);
-    $form.bind('ajax:complete', function(event, data) {
-      Backbone.history.navigate("", { trigger: true });
-    });
 
-    $('#new_track').fileupload({
-      url: '/api/tracks',
-      sequentialUploads: true,
-      progress: function (e, data) {
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('#progress .bar').css('width', progress + '%');
-      }
-    });
+    // $form.bind('ajax:complete', function(event, data) {
+    //   Backbone.history.navigate("", { trigger: true });
+    // });
+    // $form.bind('ajax:error', function(event, data) {
+    // debugger
+    //   $.each(data.responseJSON, function (key, val){
+    //     $(".errors").addClass("alert alert-danger").text(val);
+    //   });
+    // });
   }
 
 });

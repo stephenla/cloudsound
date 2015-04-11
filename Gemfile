@@ -12,7 +12,6 @@ gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'jquery-ui-rails'
 gem 'newrelic_rpm'
-gem "remotipart", '~> 1.2'
 gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '<2.0'
 gem 'figaro'

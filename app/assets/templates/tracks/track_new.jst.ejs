@@ -36,20 +36,27 @@
       $('#progress').css('display', "block");
       $('#progress .bar').css('width', progress + '%');
     },
+
     add: function (e, data) {
-      data.context = $('#create-track').click(function () {
-        data.context = $('#progress-message').text('Uploading...').replaceAll($(this));
+      $('#create-track').click(function () {
+        $('#progress-message').text('Uploading...');
+        $('#create-track').css("display", "none");
         data.submit();
       });
     },
+
     done: function (e, data) {
       $("input[type='text']").val("");
-
-      data.context.text('Upload finished.');
+      $('#create-track').css("display", "none");
+      $('#progress-message').text('Upload finished.');
     },
+
     fail: function (e, data) {
       $('#progress .bar').css('background', 'red');
-      $(".errors").addClass("alert alert-danger").text(data.jqXHR.responseJSON.audio);
+      $.each(data.jqXHR.responseJSON, function (key, val){
+        $(".errors").addClass("alert alert-danger").text(val);
+      });
+
     }
   });
 
