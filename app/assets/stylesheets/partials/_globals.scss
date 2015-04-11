@@ -2,3 +2,6 @@ body {
   font-family: $primary-font;
   color: $text-color;
 }
+a, a:hover, a:focus {
+  color: black;
+}

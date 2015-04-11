@@ -13,6 +13,13 @@ class Api::TracksController < ApplicationController
   end
 
   def destroy
+    @track = Track.find(params[:id])
+    if @track
+      @track.destroy
+      render :show
+    else
+      render "couldn't delete track"
+    end
   end
 
   def update

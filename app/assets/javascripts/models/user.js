@@ -9,8 +9,8 @@ Cloudsound.Models.User = Backbone.Model.extend({
   },
 
   parse: function (response) {
-    if (response.tracks) {
       debugger
+    if (response.tracks) {
       this.tracks().set(response.tracks, { parse: true });
       delete response.tracks;
     }

@@ -118,6 +118,7 @@ with TrackIndexItems will have drag and drop.
 - [ ] Infinite scroll feed
 - [ ] Make custom urls
 - [ ] Customize user profile
+- [ ] Add background images for tracks and users[]
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md

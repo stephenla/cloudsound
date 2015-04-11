@@ -31,3 +31,11 @@
 .track-title-wrapper {
   display: block;
 }
+.notice {
+  width: 50%;
+  height: 30px;
+  margin: 0 auto 0 auto;
+  .msg{
+    display: none;
+  }
+}
