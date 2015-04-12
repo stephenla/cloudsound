@@ -13,6 +13,7 @@
     <div class="page-header row">
       <h1><%= track.get("title") %></h1>
     </div>
+
     <div class="track-player row">
       <div class="track_item">
         <audio controls>
@@ -21,6 +22,7 @@
         </audio>
       </div>
     </div>
+
     <div class="track-options row">
       <div>
         <a class="delete-track" href="#">
@@ -29,11 +31,16 @@
         </div>
     </div>
 
-    <div class="track-comments row">
+    <div class="comments row">
+
       <h4 class="header-center">
         Comments
       </h4>
+
+      <ul class="track-comments row list-group">
+      </ul>
     </div>
+
   </div>
 
 </div>

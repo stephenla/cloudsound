@@ -8,5 +8,5 @@ class Track < ActiveRecord::Base
   :message => 'Please select a .mp3 file'
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end

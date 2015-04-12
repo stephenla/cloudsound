@@ -4,10 +4,13 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     "click .delete-track": "destroyTrack"
   },
   initialize: function (options) {
+    //this.model = track
     this.model = options.model;
+    this.comments = this.model.comments();
     this.user = options.user;
     this.userTracks = this.user.tracks();
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.comments, "add", this.addComment);
     this.listenTo(this.user, "sync", this.render);
   },
 
@@ -16,28 +19,28 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     event.preventDefault();
     this.model.destroy({
       success: function (model) {
-        // that.userTracks.remove(model);
-
-        // remove view after model destroyed?
         Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
-
         that.userTracks.remove(model);
-
+        // remove view after model destroyed?
         //why doesnt swapView in navigate remove this view.
         that.remove();
-
       }
     });
   },
 
-  render: function () {
+  addComment: function (comment) {
+    var subview = new Cloudsound.Views.CommentItem({ model: comment });
+    this.addSubview(".track-comments", subview);
+  },
 
+  render: function () {
     //only render template after track returns json with user info.
     if (this.model.get("user")) {
       var content = this.template({
         track: this.model
       });
       this.$el.html(content);
+      this.attachSubviews();
     }
     return this;
   }

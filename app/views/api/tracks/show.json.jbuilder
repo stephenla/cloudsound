@@ -9,3 +9,10 @@ json.extract! @track,
 :audio_updated_at
 
 json.user @track.user, :id, :username, :created_at
+
+if @track.comments
+  json.comments @track.comments.each do |comment|
+    json.extract! comment, :user_id, :track_id, :content
+    json.user comment.user.username
+  end
+end
