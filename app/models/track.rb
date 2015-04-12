@@ -6,5 +6,7 @@ class Track < ActiveRecord::Base
   validates_attachment_presence :audio, message: "select a track to upload"
   validates_attachment_content_type :audio, :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3', "application/octet-stream"],
   :message => 'Please select a .mp3 file'
+
   belongs_to :user
+  has_many :comments
 end

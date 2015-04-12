@@ -17,6 +17,7 @@
 //= require jquery.ui.effect
 //= require jquery.ui.effect-blind
 //= require jquery.ui.effect-shake
+//= require jquery.ui.effect-fade
 //= require underscore
 //= require backbone
 //= require cloudsound
