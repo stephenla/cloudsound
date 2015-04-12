@@ -3,7 +3,7 @@ Cloudsound.Views.CommentItem = Backbone.View.extend({
 
   tagName: "li",
 
-  className: "comment-item list-group-item row",
+  className: "comment-item list-group-item clearfix",
 
   render: function () {
     var content = this.template({ comment: this.model });
