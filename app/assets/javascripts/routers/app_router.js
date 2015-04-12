@@ -1,6 +1,6 @@
 Cloudsound.Routers.Router = Backbone.Router.extend({
   routes: {
-    "upload": "trackNew",
+    "user/:id/upload": "trackNew",
     "user/:id": "userProfile",
     "user/:id/account": "userAccount",
     "user/:user_id/track/:id": "trackShow"
@@ -12,6 +12,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userProfile: function (id) {
+
     var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.UserProfile({
       model: user
@@ -27,7 +28,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     this._swapView(view);
   },
 
-  trackNew: function () {
+  trackNew: function (id) {
     var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.TrackNew({
       user: user,
@@ -47,10 +48,11 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   _swapView: function (view) {
+
     if (this.currentView) {
       this.currentView.remove();
     }
-
     this.$rootEl.html(view.render().$el);
+    this.currentView = view;
   }
 });
