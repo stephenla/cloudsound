@@ -40,8 +40,11 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
 
   trackShow: function (id) {
     var track = this.tracks.getOrFetch(id);
+    var currentUser = new Cloudsound.Models.CurrentUser();
+    currentUser.fetch();
     var view = new Cloudsound.Views.TrackShow({
-      model: track
+      model: track,
+      currentUser: currentUser
     });
     this._swapView(view);
   },

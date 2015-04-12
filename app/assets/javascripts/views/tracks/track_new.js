@@ -82,18 +82,15 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
     }
     event.preventDefault();
     // if data
-    // debugger
     // this.model.set(data);
     // this.model.save({}, {
     //   error: function (model, resp) {
-    //     debugger
     //     $('#progress .bar').css('background', 'red');
     //     $.each(resp.responseJSON, function (key, val){
     //       $(".errors").addClass("alert alert-danger").text(val);
     //     });
     //   },
     // });
-    // debugger
     // event.stopPropagation();
 
     // $form.bind('ajax:complete', function(event, data) {

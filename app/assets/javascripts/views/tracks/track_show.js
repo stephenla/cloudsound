@@ -5,16 +5,19 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   },
   initialize: function (options) {
     this.model = options.model;
+    this.currentUser = options.currentUser;
+    this.currentUserTracks = this.currentUser.tracks();
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.currentUser, "sync", this.render);
   },
 
   deleteTrack: function (event) {
+    var that = this;
     event.preventDefault();
     this.model.destroy({
       success: function (model) {
-        debugger
+        that.currentUserTracks.remove(model);
         Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
-        debugger
       }
     });
   },

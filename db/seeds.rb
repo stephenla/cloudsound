@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+Track.create! audio: File.new("/Users/stephen/Downloads/Hey Brother (TEEMID   Tessa Rose Jackson Cover).mp3", "r"), title: "brother", user_id: 1
+Track.create! audio: File.new("/Users/stephen/Downloads/i carmacked bastille.mp3", "r"), title: "carmacked", user_id: 1
+Track.create! audio: File.new("/Users/stephen/Downloads/Something About Us (Studio Version).mp3", "r"), title: "something", user_id: 1
+Track.create! audio: File.new("/Users/stephen/Downloads/Gulch.mp3", "r"), title: "gulch", user_id: 1
