@@ -18,6 +18,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
       success: function (model) {
         that.currentUserTracks.remove(model);
         Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
+        // remove view after model destroyed?
+        that.remove();
       }
     });
   },
