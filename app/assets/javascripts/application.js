@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require jquery.ui.widget
 //= require jquery.ui.effect
+//= require jquery.ui.effect-blind
 //= require jquery.ui.effect-shake
 //= require underscore
 //= require backbone
