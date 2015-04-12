@@ -1,6 +1,7 @@
 // Place all the styles related to the api/tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 #progress{
   background: lightgray;
   width: 350px;
@@ -37,5 +38,11 @@
   margin: 0 auto 0 auto;
   .msg{
     display: none;
+  }
+}
+//track_show
+.track-page {
+  .track-time-ago {
+    line-height: 39px;
   }
 }

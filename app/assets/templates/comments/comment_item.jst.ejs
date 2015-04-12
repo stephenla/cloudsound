@@ -1,3 +1,4 @@
 <% debugger %>
-  <h4 class="username"><%= comment.get("user") %>:</h4>
-  <p class="content"> <%= comment.get("content") %> </p>
+  <h4 class="username col-xs-6"><%= comment.get("user") %></h4>
+  <h5 class="col-xs-4"> <%= comment.get("time_ago") %></h5>
+  <p class="content col-xs-12"> <%= comment.get("content") %> </p>
