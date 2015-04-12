@@ -8,6 +8,35 @@ class User < ActiveRecord::Base
   has_many :tracks, dependent: :destroy
   has_many :comments, dependent: :destroy
 
+  has_many :follows,
+           class_name: "Following",
+           foreign_key: :followed_id,
+           dependent: :destroy
+
+  has_many :followings,
+           class_name: "Following",
+           foreign_key: :follower_id,
+           dependent: :destroy
+
+  has_many :followers, through: :follows, source: :followed
+  has_many :following, through: :followings, source: :follower
+
+
+  # Follows a user.
+  def follow(other_user)
+    followings.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    followings.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    following.include?(other_user)
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil if user.nil?
