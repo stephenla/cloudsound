@@ -12,6 +12,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userProfile: function (id) {
+
     var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.UserProfile({
       model: user
@@ -53,6 +54,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     if (this.currentView) {
       this.currentView.remove();
     }
+
     this.$rootEl.html(view.render().$el);
   }
 });

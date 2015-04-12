@@ -1,7 +1,7 @@
 Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   template: JST['tracks/track_show'],
   events: {
-    "click .delete-track": "deleteTrack"
+    "click .delete-track": "destroyTrack"
   },
   initialize: function (options) {
     this.model = options.model;
@@ -11,20 +11,24 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     this.listenTo(this.currentUser, "sync", this.render);
   },
 
-  deleteTrack: function (event) {
+  destroyTrack: function (event) {
     var that = this;
     event.preventDefault();
     this.model.destroy({
       success: function (model) {
-        that.currentUserTracks.remove(model);
-        Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
+        // that.currentUserTracks.remove(model);
+
         // remove view after model destroyed?
-        that.remove();
+        that.currentUserTracks.remove(model);
+        debugger
+        Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
+
       }
     });
   },
 
   render: function () {
+
     //only render template after track returns json with user info.
     if (this.model.get("user")) {
       var content = this.template({
