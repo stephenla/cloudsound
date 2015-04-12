@@ -5,10 +5,10 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   },
   initialize: function (options) {
     this.model = options.model;
-    this.currentUser = options.currentUser;
-    this.currentUserTracks = this.currentUser.tracks();
+    this.user = options.user;
+    this.userTracks = this.user.tracks();
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.currentUser, "sync", this.render);
+    this.listenTo(this.user, "sync", this.render);
   },
 
   destroyTrack: function (event) {
@@ -16,12 +16,12 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     event.preventDefault();
     this.model.destroy({
       success: function (model) {
-        // that.currentUserTracks.remove(model);
+        // that.userTracks.remove(model);
 
         // remove view after model destroyed?
-        that.currentUserTracks.remove(model);
-        debugger
         Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
+        that.userTracks.remove(model);
+        that.remove();
 
       }
     });

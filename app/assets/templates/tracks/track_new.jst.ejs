@@ -24,7 +24,7 @@
     <label class="track-title-wrapper" for="track_audio">Title*
       <input id='track-title' type="text" name="track[title]">
     </label>
-    <input type="hidden" name="track[user_id]" value="<%= currentUser.get("id") %>">
+    <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
     <input type="file" name="track[audio]" id="track_audio">
     <input id="create-track" type="submit" name="commit" value="upload">
   </form>

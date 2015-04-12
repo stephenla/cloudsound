@@ -6,13 +6,13 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this.currentUser = options.user;
-    this.listenTo(this.currentUser, "sync", this.render);
+    this.user = options.user;
+    this.listenTo(this.user, "sync", this.render);
   },
 
   render: function () {
     var content = this.template({
-      currentUser: this.currentUser
+      user: this.user
     });
     this.$el.html(content);
     this.renderFileUpload();

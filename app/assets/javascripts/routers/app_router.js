@@ -1,9 +1,9 @@
 Cloudsound.Routers.Router = Backbone.Router.extend({
   routes: {
     "upload": "trackNew",
-    "account": "userAccount",
     "user/:id": "userProfile",
-    "track/:id": "trackShow"
+    "user/:id/account": "userAccount",
+    "user/:user_id/track/:id": "trackShow"
   },
   initialize: function () {
     this.$rootEl = $("#content");
@@ -12,7 +12,6 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userProfile: function (id) {
-
     var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.UserProfile({
       model: user
@@ -21,31 +20,28 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userAccount: function (id) {
-    var currentUser = new Cloudsound.Models.CurrentUser();
-    currentUser.fetch();
+    var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.UserAccount({
-      model: currentUser
+      model: user
     });
     this._swapView(view);
   },
 
   trackNew: function () {
-    var currentUser = new Cloudsound.Models.CurrentUser();
-    currentUser.fetch();
+    var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.TrackNew({
-      user: currentUser,
+      user: user,
       model: new Cloudsound.Models.Track()
     });
     this._swapView(view);
   },
 
-  trackShow: function (id) {
+  trackShow: function (user_id, id) {
     var track = this.tracks.getOrFetch(id);
-    var currentUser = new Cloudsound.Models.CurrentUser();
-    currentUser.fetch();
+    var user = this.users.getOrFetch(user_id);
     var view = new Cloudsound.Views.TrackShow({
       model: track,
-      currentUser: currentUser
+      user: user
     });
     this._swapView(view);
   },
