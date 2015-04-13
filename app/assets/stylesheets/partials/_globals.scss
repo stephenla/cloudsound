@@ -5,9 +5,15 @@ body {
 a, a:hover, a:focus {
   color: black;
 }
+a{
+  text-decoration: none !important;
+}
 .navbar-default {
   display: none;
 }
 #content {
   padding: 0 25px;
+}
+.medium {
+  font-size: 18px;
 }

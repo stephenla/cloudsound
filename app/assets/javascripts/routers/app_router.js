@@ -2,6 +2,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   routes: {
     "user/:id/upload": "trackNew",
     "user/:id": "userProfile",
+    "user/:id/tracks": "userProfile",
     "user/:id/account": "userAccount",
     "user/:user_id/track/:id": "trackShow",
     "user/:id/following": "userFollowing"
