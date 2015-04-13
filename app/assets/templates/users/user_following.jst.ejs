@@ -5,14 +5,15 @@
 </div>
 <div class="user-info">
   <h1> <%= user.get("username") %> </h1>
-  <img alt="avatar" class="avatar" />
+  <div class="avatar">
+  </div>
   <div class="page-header user-links clearfix">
     <a class="medium link" href="/#user/<%= user.id %>/tracks">Tracks</a>
     <a class="medium link active" href="/#user/<%= user.id %>/following">Following</a>
     <a class="medium link" href="/#user/<%= user.id %>/followers">Followers</a>
   </div>
 </div>
-<div class="following-users following row">
+<div class="follow-users following clearfix">
 
 
 </div>

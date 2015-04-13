@@ -17,10 +17,38 @@
     }
   }
 }
-.following-user {
-  .avatar {
-    height: 200px;
-    width: 200px;
-    background: gray;
+.follow-users {
+  width: $max-page-width - 200px;
+  .follow-user {
+    float: left;
+    margin: 0 8px 8px 0;
+
+    .avatar {
+      background-image: linear-gradient(135deg,#70929c,#e6846e);
+      height: 200px;
+      width: 200px;
+    }
+  }
+}
+
+.follow-links {
+  .btn {
+    width: 98px;
+    height: 25px;
+    padding: 3px;
+  }
+  .unfollow {
+    border-color: $primary-color;
+    color: $primary-color;
+    &:hover{
+      background: lighten($primary-color, 30%);
+    }
+  }
+  .follow {
+    border-color: $primary-color;
+    background: $primary-color;
+    color: white;
+    font-weight: 500;
+
   }
 }

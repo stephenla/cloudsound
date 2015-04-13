@@ -17,6 +17,7 @@ $text-color: black;
 $primary-color: #f51;
 $primary-font: 'Roboto', sans-serif;
 $button-hover-bg: #e6e6e6;
+$max-page-width: 1240px;
 
 @import "bootstrap-sprockets";
 @import "partials/bootstrap-custom";

@@ -23,15 +23,18 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :following, through: :active_relationships, source: :followed
 
+  has_attached_file :avatar,
+    :default_url => "/images/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   # Follows a user.
   def follow(other_user)
-    followings.create(followed_id: other_user.id)
+    active_relationships.create(followed_id: other_user.id)
   end
 
   # Unfollows a user.
   def unfollow(other_user)
-    followings.find_by(followed_id: other_user.id).destroy
+    active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
   # Returns true if the current user is following the other user.

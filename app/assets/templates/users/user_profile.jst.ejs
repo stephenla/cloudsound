@@ -6,13 +6,15 @@
 
 <div class="user-info">
   <h1> <%= user.get("username") %> </h1>
-  <img alt="avatar" class="avatar" />
-  <div class="follow">
-
-    <% if (user.get("is_following")) {%>
-      <a href="#" class='unfollow'>Unfollow</a>
-    <% } else { %>
-      <a href="#" class='follow'>Follow</a>
+  <div class="avatar">
+  </div>
+  <div class="follow-links">
+    <% if (user.get("relationship")) {%>
+      <% if (user.get("relationship").is_following) {%>
+        <a href="#" class='unfollow btn btn-default'>Following</a>
+      <% } else if (!user.get("relationship").is_following) { %>
+        <a href="#" class='follow btn btn-default'>Follow</a>
+      <% } %>
     <% } %>
   </div>
   <div class="page-header user-links clearfix">

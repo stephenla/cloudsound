@@ -1,6 +1,7 @@
 body {
   font-family: $primary-font;
   color: $text-color;
+  background: #F2F2F2;
 }
 a, a:hover, a:focus {
   color: black;
@@ -16,4 +17,8 @@ a{
 }
 .medium {
   font-size: 18px;
+}
+.container {
+  width: $max-page-width;
+  background: white;
 }

@@ -1,16 +1,20 @@
 class Api::FollowingsController < ApplicationController
 
-  before_action :logged_in_user
+  before_action :logged_in?
+
+  def show
+    @relationship = Following.find(params[:id])
+  end
 
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
-    render "users/show.json.jbuilder"
+    render "api/users/show.json.jbuilder"
   end
 
   def destroy
-    @user = User.find(params[:followed_id])
-    current_user.unfollow(@user)
-    render "users/show.json.jbuilder"
+    @relationship = Following.find(params[:id])
+    @relationship.destroy
+    render json: "user unfollowed"
   end
 end
