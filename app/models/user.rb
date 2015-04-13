@@ -27,6 +27,12 @@ class User < ActiveRecord::Base
     :default_url => "/images/missing.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
+  def feed
+    following_ids = "SELECT followed_id FROM followings WHERE  follower_id = :user_id"
+    Track.where("user_id IN (#{following_ids})
+                     OR user_id = :user_id", user_id: self.id)
+  end
+
   # Follows a user.
   def follow(other_user)
     active_relationships.create(followed_id: other_user.id)

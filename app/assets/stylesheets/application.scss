@@ -17,6 +17,7 @@ $text-color: black;
 $primary-color: #f51;
 $button-hover-bg: #e6e6e6;
 $max-page-width: 1240px;
+$grid-float-breakpoint: 200px;
 
 @import "bootstrap-sprockets";
 @import "partials/bootstrap-custom";
