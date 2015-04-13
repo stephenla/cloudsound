@@ -30,17 +30,23 @@
   <div class="col-sm-4 row">
     <div class="page-header col-sm-4 col-sm-offset-4">
       <h4 class="header-center">
-        Playlists
-      </h4>
-    </div>
-  </div>
-
-  <div class="col-sm-4 row">
-    <div class="page-header col-sm-4 col-sm-offset-4">
-      <h4 class="header-center">
         <a href="/#user/<%= user.id %>/following" >Following</a>
       </h4>
     </div>
   </div>
+
+</div>
+
+<div class="user-info">
+  <img alt="avatar" class="avatar" />
+  <h1> <%= user.get("username") %> </h1>
+  <div class="page-header user-links clearfix">
+    <a class="medium link active" href="/#user/<%= user.id %>/tracks">Tracks</a>
+    <a class="medium link" href="/#user/<%= user.id %>/following">Following</a>
+    <a class="medium link" href="/#user/<%= user.id %>/followers">Followers</a>
+  </div>
+</div>
+<div class="tracks row">
+
 
 </div>

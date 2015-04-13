@@ -13,3 +13,9 @@ if @user.following
     json.following_count user.following.count
   end
 end
+if @user.followers
+  json.followers @user.followers do |user|
+    json.extract! user, :username
+    json.followers user.followers.count
+  end
+end
