@@ -6,7 +6,7 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.followers, "add", this.addFollower);
     //why do i need this bind
-    this.followers.each(this.addFollower.bind(this));
+    // this.followers.each(this.addFollower.bind(this));
   },
 
   addFollower: function (user) {

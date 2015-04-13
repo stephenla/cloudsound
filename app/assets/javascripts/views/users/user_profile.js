@@ -5,10 +5,10 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
 
     this.collection = this.model.tracks();
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.collection, "add", this.addTrack.bind(this));
-    this.listenTo(this.collection, "remove", this.removeTrack.bind(this));
+    this.listenTo(this.collection, "add", this.addTrack);
+    // this.listenTo(this.collection, "remove", this.removeTrack);
     //strange behaviour without this
-    this.collection.each(this.addTrack.bind(this));
+    // this.collection.each(this.addTrack.bind(this));
   },
 
   addTrack: function (track) {
