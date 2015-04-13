@@ -57,7 +57,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     var relationship = new Cloudsound.Models.Relationship();
     relationship.save(this.model.get("relationship"),{
       success: function(model) {
-        this.model.fetch()
+        this.model.fetch();
       }.bind(this)
     });
 
