@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
   attr_reader :password
   validates :username, :password_digest, :session_token, presence: true
   validates :username, uniqueness: true

@@ -72,7 +72,8 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
 
       this.currentView.remove();
     }
-    this.$rootEl.html(view.render().$el.show("fade", 1000));
+    // this.$rootEl.html(view.render().$el.show("fade", 500));
+    this.$rootEl.html(view.render().$el);
     this.currentView = view;
   }
 });

@@ -4,39 +4,6 @@
   </div>
 </div>
 
-<div class="user-profile row">
-
-  <div class="col-xs-12">
-    <div class="page-header col-sm-4 col-sm-offset-4">
-      <h4 class="header-center">
-        <%= user.get("username") %>
-      </h4>
-    </div>
-
-  </div>
-
-
-  <div class="col-sm-4">
-    <div class="page-header row">
-      <h4 class="header-center">
-        Tracks
-      </h4>
-    </div>
-    <div class="profile-tracks row">
-
-    </div>
-  </div>
-
-  <div class="col-sm-4 row">
-    <div class="page-header col-sm-4 col-sm-offset-4">
-      <h4 class="header-center">
-        <a href="/#user/<%= user.id %>/following" >Following</a>
-      </h4>
-    </div>
-  </div>
-
-</div>
-
 <div class="user-info">
   <img alt="avatar" class="avatar" />
   <h1> <%= user.get("username") %> </h1>

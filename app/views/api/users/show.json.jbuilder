@@ -10,12 +10,12 @@ end
 if @user.following
   json.following @user.following do |user|
     json.extract! user, :username
-    json.following_count user.following.count
+    json.followers_count user.followers.count
   end
 end
 if @user.followers
   json.followers @user.followers do |user|
     json.extract! user, :username
-    json.followers user.followers.count
+    json.followers_count user.followers.count
   end
 end
