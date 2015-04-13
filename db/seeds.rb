@@ -13,20 +13,20 @@
 #   Track.create! audio: File.new("/Users/stephen/Downloads/Gulch.mp3", "r"), title: "gulch", user_id: 1
 # end
 
-100.times do |num|
-  Comment.create! user_id: rand(99) + 20, track_id: rand(7) + 273, content: Faker::Hacker.say_something_smart
+# 100.times do |num|
+#   Comment.create! user_id: rand(99) + 20, track_id: rand(7) + 273, content: Faker::Hacker.say_something_smart
+# end
+
+
+
+stephen = User.first
+
+(20..69).each do |n|
+  user = User.find(n)
+  stephen.follow(user)
 end
 
-#
-#
-# stephen = User.first
-#
-# 50.times do |n|
-#   user =User.create!(username: Faker::Name.name, password: "password")
-#   stephen.follow(user)
-# end
-#
-# 50.times do |n|
-#   user = User.create!(username: Faker::Name.name, password: "password")
-#   user.follow(stephen)
-# end
+(70..120).each do |n|
+  user = User.find(n)
+  user.follow(stephen)
+end

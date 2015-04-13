@@ -7,6 +7,13 @@ Cloudsound.Models.User = Backbone.Model.extend({
 
     return this._tracks;
   },
+  following: function () {
+    if (!this._following) {
+      this._following = new Cloudsound.Collections.Users();
+    }
+
+    return this._following;
+  },
 
   parse: function (response) {
 
@@ -16,6 +23,13 @@ Cloudsound.Models.User = Backbone.Model.extend({
       //the model.destroy()
       this.tracks().set(response.tracks, { parse: true});
       delete response.tracks;
+    }
+    if (response.following) {
+      //add remove false because destroying the track and reloading user profile
+      //will trigger the remove event twice, once for this set and once for
+      //the model.destroy()
+      this.following().set(response.following, { parse: true});
+      delete response.following;
     }
 
     return response;

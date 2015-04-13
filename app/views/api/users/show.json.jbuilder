@@ -7,3 +7,9 @@ if @user.tracks
     :audio_updated_at
   end
 end
+if @user.following
+  json.following @user.following do |user|
+    json.extract! user, :username
+    json.following_count user.following.count
+  end
+end
