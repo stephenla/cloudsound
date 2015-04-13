@@ -5,14 +5,15 @@
 </div>
 
 <div class="user-profile row">
-  <aside class="col-sm-4">
+
+  <div class="col-xs-12">
     <div class="page-header col-sm-4 col-sm-offset-4">
       <h4 class="header-center">
         <%= user.get("username") %>
       </h4>
     </div>
 
-  </aside>
+  </div>
 
 
   <div class="col-sm-4">
@@ -30,6 +31,14 @@
     <div class="page-header col-sm-4 col-sm-offset-4">
       <h4 class="header-center">
         Playlists
+      </h4>
+    </div>
+  </div>
+
+  <div class="col-sm-4 row">
+    <div class="page-header col-sm-4 col-sm-offset-4">
+      <h4 class="header-center">
+        <a href="/#user/<%= user.id %>/following" >Following</a>
       </h4>
     </div>
   </div>

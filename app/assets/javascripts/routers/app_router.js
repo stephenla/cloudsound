@@ -22,6 +22,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userFollowing: function (id) {
+    debugger
     var user = this.users.getOrFetch(id);
     var view = new Cloudsound.Views.UserFollowing({
       model: user
