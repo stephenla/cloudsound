@@ -16,17 +16,15 @@
 # 100.times do |num|
 #   Comment.create! user_id: rand(99) + 20, track_id: rand(7) + 273, content: Faker::Hacker.say_something_smart
 # end
-
-
-
+guest = User.where(username: "frank_farrell")
 stephen = User.first
-
-(20..69).each do |n|
-  user = User.find(n)
+50.times do |n|
+  user = User.create!(username: Faker::Name.name, password: "password")
+  guest.follow(user)
   stephen.follow(user)
 end
-
-(70..120).each do |n|
-  user = User.find(n)
+50.times do |n|
+  user = User.create!(username: Faker::Name.name, password: "password")
+  user.follow(guest)
   user.follow(stephen)
 end
