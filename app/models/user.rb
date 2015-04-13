@@ -23,9 +23,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :following, through: :active_relationships, source: :followed
 
-  has_attached_file :avatar,
-    :default_url => "/images/missing.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 
   def feed
     following_ids = "SELECT followed_id FROM followings WHERE  follower_id = :user_id"
