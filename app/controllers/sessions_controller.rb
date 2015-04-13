@@ -18,8 +18,22 @@ class SessionsController < ApplicationController
     render :new
   end
 
-  def destroy    
+  def destroy
     log_out!(current_user) if current_user
     redirect_to new_session_url
+  end
+
+  def guest
+    @user = User.find_by_credentials(
+      "frank_farrell",
+      "password"
+    )
+    if @user
+      log_in!(@user)
+      redirect_to root_url
+    else
+      flash.now[:errors] = ["Unexpected Error."]
+      render :new
+    end
   end
 end

@@ -7,6 +7,14 @@
 <div class="user-info">
   <h1> <%= user.get("username") %> </h1>
   <img alt="avatar" class="avatar" />
+  <div class="follow">
+
+    <% if (user.get("is_following")) {%>
+      <a href="#" class='unfollow'>Unfollow</a>
+    <% } else { %>
+      <a href="#" class='follow'>Follow</a>
+    <% } %>
+  </div>
   <div class="page-header user-links clearfix">
     <a class="medium link active" href="/#user/<%= user.id %>/tracks">Tracks</a>
     <a class="medium link" href="/#user/<%= user.id %>/following">Following</a>

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:create, :new, :destroy]
   resources :users, only: [:create, :new]
+  post '/session/guest', to: 'sessions#guest'
 
   namespace :api do
     resources :users, only: [:show, :index], defaults: { format: :json }

@@ -19,3 +19,11 @@ if @user.followers
     json.followers_count user.followers.count
   end
 end
+
+
+if @user.passive_relationships.where(follower_id: current_user.id).empty?
+  json.is_following false
+else
+  json.is_following true
+  json.relationship_id @user.passive_relationships.where(follower_id: current_user.id).first.id
+end

@@ -1,6 +1,10 @@
 Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
   template: JST["users/user_profile"],
 
+  events: {
+    "click .unfollow" : "unfollowUser"
+  },
+
   initialize: function () {
 
     this.collection = this.model.tracks();
@@ -10,6 +14,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     //strange behaviour without this
     // this.collection.each(this.addTrack.bind(this));
   },
+
 
   addTrack: function (track) {
 
@@ -34,8 +39,19 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     }, 500);
   },
 
-  render: function () {
+  unfollowUser: function () {
+    var relationship = new Cloudsound.Models.Relationship(this.model.get("relationship_id"));
+    relationship.fetch({
+      success: function(model) {
+        debugger
+        model.destroy();
+        this.render();
+      }.bind(this)
+    });
 
+  },
+
+  render: function () {
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
