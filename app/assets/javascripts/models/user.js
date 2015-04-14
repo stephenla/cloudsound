@@ -23,6 +23,14 @@ Cloudsound.Models.User = Backbone.Model.extend({
     return this._followers;
   },
 
+  feed: function () {
+    if (!this._feed) {
+      this._feed = new Cloudsound.Collections.Tracks();
+    }
+
+    return this._feed;
+  },
+
   parse: function (response) {
 
     if (response.tracks) {
@@ -32,6 +40,11 @@ Cloudsound.Models.User = Backbone.Model.extend({
       this.tracks().reset([]);
       this.tracks().set(response.tracks, { parse: true });
       delete response.tracks;
+    }
+    if (response.feed) {
+      this.feed().reset([]);
+      this.feed().set(response.feed, { parse: true });
+      delete response.feed;
     }
     if (response.following) {
       this.following().set(response.following, { parse: true});

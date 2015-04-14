@@ -16,7 +16,6 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     // this.collection.each(this.addTrack.bind(this));
   },
 
-
   addTrack: function (track) {
 
     var subview = new Cloudsound.Views.TrackItem({ model: track });
