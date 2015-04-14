@@ -1,4 +1,4 @@
-Cloudsound.Views.UserAccount = Backbone.View.extend({
+Cloudsound.Views.UserSettings = Backbone.View.extend({
   template: JST["users/user_account"],
 
   initialize: function () {
