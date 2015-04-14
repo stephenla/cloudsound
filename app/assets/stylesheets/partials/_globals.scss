@@ -9,13 +9,12 @@ a, a:hover, a:focus {
 a{
   text-decoration: none !important;
 }
-.navbar-default {
-  display: none;
-}
 #content {
   padding: 0 25px;
-  width: $max-page-width;
+  max-width: $max-page-width;
+  min-width: $min-page-width;
   background: white;
+  min-height: 900px;
 }
 
 .medium {
@@ -29,9 +28,13 @@ a{
 label {
   color: #333;
 }
-input[type="text"] {
+input[type="text"],input[type="password"] {
   font-size: 18px;
   line-height: 24px;
   padding: 7px 8px;
   border-radius: 5px;
+}
+.container {
+  max-width: $max-page-width;
+  min-width: $min-page-width;
 }

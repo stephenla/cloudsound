@@ -4,15 +4,13 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     "click .delete-track": "destroyTrack"
   },
   initialize: function (options) {
-    //this.model = track
-    this.model = options.model;
     this.comments = this.model.comments();
     this.user = options.user;
     this.userTracks = this.user.tracks();
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.comments, "add", this.addComment.bind(this));
     this.listenTo(this.user, "sync", this.render);
-    this.comments.each(this.addComment.bind(this));
+    // this.comments.each(this.addComment.bind(this));
   },
 
   destroyTrack: function (event) {

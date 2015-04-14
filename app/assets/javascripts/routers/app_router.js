@@ -50,6 +50,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     var view = new Cloudsound.Views.UserSettings({
       model: user
     });
+    view.$el.show("fade",500);
     this._swapView(view);
   },
 
@@ -59,6 +60,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
       user: user,
       model: new Cloudsound.Models.Track()
     });
+    view.$el.show("fade",500);
     this._swapView(view);
   },
 

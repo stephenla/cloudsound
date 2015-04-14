@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     )
     if @user
       log_in!(@user)
-      redirect_to "/static/index"
+      redirect_to root_url
     else
       flash.now[:errors] = ["Invalid username/password"]
       render :new

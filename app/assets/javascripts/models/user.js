@@ -2,7 +2,7 @@ Cloudsound.Models.User = Backbone.Model.extend({
   urlRoot: "/api/users",
   tracks: function () {
     if (!this._tracks) {
-      this._tracks = new Cloudsound.Collections.Tracks([], { user: this });
+      this._tracks = new Cloudsound.Collections.Tracks();
     }
 
     return this._tracks;

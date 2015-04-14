@@ -10,8 +10,8 @@ Cloudsound.Views.UserFollowing = Backbone.CompositeView.extend({
 
   addFollowing: function (user) {
     var subview = new Cloudsound.Views.UserItemFollowing({ model: user });
-    this.addSubview(".follow-users", subview);
     subview.$el.show("fade", 1000);
+    this.addSubview(".follow-users", subview);
   },
 
   render: function () {
