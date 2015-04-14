@@ -16,6 +16,7 @@ gem "paperclip", "~> 4.2"
 gem 'aws-sdk', '<2.0'
 gem 'figaro'
 gem 'gravtastic'
+gem 'faker'
 group :development, :test do
   gem 'byebug'
   gem 'web-console', '~> 2.0'
@@ -24,5 +25,4 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'pry-rails'
-  gem 'faker'
 end
