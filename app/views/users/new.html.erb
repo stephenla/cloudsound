@@ -30,5 +30,14 @@
     <br>
 
     <input class="btn btn-default" type="submit" value="Sign Up!">
+
   </form>
 </div>
+
+<form class="guest-login" action="/session/guest" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+<input class="btn btn-default" type="submit" name="name" value="Guest Login">
+</form>
