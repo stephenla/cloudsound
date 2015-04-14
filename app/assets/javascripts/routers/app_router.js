@@ -1,6 +1,6 @@
 Cloudsound.Routers.Router = Backbone.Router.extend({
   routes: {
-    "" : "userFeed",
+    // "" : "userFeed",
     "user/:id/upload": "trackNew",
     "user/:id": "userProfile",
     "user/:id/tracks": "userProfile",
@@ -16,8 +16,8 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userFeed: function () {
-    var user = this.users.getOrFetch(current_user);
     debugger
+    var user = this.users.getOrFetch(current_user);
     var view = new Cloudsound.Views.UserFeed({ model: user });
     this._swapView(view);
   },

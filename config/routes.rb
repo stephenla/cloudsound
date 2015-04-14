@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post '/session/guest', to: 'sessions#guest'
 
   namespace :api do
-    resources :users, only: [:show, :index], defaults: { format: :json }
+    resources :users, only: [:show, :index, :update], defaults: { format: :json }
     resources :tracks
     resources :comments
     resources :followings
