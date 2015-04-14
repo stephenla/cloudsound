@@ -16,9 +16,13 @@ class Api::UsersController < ApplicationController
   end
 
   def update
+
     @user = User.find(params[:id])
+    if params[:delete_avatar] == "1"
+      @user.avatar = nil
+    end
     if @user.update(user_params)
-      render json: @user
+      redirect :back
     else
       render @user.errors.full_messages, status: 422
     end

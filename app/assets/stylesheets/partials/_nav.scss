@@ -1,9 +1,19 @@
 
 .navbar-default {
-
+  margin: 0;
   background: #070707;
+
+  .navbar-links {
+    padding: 15px 10px;
+    color: #ccc!important;
+    &:hover {
+      color: #eee!important;
+    }
+  }
+
   .navbar-header{
     .glyphicon-cloud{
+      font-size: 28px;
       color: $primary-color;
     }
   }

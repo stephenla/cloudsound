@@ -7,19 +7,21 @@ if @user.tracks
     :audio_updated_at
   end
 end
-if @user.following
-  json.following @user.following do |user|
+# if @user.following
+  following = @user.following.includes(:followers)
+  json.following following do |user|
     json.extract! user, :username
-    json.followers_count user.followers.count
+    json.followers_count user.followers.length
   end
-end
-if @user.followers
-  json.followers @user.followers do |user|
+# end
+# if @user.followers
+  followers = @user.followers.includes(:followers)
+  json.followers followers do |user|
     json.extract! user, :username
-    json.followers_count user.followers.count
+    json.followers_count user.followers.length
   end
-end
-if current_user != @user
+# end
+if @current_user != @user
   json.relationship do
     if @user.passive_relationships.where(follower_id: current_user.id).empty?
       json.is_following false
@@ -40,3 +42,7 @@ if @user.feed
     :audio_updated_at
   end
 end
+
+json.avatar @user.avatar
+json.avatar_thumb @user.avatar.url(:thumb)
+json.avatar_medium @user.avatar.url(:medium)

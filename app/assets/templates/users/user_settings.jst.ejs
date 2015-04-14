@@ -1,31 +1,71 @@
-<div class="user-profile row">
-  <aside class="col-sm-4">
-    <div class="page-header col-sm-4 col-sm-offset-4">
-      <h4 class="header-center">
-        <%= user.get("username") %>
-        <a href="/#user/<%= user.get('id') %>/edit">edit</a>
-      </h4>
-    </div>
-
-  </aside>
-
-  <div class="col-sm-8 row">
-
-    <div class="col-sm-6">
-      <div class="page-header col-sm-4 col-sm-offset-4">
-        <h4 class="header-center">
-          Tracks
-        </h4>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="page-header col-sm-4 col-sm-offset-4">
-        <h4 class="header-center">
-          Playlists
-        </h4>
-      </div>
-    </div>
-
-  </div>
+<h1 id="settings-heading">Settings</h1>
+<div class="settings-links clearfix">
+  <span class="stream medium link active">Profile</span>
 </div>
+<div class="edit-wrapper">
+  <form class="edit-user clearfix" id="edit-user" enctype="multipart/form-data" action="http://localhost:3000/api/users/1" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="+9XeWK7qWy455VyHW/SeDhIwCRUaeGhIhLROag9DNQ/19hhr+T5SoymMSejwtaMhDpPrqixhC1GqyUia8E+saA==">
+    <div class="top-form-group clearfix">
+
+      <img class="account-avatar" src="<%= user.get("avatar_medium") %>" alt="avatar" />
+      <span id="choose-avatar" class="btn btn-default">Choose new image</span>
+      <input id="edit-avatar" class="edit-avatar" type="file" name="user[avatar]" id="user_avatar">
+      <div class="delete-avatar">
+        <input type="checkbox" name="delete_avatar" value="1">Remove avatar
+      </div>
+
+      <div class="form-group username">
+        <label class="edit-label username">Username</label>
+        <input class="edit-field form-control" type="text" name="user[username]" value="<%= user.get("username") %>">
+      </div>
+
+    </div>
+
+    <div class="form-group description">
+      <label class="edit-label">Description</label>
+      <textarea class="edit-field form-control" name="user[description]"><%= user.get("description") %> </textarea>
+    </div>
+
+    <div class="left-form-group clearfix">
+      <div class="form-group">
+        <label class="edit-label">First Name</label>
+        <input class="edit-field form-control" type="text" name="user[first_name]" value="<%= user.get("first_name") %>">
+      </div>
+
+      <div class="form-group">
+        <label class="edit-label">Last Name</label>
+        <input class="edit-field form-control" type="text" name="user[last_name]" value="<%= user.get("last_name") %>">
+      </div>
+
+      <div class="form-group">
+        <input class="btn btn-default" type="submit" name="commit" value="Save changes">
+      </div>
+    </div>
+  </form>
+</div>
+<script charset="utf-8">
+  function readURL(input) {
+
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+              $('.account-avatar').attr('src', e.target.result)
+              .css("width", "200px")
+              .css("height", "200px");
+          }
+
+          reader.readAsDataURL(input.files[0]);
+      }
+  }
+
+  $(".edit-avatar").change(function(){
+      readURL(this);
+  });
+
+  document.getElementById('choose-avatar').addEventListener('click',function(){
+    document.getElementById('edit-avatar').click();
+  });
+</script>

@@ -5,6 +5,15 @@
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
+  <li>
+    <a href="/#user/<%= current_user.id %>" class="navbar-links glyphicon glyphicon-user" aria-hidden="true"></a>
+  </li>
+  <li>
+    <a href="/#user/<%= current_user.id %>/settings" class="navbar-links glyphicon glyphicon-cog" aria-hidden="true"></a>
+  </li>
+  <li>
+    <a href="<%= session_url %>" class="navbar-links glyphicon glyphicon-off" aria-hidden="true"></a>
+  </li>
   <li class="dropdown">
     <a data-target="#" class="dropdown-toggle btn btn-default navbar-btn" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
       <%= current_user.username %>
@@ -23,7 +32,7 @@
       <li>
         <%=
         link_to "Account",
-        "/#user/#{ current_user.id }/account",
+        "/#user/#{ current_user.id }/settings",
         class: "btn btn-default navbar-btn"
         %>
       </li>
