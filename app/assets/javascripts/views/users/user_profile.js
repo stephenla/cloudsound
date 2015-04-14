@@ -17,7 +17,6 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
   },
 
   addTrack: function (track) {
-
     var subview = new Cloudsound.Views.TrackItem({ model: track });
     subview.$el.show("fade", 1000);
     this.addSubview(".tracks", subview);

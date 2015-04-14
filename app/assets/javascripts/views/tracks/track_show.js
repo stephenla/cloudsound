@@ -36,7 +36,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     //only render template after track returns json with user info.
     if (this.model.get("user")) {
       var content = this.template({
-        track: this.model
+        track: this.model,
+        user: this.user
       });
       this.$el.html(content);
       this.attachSubviews();

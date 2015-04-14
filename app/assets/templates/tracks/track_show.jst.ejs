@@ -1,47 +1,46 @@
-<div class="track-page row">
-  <aside class="col-xs-3">
-    <div class="page-header col-xs-4 col-xs-offset-4">
-      <h4 class="header-center">
-          <%= track.get("user").username %>
-      </h4>
-    </div>
+<div class="track-page">
 
-  </aside>
-
-
-  <div class="col-xs-6">
-    <div class="page-header row">
-      <h1 class="track-title col-xs-8"><%= track.get("title") %></h1>
+  <div class="track-player">
+    <h1 class="track-title col-xs-8"><%= track.get("title") %></h1>
       <h4 class="track-time-ago col-xs-4"> <%= track.get("time_ago") %> </h4>
+    <div class="track_item">
+      <audio controls>
+        <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
+          Your browser does not support the audio element.
+      </audio>
     </div>
-
-    <div class="track-player row">
-      <div class="track_item">
-        <audio controls>
-          <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
-            Your browser does not support the audio element.
-        </audio>
+  </div>
+  <div class="track-options">
+    <div>
+      <a class="delete-track" href="#">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </a>
       </div>
+  </div>
+
+  <div class="user-info">
+    <div class="username">
+        <span class="h4">
+          <%= track.get("user").username %>
+        </span>
+    </div>
+    <div class="user-avatar">
+        <img class="avatar-img" src="<%= track.get("user").avatar_thumb %>" alt="" />
+    </div>
+  </div>
+
+
+  <div class="comments">
+    <div class="write-comment">
+      <img class="mini-avatar" src="<%= user.get("avatar_mini") %>" alt="avatar" />
+      <input type="text" name="name" placeholder="Write a comment...">
+    </div>
+    <div class="header-center">
+      Comments
     </div>
 
-    <div class="track-options row">
-      <div>
-        <a class="delete-track" href="#">
-          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-        </a>
-        </div>
-    </div>
-
-    <div class="comments row">
-
-      <h4 class="header-center">
-        Comments
-      </h4>
-
-      <ul class="track-comments row list-group">
-      </ul>
-    </div>
-
+    <ul class="track-comments row list-group">
+    </ul>
   </div>
 
 </div>

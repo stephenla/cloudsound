@@ -46,3 +46,4 @@ end
 json.avatar @user.avatar
 json.avatar_thumb @user.avatar.url(:thumb)
 json.avatar_medium @user.avatar.url(:medium)
+json.avatar_mini @user.avatar.url(:mini)

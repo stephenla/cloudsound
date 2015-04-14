@@ -9,7 +9,13 @@ json.extract! @track,
 :audio_updated_at
 json.time_ago time_ago_in_words(@track.created_at).gsub('about','').strip
 
-json.user @track.user, :id, :username, :created_at
+json.user do
+  json.extract! @track.user, :id, :username, :created_at
+  json.avatar @track.user.avatar.url
+  json.avatar_thumb @track.user.avatar.url(:thumb)
+  json.avatar_medium @track.user.avatar.url(:medium)
+  json.avatar_mini @track.user.avatar.url(:mini)
+end
 
 if @track.comments
   json.comments @track.comments.each do |comment|
