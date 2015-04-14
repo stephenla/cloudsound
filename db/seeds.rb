@@ -20,11 +20,11 @@ guest = User.where(username: "frank_farrell")
 stephen = User.first
 50.times do |n|
   user = User.create!(username: Faker::Name.name, password: "password")
-  guest.follow(user)
+  guest.first.follow(user)
   stephen.follow(user)
 end
 50.times do |n|
   user = User.create!(username: Faker::Name.name, password: "password")
-  user.follow(guest)
+  user.follow(guest.first)
   user.follow(stephen)
 end
