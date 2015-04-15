@@ -1,26 +1,32 @@
+following = @user.following.includes(:followers)
+followers = @user.followers.includes(:followers)
+
+
 json.extract! @user, :id, :username, :created_at
-if @user.tracks
-  json.tracks @user.tracks do |track|
+
+tracks = @user.tracks
+if tracks
+  json.tracks tracks do |track|
     json.extract! track, :id, :title, :user_id, :audio ,:audio_file_name,
     :audio_content_type,
     :audio_file_size,
     :audio_updated_at
   end
 end
-# if @user.following
-  following = @user.following.includes(:followers)
+
+json.track_count tracks.length
+
   json.following following do |user|
     json.extract! user, :username
     json.followers_count user.followers.length
   end
-# end
-# if @user.followers
-  followers = @user.followers.includes(:followers)
   json.followers followers do |user|
     json.extract! user, :username
     json.followers_count user.followers.length
   end
-# end
+
+json.follower_count followers.length
+
 if @current_user != @user
   json.relationship do
     if @user.passive_relationships.where(follower_id: current_user.id).empty?

@@ -2,20 +2,74 @@
 
   .track-player {
     background: #ccc;
+    margin: 0 -25px;
   }
 
   .user-info {
-
+    float:left;
     .user-avatar {
 
     }
 
-    .avatar-img {
-
+    .avatar-thumb {
+      height: 100px;
+      width: 100px;
     }
+
+    .user-stats {
+      padding-top: 10px;
+    }
+
+
+    .follower-count {
+      color: #999;
+      font-size: 10px;
+      line-height: 12px;
+    }
+
+    .user-followers {
+      display: inline-block;
+      margin: 5px 5px 5px 0;
+      padding-right: 4px;
+      font-size: 10px;
+      font-weight: 100;
+      line-height: 15px;
+      color: #999;
+      &:before {
+        background-size: 16px 16px;
+        width: 16px;
+        height: 12px;
+        display: inline-block;
+        content: "";
+        vertical-align: top;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZmlsbD0icmdiYSgxNTMsIDE1MywgMTUzLCAwLjcpIiBkPSJNMTguNCAxOC41bDIuNSA1IC4yLjVoNi45bC0yLjEtNC4zLTQuMS0xLjV2LTIuNWMxLjItMS4xIDEuOC0zLjIgMS44LTUuMSAwLTIuMS0yLTMuNi0zLjUtMy42cy0zLjUgMS42LTMuNSAzLjZjMCAxLjkuNSA0IDEuOCA1LjF2Mi41aC0uMWwuMS4zeiIvPjxwYXRoIGZpbGw9IiM5OTkiIGQ9Ik0xNy41IDE5bC01LTEuOHYtM2MxLjQtMS4yIDItMy44IDItNS45IDAtMi40LTIuMy00LjMtNC00LjMtMS43IDAtNCAxLjgtNCA0LjMgMCAyLjIuNiA0LjcgMiA1Ljl2M2wtNSAxLjgtMi41IDVoMTlsLTIuNS01eiIvPjwvc3ZnPg==)
+      }
+    }
+
   }
 
   .comments {
+    border-right: 1px solid #f2f2f2;
+    min-width: 469px;
+    max-width: 730px;
+    padding: 0 30px;
+    float: left;
+
+
+    .avatar-mini {
+      height: 40px;
+      width: 40px;
+    }
+
+    .write-comment {
+      padding-bottom: 15px;
+    }
+
+    .comment-box {
+      width: 80%;
+    }
 
   }
 }

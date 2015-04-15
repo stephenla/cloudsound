@@ -25,21 +25,27 @@
         </span>
     </div>
     <div class="user-avatar">
-        <img class="avatar-img" src="<%= track.get("user").avatar_thumb %>" alt="" />
+        <img class="avatar-thumb" src="<%= user.get("avatar_thumb") %>" alt="" />
+    </div>
+    <div class="user-stats">
+      <span class="user-followers" src="/assets/followers.png">
+        <span class="count"><%= user.get("followers_count") %></span>
+        <span class="count"><%= user.get("user").track_count %></span>
+      </span>
     </div>
   </div>
 
 
   <div class="comments">
     <div class="write-comment">
-      <img class="mini-avatar" src="<%= user.get("avatar_mini") %>" alt="avatar" />
-      <input type="text" name="name" placeholder="Write a comment...">
+      <img class="avatar-mini" src="<%= user.get("avatar_mini") %>" alt="avatar" />
+      <input class="comment-box" type="text" name="name" placeholder="Write a comment...">
     </div>
     <div class="header-center">
       Comments
     </div>
 
-    <ul class="track-comments row list-group">
+    <ul class="track-comments list-group">
     </ul>
   </div>
 
