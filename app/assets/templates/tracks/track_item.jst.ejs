@@ -1,11 +1,28 @@
-<div class="track_item">
+<div class="track-item">
   <div>
-    <a href="/#user/<%= track.get("user_id") %>/track/<%= track.get("id") %>">
+    <a class="track-item-user" href="/#user/<%= track.get("user_id")%>" class="comment-username">
+      <%= track.get("user").username %>
+    </a>
+  </div>
+  <div>
+    <a class="track-item-title" href="/#user/<%= track.get("user_id") %>/track/<%= track.get("id") %>">
       <%= track.get("title") %>
     </a>
   </div>
-  <audio controls>
-    <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
-      Your browser does not support the audio element.
-  </audio>
+  <div id="<%= track.get("title") %>">
+
+  </div>
 </div>
+<script charset="utf-8">
+  var wavesurfer = Object.create(WaveSurfer);
+
+  wavesurfer.init({
+      container: document.querySelector("#<%= track.get("title") %>"),
+      waveColor: 'violet',
+      progressColor: 'purple'
+  });
+  wavesurfer.on('ready', function () {
+      // wavesurfer.play();
+  });
+  wavesurfer.load("<%= track.get("audio") %>");
+</script>

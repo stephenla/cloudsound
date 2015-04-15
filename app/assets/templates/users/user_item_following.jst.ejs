@@ -2,5 +2,5 @@
   <div class="avatar">
 
   </div>
-  <h5> <%= user.get("username") %></h5>
-  <h6> <%= user.get("followers_count") %></h6>
+  <div> <a href="/#user/<%= user.get("id") %>"> <%= user.get("username") %> </a></div>
+  <span> <%= user.get("followers_count") %></span>

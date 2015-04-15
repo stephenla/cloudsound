@@ -47,10 +47,12 @@ Cloudsound.Models.User = Backbone.Model.extend({
       delete response.feed;
     }
     if (response.following) {
+      this.following().reset([]);
       this.following().set(response.following, { parse: true});
       delete response.following;
     }
     if (response.followers) {
+      this.followers().reset([]);
       this.followers().set(response.followers, { parse: true});
       delete response.followers;
     }

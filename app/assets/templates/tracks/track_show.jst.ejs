@@ -3,7 +3,7 @@
   <div class="track-player">
     <h1 class="track-title col-xs-8"><%= track.get("title") %></h1>
       <h4 class="track-time-ago col-xs-4"> <%= track.get("time_ago") %> </h4>
-    <div class="track_item">
+    <div class="track-item">
       <audio controls>
         <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
           Your browser does not support the audio element.

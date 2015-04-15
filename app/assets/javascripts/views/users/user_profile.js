@@ -11,6 +11,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     this.collection = this.model.tracks();
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.collection, "add", this.addTrack);
+    this.addWaveSurfer();
     // this.listenTo(this.collection, "remove", this.removeTrack);
     //strange behaviour without this
     // this.collection.each(this.addTrack.bind(this));
@@ -36,6 +37,10 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
         }, 2500);
       });
     }, 500);
+  },
+
+  addWaveSurfer: function () {
+    
   },
 
   unfollowUser: function (event) {

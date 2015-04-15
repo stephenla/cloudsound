@@ -1,4 +1,5 @@
 class Track < ActiveRecord::Base
+  default_scope { order(created_at: :desc) }
   validates :title, presence: { message: "title cant be blank"}
   validates :user_id, presence: true
 

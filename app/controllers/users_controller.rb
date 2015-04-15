@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_params.merge({
+      avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})"
+    }))
     if @user.save
       log_in!(@user)
       redirect_to root_url

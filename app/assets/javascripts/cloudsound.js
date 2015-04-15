@@ -8,7 +8,3 @@ window.Cloudsound = {
     Backbone.history.start();
   }
 };
-
-$(document).ready(function(){
-  Cloudsound.initialize();
-});
