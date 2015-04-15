@@ -1,7 +1,8 @@
 Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   template: JST['tracks/track_show'],
   events: {
-    "click .delete-track": "destroyTrack"
+    "click .delete-track": "destroyTrack",
+    "submit #new-comment-form": "createComment"
   },
   initialize: function (options) {
     this.comments = this.model.comments();
@@ -11,6 +12,9 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     this.listenTo(this.comments, "add", this.addComment.bind(this));
     this.listenTo(this.user, "sync", this.render);
     // this.comments.each(this.addComment.bind(this));
+    var commentNew = new Cloudsound.Views.CommentNew({ model: this.model });
+    this.addSubview(".comment-box", commentNew);
+
   },
 
   destroyTrack: function (event) {
@@ -27,8 +31,23 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     });
   },
 
+  createComment: function (event) {
+    event.preventDefault();
+    var comments = this.comments;
+    var comment = new Cloudsound.Models.Comment();
+    $currentTarget = $(event.currentTarget);
+    var data = $currentTarget.serializeJSON();
+    comment.save(data, {
+      success: function  (model) {
+        comments.add(model);
+        $("new-comment").val("");
+      }
+    });
+  },
+
   addComment: function (comment) {
     var subview = new Cloudsound.Views.CommentItem({ model: comment });
+    subview.$el.show("fade",1000);
     this.addSubview(".track-comments", subview);
   },
 

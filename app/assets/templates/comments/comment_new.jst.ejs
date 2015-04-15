@@ -1,0 +1,14 @@
+<form
+  id="new-comment-form"
+  enctype="multipart/form-data"
+  action="/api/comments"
+  accept-charset="UTF-8"
+  method="post">
+  <input type="hidden" name="authenticity_token" value="<%= AUTH_TOKEN %>">
+  <input name="utf8" type="hidden" value="✓">
+  <input type="hidden" name="track_id" value="<%= track.get("id") %>">
+  <input type="hidden" name="user_id" value="<%= current_user %>">
+  <label class="track-title-wrapper" for="new-comment">
+    <input id='new-comment' type="text" name="content" placeholder="Write a comment...">
+  </label>
+</form>

@@ -72,37 +72,4 @@
 
   }
 
-  .comments {
-    border-right: 1px solid #f2f2f2;
-    min-width: 469px;
-    max-width: 730px;
-    padding: 0 30px;
-    float: left;
-
-
-    .avatar-mini {
-      height: 40px;
-      width: 40px;
-    }
-
-    .write-comment {
-      padding-bottom: 15px;
-    }
-
-    .comment-count{
-      border-bottom: 1px solid #f2f2f2;
-      padding-bottom: 7px;
-      font-weight: 100;
-      color: #999;
-    }
-    .header-center {
-      border-bottom: 1px solid #f2f2f2;
-      padding-bottom: 10px;
-    }
-
-    .comment-box {
-      width: 80%;
-    }
-
-  }
 }
