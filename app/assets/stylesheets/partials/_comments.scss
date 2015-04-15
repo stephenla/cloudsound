@@ -19,6 +19,7 @@
   .comment-avatar{
     height: 40px;
     width: 40px;
+    background-image: url("/assets/missing-mini.png");
   }
 
   .avatar-link {
@@ -33,8 +34,9 @@
   min-width: 469px;
   max-width: 730px;
   padding: 0 30px;
-  float: left;
-
+  margin-right: 332px;
+  padding-left: 130px;
+  float: none;
 
   .avatar-mini {
     height: 40px;
@@ -70,5 +72,11 @@
     padding: 5px 5px 4px 5px;
     border-radius: 0px;
     height: 40px;
+  }
+  .comment-notice {
+    padding: 2px 141px;
+    position: absolute;
+    color: #a94442;
+    display:none;
   }
 }
