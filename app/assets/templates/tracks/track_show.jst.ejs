@@ -28,10 +28,13 @@
         <img class="avatar-thumb" src="<%= user.get("avatar_thumb") %>" alt="" />
     </div>
     <div class="user-stats">
-      <span class="user-followers" src="/assets/followers.png">
-        <span class="count"><%= user.get("followers_count") %></span>
-        <span class="count"><%= user.get("user").track_count %></span>
+      <span class="user-followers">
+        <span class="count"><%= user.get("follower_count") %></span>
       </span>
+      <span class="user-tracks">
+        <span class="count"><%= user.get("track_count") %></span>
+      </span>
+
     </div>
   </div>
 
@@ -41,8 +44,11 @@
       <img class="avatar-mini" src="<%= user.get("avatar_mini") %>" alt="avatar" />
       <input class="comment-box" type="text" name="name" placeholder="Write a comment...">
     </div>
-    <div class="header-center">
-      Comments
+    <div class="comment-count">
+      <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+      <span>
+        <%= track.get("comment_count") %>
+      </span>Comments
     </div>
 
     <ul class="track-comments list-group">

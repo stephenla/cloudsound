@@ -1,3 +1,5 @@
+comments = @track.comments.includes(:user)
+
 json.extract! @track,
 :id,
 :title,
@@ -21,10 +23,15 @@ json.user do
   json.followers_count user.followers.length
 end
 
-if @track.comments
-  json.comments @track.comments.each do |comment|
+
+json.comment_count comments.length
+# if comments
+  json.comments comments.each do |comment|
     json.extract! comment, :user_id, :track_id, :content, :created_at, :updated_at
     json.time_ago time_ago_in_words(comment.created_at).gsub('about','').strip
     json.user comment.user.username
+    json.avatar_thumb comment.user.avatar.url(:thumb)
+    json.avatar_medium comment.user.avatar.url(:medium)
+    json.avatar_mini comment.user.avatar.url(:mini)
   end
-end
+# end

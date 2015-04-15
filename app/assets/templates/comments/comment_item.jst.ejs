@@ -1,3 +1,11 @@
-  <h4 class="username"><%= comment.get("user") %></h4>
-  <h5 class="comment-time-ago"> <%= comment.get("time_ago") %></h5>
-  <p class="content col-xs-12"> <%= comment.get("content") %> </p>
+
+  <a href="/#user/<%= comment.get("user_id")%>" class="avatar-link">
+    <img class="comment-avatar" src="<%= comment.get("avatar_mini") %>" alt="" />
+  </a>
+<div class="comment-wrapper">
+  <span class="comment-time-ago"> <%= comment.get("time_ago") %></span>
+  <a href="/#user/<%= comment.get("user_id")%>" class="comment-username">
+    <%= comment.get("user") %>
+  </a>
+  <div class="content"> <%= comment.get("content") %> </div>
+</div>

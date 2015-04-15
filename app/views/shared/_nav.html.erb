@@ -1,17 +1,14 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-
       <a class="navbar-brand" href="/">
         <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
       </a>
     </div>
-    <div class="collapse navbar-collapse">
-      <% if current_user %>
-        <%= render "shared/logged_in_nav" %>
-      <% else %>
-        <%= render "shared/logged_out_nav" %>
-      <% end %>
-    </div>
+    <% if current_user %>
+      <%= render "shared/logged_in_nav" %>
+    <% else %>
+      <%= render "shared/logged_out_nav" %>
+    <% end %>
   </div>
 </nav>
