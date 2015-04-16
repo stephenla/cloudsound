@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :users, only: [:show, :index, :update], defaults: { format: :json }
-    resources :tracks
+    resources :tracks, defaults: { format: :json }
     resources :comments, defaults: { format: :json }
     resources :followings
     resource :current_users, only: [:show], defaults: { format: :json }

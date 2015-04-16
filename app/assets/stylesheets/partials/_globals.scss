@@ -34,6 +34,11 @@ input[type="text"],input[type="password"] {
   padding: 7px 8px;
   border-radius: 5px;
 }
+
+input[type="file"] {
+  color: transparent;
+}
+
 .container {
   max-width: $max-page-width;
   min-width: $min-page-width;

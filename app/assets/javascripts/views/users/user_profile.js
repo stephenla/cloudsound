@@ -37,7 +37,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     }.bind(this));
     this.waveTracks.push(subview.wavesurfer);
 
-    
+
     subview.$el.show("fade", 1000);
     this.addSubview(".tracks", subview);
 

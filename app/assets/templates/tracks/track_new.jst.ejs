@@ -1,5 +1,5 @@
 <!-- gem remotipart -->
-
+<h1>Upload a sound</h1>
   <div class="errors alert alert-danger alert-dismissible fade in">
     <p class="title-error"> </p>
     <p class="file-error"> </p>
@@ -8,39 +8,34 @@
   <div class="file-type-error alert alert-danger alert-dismissible fade in">
   </div>
 
-<div class="row">
+<div>
+
+
 <form
-    class="new_track col-xs-4 col-xs-offset-4"
-    id="new_track"
+    id="new-track"
     enctype="multipart/form-data"
     action="/api/tracks"
     accept-charset="UTF-8"
     method="post">
-    <input
-      type="hidden"
-      name="authenticity_token"
-      value="<%= AUTH_TOKEN %>">
+    <input type="hidden" name="authenticity_token" value="<%= AUTH_TOKEN %>">
+    <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
     <input name="utf8" type="hidden" value="✓">
-    <label class="track-title-wrapper" for="track_audio">Title*
+    <label class="track-title-wrapper" for="track-audio">Title*
       <input id='track-title' type="text" name="track[title]">
     </label>
-    <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
-    <input type="file" name="track[audio]" id="track_audio">
-    <input id="create-track" type="submit" name="commit" value="upload">
+
+
+    <input type="file" name="track[audio]" id="track-audio" >
+    <label class="btn btn-default" for="track-audio">Choose a sound to upload</label>
+    <button type="button" class="btn btn-default" id="save">Save</button>
   </form>
 
-  <div id="progress" class="col-xs-4 col-xs-offset-4">
-      <div class="bar"></div>
-  </div>
+
   <p id="progress-message" class="col-xs-4 col-xs-offset-4">
   </p>
-  <script charset="utf-8">
 
-
-
-  </script>
 </div>
 
-<div class="progress-circle">
-
+<div class="meter orange nostripes">
+	<span></span>
 </div>
