@@ -7,11 +7,23 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
 
   initialize: function () {
     this.listenTo(this.model, "sync", this.render);
+    this.events["click #track-" + this.model.id] = "playTrack";
+  },
+
+  playTrack: function (event) {
+    event.preventDefault();
+    $currentTarget = $(event.currentTarget);
+    $(".wavetrack.active").each(function () {
+
+    });
+    $currentTarget.addClass("active");
+    this.wavesurfer.playPause();
+
   },
 
   addWaveSurfer: function () {
-    var wavesurfer = Object.create(WaveSurfer);
-    wavesurfer.init({
+    this.wavesurfer = Object.create(WaveSurfer);
+    this.wavesurfer.init({
         container: this.$el.find("#track-" + this.model.id)[0],
         waveColor: '#333',
         progressColor: '#f51',
@@ -19,11 +31,8 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
         cursorColor: "transparent",
         hideScrollbar: true
     });
-    wavesurfer.load(this.model.get("audio"));
-    debugger
-    this.$el.find("#button-" + this.model.id).click(function () {
-      wavesurfer.playPause();
-    });
+    this.wavesurfer.load(this.model.get("audio"));
+
   },
 
   render: function () {
