@@ -14,11 +14,26 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     // this.addWaveSurfer();
     // this.listenTo(this.collection, "remove", this.removeTrack);
     //strange behaviour without this
-    // this.collection.each(this.addTrack.bind(this));
+    // // this.collection.each(this.addTrack.bind(this));
+    // this.allTracks = [];		// An array for all the files loaded in the track
+    //   playlist = [] 		// An array for the current playlist
+    //   temporarySearchPlaylist = [],	// A helper array for when we are searching
+    //   i = 0, 				// The number of the current track
+    //   shuffle = false,	// Shuffle flag
+    //   repeat = 0,			// Repeat flag
+    //   lastPlayed = [],	// Array for last played (used when shuffling songs)
+    //   timer = 0;			// An interval for the track's current time.
+    this.waveTracks = [];
   },
 
+
   addTrack: function (track) {
-    var subview = new Cloudsound.Views.TrackItem({ model: track });
+    var subview = new Cloudsound.Views.TrackItem({
+      model: track,
+      waveTracks: this.waveTracks
+    });
+    //can more than one event go to the same event handler
+    this.waveTracks.push(subview.wavesurfer);
     subview.$el.show("fade", 1000);
     this.addSubview(".tracks", subview);
 
