@@ -5,7 +5,19 @@
 </div>
 <div class="user-info">
   <h1> <%= user.get("username") %> </h1>
-  <div class="avatar">
+  <% if (user.get("has_avatar")) { %>
+    <img class="profile-avatar" src="<%= user.get("avatar_medium") %>" />
+  <% } else { %>
+    <img class="profile-avatar" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
+  <% } %>
+  <div class="follow-links">
+    <% if (user.get("relationship")) {%>
+      <% if (user.get("relationship").is_following) {%>
+        <a href="#" class='unfollow btn btn-default'>Following</a>
+      <% } else if (!user.get("relationship").is_following) { %>
+        <a href="#" class='follow btn btn-default'>Follow</a>
+      <% } %>
+    <% } %>
   </div>
   <div class="page-header user-links clearfix">
     <a class="medium link" href="/#user/<%= user.id %>/tracks">Tracks</a>
