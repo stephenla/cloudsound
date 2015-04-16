@@ -1,7 +1,9 @@
   // Place all the styles related to the api/tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+#upload-header {
+  text-align: center;
+}
 #progress{
   background: lightgray;
   width: 350px;
@@ -18,6 +20,17 @@
   #create-track {
     margin-top: 10px;
   }
+
+  .chooser {
+    margin-top: 30px;
+    text-align: center;
+    .upload-button {
+      color: white;
+      padding: 2px 12px;
+      background: $primary-color;
+      border-color: $primary-color;
+    }
+  }
 }
 .errors{
   margin: 0 auto 10px auto;
@@ -31,6 +44,13 @@
 }
 .track-title-wrapper {
   display: block;
+
+}
+#track-title {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 2px 7px;
+  border-radius: 4px;
 }
 .notice {
   width: 50%;

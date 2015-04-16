@@ -1,5 +1,5 @@
 <!-- gem remotipart -->
-<h1>Upload a sound</h1>
+<h3 id="upload-header">Upload a sound</h3>
   <div class="errors alert alert-danger alert-dismissible fade in">
     <p class="title-error"> </p>
     <p class="file-error"> </p>
@@ -20,22 +20,29 @@
     <input type="hidden" name="authenticity_token" value="<%= AUTH_TOKEN %>">
     <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
     <input name="utf8" type="hidden" value="✓">
-    <label class="track-title-wrapper" for="track-audio">Title*
-      <input id='track-title' type="text" name="track[title]">
-    </label>
 
 
-    <input type="file" name="track[audio]" id="track-audio" >
-    <label class="btn btn-default" for="track-audio">Choose a sound to upload</label>
-    <button type="button" class="btn btn-default" id="save">Save</button>
+    <div class="chooser">
+      <input type="file" name="track[audio]" id="track-audio" >
+      <label class="upload-button btn btn-default" for="track-audio">Choose a sound to upload</label>
+    </div>
+
+    <div class="meter orange nostripes">
+    	<span></span>
+    </div>
+
+
+    <div class="header-links upload-links clearfix">
+      <span class="basic medium link active">Basic Info</span>
+    </div>
+
+    <label class="track-title-wrapper require" for="track-title">Title</label>
+      <input id='track-title' type="text" class="form-control" name="track[title]">
+
   </form>
 
 
-  <p id="progress-message" class="col-xs-4 col-xs-offset-4">
-  </p>
+    <button type="button" class="btn btn-default" id="save">Save</button>
+  
 
-</div>
-
-<div class="meter orange nostripes">
-	<span></span>
 </div>

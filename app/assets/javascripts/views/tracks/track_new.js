@@ -67,7 +67,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
   },
 
   renderFileUpload: function () {
-    that = this;
+
     this.$('#new-track').fileupload({
       url: '/api/tracks',
       replaceFileInput: false,
@@ -79,10 +79,14 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
       add: function (e, data) {
 
+          file = data.files[0];
+          $("#track-title").val(file.name.replace(/\.[^/.]+$/, ""));
+
         $('#save').click(function () {
           var types = /(\.|\/)(mp3|aac|ogg|wav)$/i;
-          file = data.files[0];
+
           $(".file-type-error").css("display", "none").empty();
+
           if (types.test(file.type) || types.test(file.name)) {
             if ($("#track-title").val()) {
               data.submit();
@@ -90,7 +94,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
           }
           else {
             $(".file-type-error").css("display", "block").append("Please upload mp3, wav, aac, or ogg file formats");
-            $("#track-audio").effect( "shake", 500 );
+            // $("#track-audio").effect( "shake", 500 );
           }
         });
       },

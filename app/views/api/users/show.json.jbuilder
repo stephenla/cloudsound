@@ -27,7 +27,7 @@ json.track_count tracks.length
   end
 # end
 
-if @user.feed
+# if @user.feed
   json.feed @user.feed do |track|
     json.extract! track, :id, :title, :user_id, :audio ,:audio_file_name,
     :audio_content_type,
@@ -46,7 +46,7 @@ if @user.feed
       json.followers_count track_user.followers.length
     end
   end
-end
+# end
 
 
 json.following following do |user|

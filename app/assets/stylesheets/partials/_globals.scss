@@ -33,6 +33,7 @@ input[type="text"],input[type="password"] {
   line-height: 24px;
   padding: 7px 8px;
   border-radius: 5px;
+  border: 1px solid #ccc;
 }
 
 input[type="file"] {
@@ -42,4 +43,32 @@ input[type="file"] {
 .container {
   max-width: $max-page-width;
   min-width: $min-page-width;
+}
+
+.header-links {
+  border-bottom: 1px solid #f2f2f2;
+  margin-bottom: 15px;
+  .link {
+    font-size: 24px;
+    display: block;
+    float: left;
+    font-weight: 500;
+    margin-right: 20px;
+    margin-bottom: -1px;
+    &:hover {
+      border-bottom: 1px solid black;
+    }
+    &.active {
+      border-bottom: 1px solid $primary-color;
+      color: $primary-color;
+    }
+  }
+}
+.require {
+  &:after {
+    content: '*';
+    color: #f50;
+    display: inline-block;
+    margin-left: 2px;
+  }
 }
