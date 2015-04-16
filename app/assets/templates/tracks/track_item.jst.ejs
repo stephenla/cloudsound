@@ -9,20 +9,7 @@
       <%= track.get("title") %>
     </a>
   </div>
-  <div id="<%= track.get("title") %>">
+  <div id="track-<%= track.get("id") %>">
 
   </div>
 </div>
-<script charset="utf-8">
-  var wavesurfer = Object.create(WaveSurfer);
-
-  wavesurfer.init({
-      container: document.querySelector("#<%= track.get("title") %>"),
-      waveColor: 'violet',
-      progressColor: 'purple'
-  });
-  wavesurfer.on('ready', function () {
-      // wavesurfer.play();
-  });
-  wavesurfer.load("<%= track.get("audio") %>");
-</script>

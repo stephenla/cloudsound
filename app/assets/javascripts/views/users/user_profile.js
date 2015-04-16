@@ -11,7 +11,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     this.collection = this.model.tracks();
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.collection, "add", this.addTrack);
-    this.addWaveSurfer();
+    // this.addWaveSurfer();
     // this.listenTo(this.collection, "remove", this.removeTrack);
     //strange behaviour without this
     // this.collection.each(this.addTrack.bind(this));
@@ -20,7 +20,9 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
   addTrack: function (track) {
     var subview = new Cloudsound.Views.TrackItem({ model: track });
     subview.$el.show("fade", 1000);
+    debugger
     this.addSubview(".tracks", subview);
+
   },
 
   removeTrack: function (track) {
@@ -40,7 +42,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
   },
 
   addWaveSurfer: function () {
-    
+
   },
 
   unfollowUser: function (event) {
@@ -49,7 +51,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     relationship.fetch({
       success: function(model) {
         model.destroy();
-        this.model.fetch()
+        this.model.fetch();
       }.bind(this)
     });
 
@@ -68,8 +70,10 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
 
   render: function () {
     var content = this.template({ user: this.model });
+    debugger
     this.$el.html(content);
     this.attachSubviews();
+    debugger
     return this;
   }
 
