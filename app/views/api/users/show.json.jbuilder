@@ -13,7 +13,9 @@ json.track_count tracks.length
     :audio_content_type,
     :audio_file_size,
     :audio_updated_at
+    json.avatar_gradient track.avatar_gradient
     json.time_ago time_ago_in_words(track.created_at).gsub('about','').strip
+
     json.user do
       json.extract! @user, :id, :username, :created_at
       json.avatar @user.avatar.url
@@ -31,6 +33,9 @@ if @user.feed
     :audio_content_type,
     :audio_file_size,
     :audio_updated_at
+    json.avatar_gradient track.avatar_gradient
+    json.time_ago time_ago_in_words(track.created_at).gsub('about','').strip
+
     track_user = track.user
     json.user do
       json.extract! track_user, :id, :username, :created_at

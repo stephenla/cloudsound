@@ -22,9 +22,11 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
     event.preventDefault();
     $currentTarget = $(event.currentTarget);
     this.waveTracks.forEach(function (track) {
-      track.play();
-      track.pause();
-    });
+      if (this.wavesurfer !== track) {
+        track.play();
+        track.pause();
+      }
+    }.bind(this));
     $currentTarget.addClass("active");
     this.wavesurfer.playPause();
 
@@ -39,10 +41,11 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
         progressColor: '#f51',
         fillParent: true,
         cursorColor: "transparent",
-        hideScrollbar: true
+        hideScrollbar: true,
+        height: 180
     });
     this.wavesurfer.load(this.model.get("audio"));
-
+    this.$el.find(".wave-track > wave").css("background",this.model.get("avatar_gradient"));
 
   },
 

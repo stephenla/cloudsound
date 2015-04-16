@@ -5,10 +5,17 @@ Cloudsound.Views.UserFeed = Backbone.CompositeView.extend({
     this.feed = this.model.feed();
     this.listenTo(this.feed, "add", this.addTrack);
     this.listenTo(this.model, "sync", this.render);
+    this.waveTracks = [];
   },
 
   addTrack: function (track) {
-    var subview = new Cloudsound.Views.TrackItem({ model: track });
+    var subview = new Cloudsound.Views.TrackItem({
+      model: track,
+      waveTracks: this.waveTracks
+    });
+    this.waveTracks.push(subview.wavesurfer);
+
+
     subview.$el.show("fade", 1000);
     this.addSubview(".feed", subview);
   },

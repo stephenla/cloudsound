@@ -4,7 +4,9 @@ class Api::TracksController < ApplicationController
   end
 
   def create
-    @track = Track.new(track_params)
+    @track = Track.new(track_params.merge({
+      avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})"
+    }))
     if @track.save
       render :show
     else

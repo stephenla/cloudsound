@@ -8,6 +8,12 @@ class Track < ActiveRecord::Base
   validates_attachment_content_type :audio, :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3', "application/octet-stream"],
   :message => 'Please select a .mp3 file'
 
+  has_attached_file :avatar,
+  :styles => { :medium => "200x200>", :small => "120x120>", :thumb => "100x100>", :mini => "40x40>" },
+  :default_url => "/assets/missing.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
+
   belongs_to :user
   has_many :comments, dependent: :destroy
 end

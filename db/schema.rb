@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415172837) do
+ActiveRecord::Schema.define(version: 20150416053623) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,15 +38,16 @@ ActiveRecord::Schema.define(version: 20150415172837) do
   add_index "followings", ["follower_id"], name: "index_followings_on_follower_id", using: :btree
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "title",              null: false
-    t.integer  "user_id",            null: false
+    t.string   "title",                                                                    null: false
+    t.integer  "user_id",                                                                  null: false
     t.integer  "playlist_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
     t.string   "audio_file_name"
     t.string   "audio_content_type"
     t.integer  "audio_file_size"
     t.datetime "audio_updated_at"
+    t.string   "avatar_gradient",    default: "linear-gradient(196deg, #80c2ff, #ae9e9b)", null: false
   end
 
   add_index "tracks", ["playlist_id"], name: "index_tracks_on_playlist_id", using: :btree

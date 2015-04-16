@@ -32,8 +32,12 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
       model: track,
       waveTracks: this.waveTracks
     });
-    //can more than one event go to the same event handler
+    //can more than one event go to the same event handler?
+    subview.wavesurfer.on("finish", function () {
+    }.bind(this));
     this.waveTracks.push(subview.wavesurfer);
+
+    
     subview.$el.show("fade", 1000);
     this.addSubview(".tracks", subview);
 
