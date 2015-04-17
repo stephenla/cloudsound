@@ -2,12 +2,33 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
   template: JST["tracks/track_new"],
 
   events: {
-    "submit form": "uploadTrack"
+    "submit form": "uploadTrack",
+    "change #edit-track-avatar": "readUrl"
   },
 
   initialize: function (options) {
     this.user = options.user;
     this.listenTo(this.user, "sync", this.render);
+  },
+
+  readURL: function (input) {
+      if (input.files && input.files[0]) {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+            if (!Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+              $(".avatar-errors").fadeIn(500, function () {
+                window.setTimeout(function () {
+                  $(".avatar-errors").fadeOut(500);
+                },8000);
+              });
+            } else {
+
+              $('.track-avatar').attr('src', e.target.result);
+            }
+          };
+          reader.readAsDataURL(input.files[0]);
+      }
   },
 
   render: function () {
@@ -18,53 +39,6 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
     this.renderFileUpload();
 
     return this;
-  },
-
-  renderAvatarUpload: function () {
-    that = this;
-    this.$('#new-avatar').fileupload({
-      url: '/api/tracks',
-      replaceFileInput: false,
-      progress: function (e, data) {
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('.meter').css('display', "block");
-        $('.meter span').css('width', progress + '%');
-      },
-
-      add: function (e, data) {
-        $('#create-track').click(function () {
-          var types = /(\.|\/)(mp3|aac|ogg|wav)$/i;
-          file = data.files[0];
-          $(".file-type-error").css("display", "none").empty();
-          if (types.test(file.type) || types.test(file.name)) {
-            if ($("#track-title").val()) {
-
-              data.submit();
-            }
-          }
-          else {
-            $(".file-type-error").css("display", "block").append("Please upload mp3, wav, aac, or ogg file formats");
-            $("#track-audio").effect( "shake", 500 );
-          }
-        });
-      },
-
-      done: function (e, data) {
-        $("input[type='text']").val("");
-        $('#create-track').css("display", "block");
-        $('#progress-message').text('Upload finished.');
-        Backbone.history.navigate("track/" + data.result.id, { trigger: true });
-
-      },
-
-      fail: function (e, data) {
-        $('#progress .bar').css('background', 'red');
-        $.each(data.jqXHR.responseJSON, function (key, val){
-          $(".errors").addClass("alert alert-danger").text(val);
-        });
-
-      }
-    });
   },
 
   renderFileUpload: function () {
@@ -95,17 +69,9 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
         $('#save').click(function () {
           var types = /(\.|\/)(mp3|aac|ogg|wav)$/i;
-          var types2 = /(\.|\/)(jpg|png|gif|jpeg)$/i;
+
 
           $(".file-type-error").css("display", "none").empty();
-          if (!(types2.test(file2.type) || types2.test(file2.name))) {
-            that.$(".avatar-errors").fadeIn(500, function () {
-              window.setTimeout(function () {
-                that.$(".avatar-errors").fadeOut(500);
-              });
-            });
-            return;
-          }
 
           if (types.test(file.type) || types.test(file.name)) {
             if ($("#track-title").val()) {

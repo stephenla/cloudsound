@@ -92,3 +92,9 @@ input[type="file"] {
     margin-left: 2px;
   }
 }
+.btn-default {
+  
+  &:hover {
+    background: #fff;
+  }
+}

@@ -23,10 +23,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     this.model.destroy({
       success: function (model) {
         Backbone.history.navigate("user/" +  model.get("user").id, { trigger: true });
-        that.userTracks.remove(model);
         // remove view after model destroyed?
         //why doesnt swapView in navigate remove this view.
-        that.remove();
       }
     });
   },

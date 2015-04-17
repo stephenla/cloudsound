@@ -1,18 +1,24 @@
+<% if (track.get("has_avatar")) { %>
+  <img class="feed-avatar" style="background:<%= track.get("avatar_gradient") %>" src="<%= user.get("avatar_small") %>" />
+<% } else { %>
+  <img class="feed-avatar" style="background:<%= track.get("avatar_gradient") %>" src="//:0" />
+<% } %>
+
 <div class="track-item">
-  <div>
+    <button class="glyphicon glyphicon-play play btn btn-default" id="button-<%= track.get("id") %>">
+
+    </button>
+  <div class="track-item-wrapper">
     <a class="track-item-user" href="/#user/<%= track.get("user_id")%>" class="comment-username">
       <%= track.get("user").username %>
     </a>
   </div>
-  <div>
+  <div class="track-item-wrapper">
     <a class="track-item-title" href="/#user/<%= track.get("user_id") %>/track/<%= track.get("id") %>">
       <%= track.get("title") %>
     </a>
   </div>
 
   <div class="wave-track" id="track-<%= track.get("id") %>">
-    <span class="btn btn default" id="button-<%= track.get("id") %>">
-      play
-    </span>
   </div>
 </div>

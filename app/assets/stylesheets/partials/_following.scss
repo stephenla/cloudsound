@@ -1,7 +1,7 @@
 .user-info {
   .user-links {
     margin-bottom: 15px;
-    margin-top: 40px;
+    margin-top: 15px;
     padding: 0;
   }
   .link {
@@ -20,7 +20,8 @@
   }
 }
 .follow-users {
-  width: $min-page-width;
+  max-width: $max-page-width;
+  min-width: $min-page-width;
   .follow-user {
     float: left;
     margin: 0 8px 8px 0;
@@ -34,17 +35,19 @@
 }
 
 .follow-links {
+  margin-top: 15px;
   .btn {
     width: 98px;
     height: 25px;
     padding: 3px;
   }
   .unfollow {
-    border-color: $primary-color;
+    border: 1px solid #e5e5e5;
     color: $primary-color;
-    &:hover{
-      background: lighten($primary-color, 30%);
+    &:hover {
+      border-color: $primary-color;
     }
+
   }
   .follow {
     border-color: $primary-color;

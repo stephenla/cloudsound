@@ -42,7 +42,7 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
         fillParent: true,
         cursorColor: "transparent",
         hideScrollbar: true,
-        height: 180
+        height: 60
     });
     this.wavesurfer.load(this.model.get("audio"));
     this.$el.find(".wave-track > wave").css("background",this.model.get("avatar_gradient"));

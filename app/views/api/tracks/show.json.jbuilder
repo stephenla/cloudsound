@@ -33,5 +33,6 @@ json.comment_count comments.length
     json.avatar_thumb comment.user.avatar.url(:thumb)
     json.avatar_medium comment.user.avatar.url(:medium)
     json.avatar_mini comment.user.avatar.url(:mini)
+    json.avatar_small comment.user.avatar.url(:small)
   end
 # end
