@@ -7,21 +7,14 @@ Cloudsound.Models.User = Backbone.Model.extend({
 
     return this._tracks;
   },
-  following: function () {
-    if (!this._following) {
-      this._following = new Cloudsound.Collections.Users();
-    }
 
-    return this._following;
-  },
-
-  followers: function () {
-    if (!this._followers) {
-      this._followers = new Cloudsound.Collections.Users();
-    }
-
-    return this._followers;
-  },
+  // followers: function () {
+  //   if (!this._followers) {
+  //     this._followers = new Cloudsound.Collections.Users();
+  //   }
+  //
+  //   return this._followers;
+  // },
 
 
   parse: function (response) {
@@ -35,16 +28,16 @@ Cloudsound.Models.User = Backbone.Model.extend({
       delete response.tracks;
     }
 
-    if (response.following) {
-      this.following().reset([]);
-      this.following().set(response.following, { parse: true});
-      delete response.following;
-    }
-    if (response.followers) {
-      this.followers().reset([]);
-      this.followers().set(response.followers, { parse: true});
-      delete response.followers;
-    }
+    // if (response.following) {
+    //   this.following().reset([]);
+    //   this.following().set(response.following, { parse: true});
+    //   delete response.following;
+    // }
+    // if (response.followers) {
+    //   this.followers().reset([]);
+    //   this.followers().set(response.followers, { parse: true});
+    //   delete response.followers;
+    // }
 
     return response;
   }

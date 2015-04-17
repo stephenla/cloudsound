@@ -9,7 +9,7 @@
 <div class="new-track-wrapper">
 
   <h3 id="upload-header">Upload a sound</h3>
-    <div class="errors alert alert-danger alert-dismissible fade in">
+    <div style="display: none;" class="alert alert-danger alert-dismissible fade in">
       <p class="title-error"> </p>
       <p class="file-error"> </p>
     </div>
@@ -50,11 +50,11 @@
 
         <div class="track-avatar-wrapper clearfix">
           <img class="track-avatar" style="background:<%= gradient %>" src="//:0" />
+
+          <span class="avatar-errors alert alert-danger">error</span>
+
           <span id="choose-track-avatar" class="btn btn-default">Choose new image</span>
           <input id="edit-track-avatar" class="edit-avatar" type="file" name="user[avatar]" id="user_avatar">
-          <div class="delete-avatar">
-            <input type="checkbox" name="delete_avatar" value="1"> Remove avatar
-          </div>
         </div>
 
         <div class="right">
@@ -63,8 +63,7 @@
           <input id='track-title' type="text" class="form-control" name="track[title]">
 
           <label class="track-description-label" for="track-description">Description</label>
-          <textarea id='track-description' type="text" class="form-control" name="track[description]">
-          </textarea>
+          <textarea id='track-description' type="text" class="form-control" name="track[description]"></textarea>
           <button type="button" class="btn btn-default" id="save">Save</button>
         </div>
       </div>

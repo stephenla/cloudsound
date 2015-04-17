@@ -14,6 +14,9 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     this.users = new Cloudsound.Collections.Users();
     this.tracks = new Cloudsound.Collections.Tracks();
     this.feeds = new Cloudsound.Collections.Feeds();
+    this.follows = new Cloudsound.Collections.Follows();
+    this.followers = new Cloudsound.Collections.Followers();
+
 
   },
 
@@ -32,7 +35,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userFollowing: function (id) {
-    var user = this.users.getOrFetch(id);
+    var user = this.follows.getOrFetch(id);
     var view = new Cloudsound.Views.UserFollowing({
       model: user
     });
@@ -40,7 +43,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   },
 
   userFollowers: function (id) {
-    var user = this.users.getOrFetch(id);
+    var user = this.followers.getOrFetch(id);
     var view = new Cloudsound.Views.UserFollowers({
       model: user
     });

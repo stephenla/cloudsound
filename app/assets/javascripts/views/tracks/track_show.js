@@ -39,12 +39,13 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     var data = $currentTarget.serializeJSON();
     if (data.content.length < 2) {
       $(".comment-notice").text("Comment must contain more than 1 character.");
-      $(".comment-notice").fadeIn(500);
-      window.setTimeout(function () {
-        $(".comment-notice").fadeOut(500, function () {
-          $(".comment-notice").text("");
-        });
-      }, 5000);
+      $(".comment-notice").fadeIn(500, function () {
+        window.setTimeout(function () {
+          $(".comment-notice").fadeOut(500, function () {
+            $(".comment-notice").text("");
+          });
+        }, 5000);
+      });
     } else {
       comment.save(data, {
         success: function  (model) {

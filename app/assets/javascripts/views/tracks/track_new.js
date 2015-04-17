@@ -16,6 +16,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
     });
     this.$el.html(content);
     this.renderFileUpload();
+
     return this;
   },
 
@@ -86,6 +87,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
       add: function (e, data) {
         file = data.files[0];
+        file2 = data.files[1];
         $("#track-title").val(file.name.replace(/\.[^/.]+$/, ""));
         // that.$(".track-avatar").addClass("block");
         // that.$("#choose-track-avatar").css("display","inline-block");
@@ -93,8 +95,17 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
         $('#save').click(function () {
           var types = /(\.|\/)(mp3|aac|ogg|wav)$/i;
+          var types2 = /(\.|\/)(jpg|png|gif|jpeg)$/i;
 
           $(".file-type-error").css("display", "none").empty();
+          if (!(types2.test(file2.type) || types2.test(file2.name))) {
+            that.$(".avatar-errors").fadeIn(500, function () {
+              window.setTimeout(function () {
+                that.$(".avatar-errors").fadeOut(500);
+              });
+            });
+            return;
+          }
 
           if (types.test(file.type) || types.test(file.name)) {
             if ($("#track-title").val()) {
@@ -115,8 +126,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
         $("input[type='text']").val("");
         $('#create-track').css("display", "block");
         $('#progress-message').text('Upload finished.');
-        Backbone.history.navigate("/user/" + that.user.id
-        + "/track/" + data.result.files[0].id, { trigger: true });
+        Backbone.history.navigate("/user/" + that.user.id + "/track/" + data.result.files[0].id, { trigger: true });
 
       },
 
