@@ -1,6 +1,9 @@
 
-  <div class="avatar">
+<% if (user.get("has_avatar")) { %>
+  <img class="follow-avatar" src="<%= user.get("avatar_medium") %>" />
+<% } else { %>
+  <img class="follow-avatar" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
+<% } %>
 
-  </div>
   <h5> <%= user.get("username") %></h5>
   <h6> <%= user.get("followers_count") %></h6>

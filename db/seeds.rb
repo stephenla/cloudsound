@@ -27,7 +27,7 @@
 guest = User.where(username: "frank_farrell")
 stephen = User.first
 50.times do |n|
-  user = User.create!(username: Faker::Name.name, password: "password")
+  user = User.create!(username: Faker::Name.name, password: "password", avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})")
   guest.first.follow(user)
   stephen.follow(user)
 end

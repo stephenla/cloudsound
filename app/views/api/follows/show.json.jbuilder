@@ -3,6 +3,15 @@ json.extract! @user, :id, :username, :created_at
 json.following following do |user|
   json.extract! user, :username, :id
   json.followers_count user.followers.length
+
+  if @user.avatar.file?
+    json.has_avatar true
+  else
+    json.has_avatar false
+  end
+  json.avatar user.avatar
+  json.avatar_medium user.avatar.url(:medium)
+  json.avatar_gradient user.avatar_gradient
 end
 
 if @current_user != @user

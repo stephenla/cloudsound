@@ -3,6 +3,7 @@ Cloudsound.Views.UserItemFollower = Backbone.View.extend({
   className: "follow-user",
 
   initialize: function () {
+    
     this.listenTo(this.model, "sync", this.render);
   },
 
