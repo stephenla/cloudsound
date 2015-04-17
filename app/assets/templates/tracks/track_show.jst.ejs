@@ -1,31 +1,65 @@
 <div class="track-page clearfix">
 
-  <div class="track-player">
-    <h1 class="track-title col-xs-8"><%= track.get("title") %></h1>
-      <h4 class="track-time-ago col-xs-4"> <%= track.get("time_ago") %> </h4>
-    <div class="track-item">
-      <audio controls>
-        <source src="<%= track.get("audio") %>" type="<%= track.get('audio_content_type') %>">
-          Your browser does not support the audio element.
-      </audio>
+
+
+  <div class="track-item">
+    <div class="track-info">
+
+      <button class="glyphicon glyphicon-play play btn btn-default" id="button-<%= track.get("id") %>">
+
+      </button>
+      <div class="track-item-wrapper">
+        <a class="track-item-user" href="/#user/<%= track.get("user_id")%>" class="comment-username">
+          <%= track.get("user").username %>
+        </a>
+        <span class="track-time-ago"> <%= track.get("time_ago") %> </span>
+      </div>
+      <div class="track-item-wrapper">
+        <a class="track-item-title" href="/#user/<%= track.get("user_id") %>/track/<%= track.get("id") %>">
+          <%= track.get("title") %>
+        </a>
+      </div>
+      <div class="track-page-avatar">
+        <% if (track.get("has_avatar")) { %>
+          <img class="track-avatar-large" style="background:<%= track.get("avatar_gradient") %>" src="<%= user.get("avatar_small") %>" />
+        <% } else { %>
+          <div class="track-avatar-large" style="background:<%= track.get("avatar_gradient") %>" > </div>
+        <% } %>
+
+      </div>
+    </div>
+    <div class="wave-track" id="track-<%= track.get("id") %>">
     </div>
   </div>
+
+
+
+
+
   <div class="track-options">
+    <% if(user.get("is_current_user")) {%>
     <div>
       <a class="delete-track" href="#">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
       </a>
-      </div>
+    </div>
+    <% } %>
   </div>
 
   <div class="user-info">
+    <div class="user-avatar">
+      <% if (user.get("has_avatar")) { %>
+        <img class="avatar-thumb" style="background:<%= user.get("avatar_gradient") %>" src="<%= user.get("avatar_thumb") %>" />
+
+      <% } else { %>
+        <img class="avatar-thumb" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
+      <% } %>
+    </div>
+
     <div class="username">
         <span class="h4">
           <%= track.get("user").username %>
         </span>
-    </div>
-    <div class="user-avatar">
-        <img class="avatar-thumb" src="<%= user.get("avatar_thumb") %>" alt="" />
     </div>
     <div class="user-stats">
       <span class="user-followers">
@@ -38,10 +72,22 @@
     </div>
   </div>
 
+  <div class="track-description">
+    <%= track.get("description") %>
+    <div class="right-divider">
+
+    </div>
+  </div>
 
   <div class="comments">
     <div class="write-comment clearfix">
-      <img class="avatar-mini" src="<%= user.get("avatar_mini") %>" alt="avatar" />
+      <% if (user.get("has_avatar")) { %>
+        <img class="avatar-mini" style="background:<%= user.get("avatar_gradient") %>" src="<%= user.get("avatar_mini") %>" />
+
+      <% } else { %>
+        <img class="avatar-mini" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
+      <% } %>
+
       <div class="comment-box"></div>
     </div>
     <div class="comment-count">

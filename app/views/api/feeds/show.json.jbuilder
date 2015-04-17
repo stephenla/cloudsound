@@ -4,6 +4,7 @@ json.feed @user.feed do |track|
   :audio_file_size,
   :audio_updated_at
   json.avatar_gradient track.avatar_gradient
+  json.track_gradient track.track_gradient
   json.time_ago time_ago_in_words(track.created_at).gsub('about','').strip
 
   track_user = track.user

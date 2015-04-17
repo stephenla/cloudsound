@@ -1,9 +1,12 @@
 # following = @user.following.includes(:followers)
 # followers = @user.followers.includes(:followers)
+is_current_user = (@user == @current_user)
 tracks = @user.tracks
 json.extract! @user, :id, :username, :created_at
 json.follower_count @user.followers.length
 json.track_count tracks.length
+json.is_current_user is_current_user
+
 
 # if tracks
   json.tracks tracks do |track|
@@ -24,7 +27,7 @@ json.track_count tracks.length
     end
   end
 # end
-if @current_user != @user
+if !is_current_user
   json.relationship do
     if @user.passive_relationships.where(follower_id: current_user.id).empty?
       json.is_following false

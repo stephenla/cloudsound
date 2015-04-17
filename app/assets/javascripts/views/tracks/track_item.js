@@ -14,7 +14,6 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
 
     this.events["click #button-" + this.model.id] = "playTrack";
     this.wavesurfer = Object.create(WaveSurfer);
-
   },
 
   playTrack: function (event) {
@@ -33,6 +32,7 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
   },
 
   addWaveSurfer: function () {
+
 
 
     this.wavesurfer.init({

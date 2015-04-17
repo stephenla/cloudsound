@@ -12,6 +12,7 @@
     <a class="track-item-user" href="/#user/<%= track.get("user_id")%>" class="comment-username">
       <%= track.get("user").username %>
     </a>
+    <span class="track-time-ago"> <%= track.get("time_ago") %> </span>
   </div>
   <div class="track-item-wrapper">
     <a class="track-item-title" href="/#user/<%= track.get("user_id") %>/track/<%= track.get("id") %>">

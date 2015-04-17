@@ -22,7 +22,7 @@ class Api::UsersController < ApplicationController
       @user.avatar = nil
     end
     if @user.update(user_params)
-      redirect_to :back
+      redirect_to "/#user/#{@user.id}/settings"
     else
       render @user.errors.full_messages, status: 422
     end

@@ -10,14 +10,14 @@
     <div class="top-form-group clearfix">
       <% if (user.get("has_avatar")) { %>
         <img class="account-avatar" style="background:<%= user.get("avatar_gradient") %>" src="<%= user.get("avatar_medium") %>" />
+        <div class="delete-avatar">
+          <input type="checkbox" name="delete_avatar" value="1"> Remove avatar
+        </div>
       <% } else { %>
         <img class="account-avatar" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
       <% } %>
       <span id="choose-avatar" class="btn btn-default">Choose new image</span>
       <input id="edit-avatar" class="edit-avatar" type="file" name="user[avatar]" id="user_avatar">
-      <div class="delete-avatar">
-        <input type="checkbox" name="delete_avatar" value="1">Remove avatar
-      </div>
 
       <div class="form-group username">
         <label class="edit-label username">Username</label>

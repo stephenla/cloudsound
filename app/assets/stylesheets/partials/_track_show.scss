@@ -1,23 +1,121 @@
 .track-page {
 
-  .track-time-ago {
-    line-height: 39px;
+
+
+  .track-item {
+    position: relative;
+    .track-info {
+      width: 100%;
+      padding: 30px 0px 0px 30px;
+      position: absolute;
+      z-index: 10;
+      color: #fff;
+    }
+
+    .track-page-avatar {
+      float: right;
+      .track-avatar-large {
+        width: 300px;
+        height: 300px;
+        margin-right: 30px;
+        border: 0;
+      }
+    }
+
+    .play {
+      width: 58px;
+      height: 58px;
+      float: left;
+      padding: 0 0 0 3px;
+      color: #fff;
+      margin: 8px 0 1px 1px;
+      display: inline-block;
+      line-height: 15px;
+      font-size: 10px;
+      background-color: $primary-color;
+      border-radius: 50%;
+      border: 0;
+    }
+
+    .track-time-ago {
+      font-size: 12px;
+      line-height: 20px;
+      float: right;
+    }
+
+    .right-sidebar {
+      float: right;
+      height: 300px;
+      width: 370px;
+      padding: 30px;
+    }
+
+    .track-item-user {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+
+    .track-item-wrapper {
+      margin-left: 15px;
+      float: left;
+      width: 58%;
+      @media (min-width: $screen-sm-min) {
+        width: 48%;
+      }
+    }
+
+    .track-item-title {
+      font-size: 24px;
+      line-height: 33px;
+    }
+
+    .wave-track {
+
+      > wave {
+        // -webkit-box-shadow: 0px 0px 69px -2px rgba(0,0,0,0.49);
+        // -moz-box-shadow: 0px 0px 69px -2px rgba(0,0,0,0.49);
+        // box-shadow: 0px 0px 69px -2px rgba(0,0,0,0.49);
+        > canvas {
+          width: 60%!important;
+          margin-top: 0px;
+          height: 380px;
+          transform: translateY(190px);
+
+          @media (min-width: $screen-md-min) {
+            width: 70%!important;
+          }
+          @media (min-width: $screen-sm-min) {
+          }
+        }
+      }
+    }
   }
 
-  .right-sidebar {
-    float: right;
-    height: 300px;
-    width: 370px;
-    padding: 30px;
+
+  .track-options {
+    padding: 10px;
+    border-bottom: 1px solid #f2f2f2;
   }
 
-
-  .track-player {
-    background: #ccc;
-    margin: 0 -25px;
+  .track-description {
+    position: relative;
+    height: 165px;
+    margin: 30px 332px 0 130px;
+    min-width: 469px;
+    max-width: 730px;
+    float: none;
+  }
+  .right-divider {
+    border-right: 1px solid #f2f2f2;
+    height: 1000px;
+    width: 1px;
+    position: absolute;
+    right: 0;
   }
 
   .user-info {
+    margin-top: 30px;
     float:left;
     .user-avatar {
 

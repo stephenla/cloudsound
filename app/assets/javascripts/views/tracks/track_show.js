@@ -17,6 +17,22 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
 
   },
 
+  addWaveSurfer: function () {
+    this.wavesurfer = Object.create(WaveSurfer);
+    this.wavesurfer.init({
+        container: this.$el.find("#track-" + this.model.id)[0],
+        waveColor: '#333',
+        progressColor: '#f51',
+        fillParent: true,
+        cursorColor: "transparent",
+        hideScrollbar: true,
+        height: 380
+    });
+    this.wavesurfer.load(this.model.get("audio"));
+    this.$el.find(".wave-track > wave").css("background",this.model.get("avatar_gradient"));
+
+  },
+
   destroyTrack: function (event) {
     var that = this;
     event.preventDefault();
@@ -69,7 +85,9 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
       });
       this.$el.html(content);
       this.attachSubviews();
+      this.addWaveSurfer();
     }
+
     return this;
   }
 });

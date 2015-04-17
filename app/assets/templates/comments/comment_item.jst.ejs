@@ -1,6 +1,11 @@
 
 <a href="/#user/<%= comment.get("user_id")%>" class="avatar-link">
-  <img class="comment-avatar" src="<%= comment.get("avatar_mini") %>" alt="" />
+
+  <% if (comment.get("has_avatar")) { %>
+    <img class="comment-avatar" style="background:<%= comment.get("avatar_gradient") %>" src="<%= comment.get("avatar_mini") %>" />
+  <% } else { %>
+    <img class="comment-avatar" style="background:<%= comment.get("avatar_gradient") %>" src="//:0" />
+  <% } %>
 </a>
 <div class="comment-wrapper">
   <span class="comment-time-ago"> <%= comment.get("time_ago") %></span>
