@@ -1,48 +1,101 @@
 <!-- gem remotipart -->
-<h3 id="upload-header">Upload a sound</h3>
-  <div class="errors alert alert-danger alert-dismissible fade in">
-    <p class="title-error"> </p>
-    <p class="file-error"> </p>
+
+<% gradient = 'linear-gradient(' + Math.floor(Math.random() * 360 + 1)
++ 'deg, #'
++ Math.floor(Math.random()*16777215).toString(16)
++ ', #'
++  Math.floor(Math.random()*16777215).toString(16) + ')'%>
+
+<div class="new-track-wrapper">
+
+  <h3 id="upload-header">Upload a sound</h3>
+    <div class="errors alert alert-danger alert-dismissible fade in">
+      <p class="title-error"> </p>
+      <p class="file-error"> </p>
+    </div>
+
+    <div class="file-type-error alert alert-danger alert-dismissible fade in">
+    </div>
+
+  <div>
+
+
+  <form
+      id="new-track"
+      class="clearfix"
+      enctype="multipart/form-data"
+      action="/api/tracks"
+      accept-charset="UTF-8"
+      method="post">
+      <input type="hidden" name="authenticity_token" value="<%= AUTH_TOKEN %>">
+      <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
+      <input name="utf8" type="hidden" value="✓">
+      <input type="hidden" name="track[avatar_gradient]" value="<%= gradient %>">
+
+
+      <div class="chooser">
+        <input type="file" name="track[audio]" id="track-audio" >
+        <label class="upload-button btn btn-default" for="track-audio">Choose a sound to upload</label>
+      </div>
+
+      <div class="meter orange nostripes">
+      	<span class="meter-bar"></span>
+        <span class="percent"></span>
+      </div>
+
+      <div id="track-extra-info">
+        <div class="header-links upload-links clearfix">
+          <span class="basic medium link active">Basic Info</span>
+        </div>
+
+        <div class="track-avatar-wrapper clearfix">
+          <img class="track-avatar" style="background:<%= gradient %>" src="//:0" />
+          <span id="choose-track-avatar" class="btn btn-default">Choose new image</span>
+          <input id="edit-track-avatar" class="edit-avatar" type="file" name="user[avatar]" id="user_avatar">
+          <div class="delete-avatar">
+            <input type="checkbox" name="delete_avatar" value="1"> Remove avatar
+          </div>
+        </div>
+
+        <div class="right">
+
+          <label class="track-title-wrapper require" for="track-title">Title</label>
+          <input id='track-title' type="text" class="form-control" name="track[title]">
+
+          <label class="track-description-label" for="track-description">Description</label>
+          <textarea id='track-description' type="text" class="form-control" name="track[description]">
+          </textarea>
+          <button type="button" class="btn btn-default" id="save">Save</button>
+        </div>
+      </div>
+
+    </form>
+
+
+
+
   </div>
 
-  <div class="file-type-error alert alert-danger alert-dismissible fade in">
-  </div>
+  <script charset="utf-8">
+    function readURL(input) {
 
-<div>
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('.track-avatar').attr('src', e.target.result);
+            }
 
-<form
-    id="new-track"
-    enctype="multipart/form-data"
-    action="/api/tracks"
-    accept-charset="UTF-8"
-    method="post">
-    <input type="hidden" name="authenticity_token" value="<%= AUTH_TOKEN %>">
-    <input type="hidden" name="track[user_id]" value="<%= user.get("id") %>">
-    <input name="utf8" type="hidden" value="✓">
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
 
+    $("#edit-track-avatar").change(function(){
+        readURL(this);
+    });
 
-    <div class="chooser">
-      <input type="file" name="track[audio]" id="track-audio" >
-      <label class="upload-button btn btn-default" for="track-audio">Choose a sound to upload</label>
-    </div>
-
-    <div class="meter orange nostripes">
-    	<span></span>
-    </div>
-
-
-    <div class="header-links upload-links clearfix">
-      <span class="basic medium link active">Basic Info</span>
-    </div>
-
-    <label class="track-title-wrapper require" for="track-title">Title</label>
-      <input id='track-title' type="text" class="form-control" name="track[title]">
-
-  </form>
-
-
-    <button type="button" class="btn btn-default" id="save">Save</button>
-  
-
+    document.getElementById('choose-track-avatar').addEventListener('click',function(){
+      document.getElementById('edit-track-avatar').click();
+    });
+  </script>
 </div>

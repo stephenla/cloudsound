@@ -67,20 +67,29 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
   },
 
   renderFileUpload: function () {
+    var that = this;
 
     this.$('#new-track').fileupload({
       url: '/api/tracks',
       replaceFileInput: false,
       progress: function (e, data) {
+
         var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('.meter').css('display', "block");
-        $('.meter span').css('width', progress + '%');
+        that.$('.meter').css('display', "block");
+        that.$('.meter span').css('width', progress + '%');
+        that.$('.percent').text(progress + '%');
+        if (progress === 100) {
+          // $('html').prepend($("<div class='loader'></div>").css("height", $('html').css('height')).append("<div class='fade-screen'></div>"));
+          $('.loader').show();
+        }
       },
 
       add: function (e, data) {
-
-          file = data.files[0];
-          $("#track-title").val(file.name.replace(/\.[^/.]+$/, ""));
+        file = data.files[0];
+        $("#track-title").val(file.name.replace(/\.[^/.]+$/, ""));
+        // that.$(".track-avatar").addClass("block");
+        // that.$("#choose-track-avatar").css("display","inline-block");
+        that.$("#track-extra-info").show("fade",1000);
 
         $('#save').click(function () {
           var types = /(\.|\/)(mp3|aac|ogg|wav)$/i;
@@ -89,6 +98,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
           if (types.test(file.type) || types.test(file.name)) {
             if ($("#track-title").val()) {
+              that.$('.meter').css("visibility", "visible");
               data.submit();
             }
           }
@@ -100,11 +110,13 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
       },
 
       done: function (e, data) {
-        debugger
+        $('.loader').hide();
+        // $('.loader').remove()
         $("input[type='text']").val("");
         $('#create-track').css("display", "block");
         $('#progress-message').text('Upload finished.');
-        Backbone.history.navigate("track/" + data.result.id, { trigger: true });
+        Backbone.history.navigate("/user/" + that.user.id
+        + "/track/" + data.result.files[0].id, { trigger: true });
 
       },
 

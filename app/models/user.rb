@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
     following_ids = "SELECT followed_id FROM followings WHERE  follower_id = :user_id"
     Track.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: self.id)
+                     .includes(:user).includes(:followers)
   end
 
   # Follows a user.

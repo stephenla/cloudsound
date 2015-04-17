@@ -15,5 +15,6 @@ class Track < ActiveRecord::Base
 
 
   belongs_to :user
+  has_many :followers, through: :user, source: :followers
   has_many :comments, dependent: :destroy
 end
