@@ -13,10 +13,12 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     this.$rootEl = $("#content");
     this.users = new Cloudsound.Collections.Users();
     this.tracks = new Cloudsound.Collections.Tracks();
+    this.feeds = new Cloudsound.Collections.Feeds();
+
   },
 
   userFeed: function () {
-    var user = this.users.getOrFetch(Cloudsound.current_user);
+    var user = this.feeds.getOrFetch(Cloudsound.current_user);
     var view = new Cloudsound.Views.UserFeed({ model: user });
     this._swapView(view);
   },

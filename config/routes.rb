@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :tracks, defaults: { format: :json }
     resources :comments, defaults: { format: :json }
     resources :followings
+    resources :feeds, only: [:show], defaults: { format: :json }
     resource :current_users, only: [:show], defaults: { format: :json }
   end
 
