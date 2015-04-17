@@ -32,7 +32,7 @@ stephen = User.first
   stephen.follow(user)
 end
 50.times do |n|
-  user = User.create!(username: Faker::Name.name, password: "password")
+  user = User.create!(username: Faker::Name.name, password: "password", avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})")
   user.follow(guest.first)
   user.follow(stephen)
 end
