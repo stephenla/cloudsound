@@ -3,7 +3,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
   events: {
     "submit form": "uploadTrack",
-    "change #edit-track-avatar": "readUrl"
+    "change #edit-track-avatar": "readURL"
   },
 
   initialize: function (options) {
@@ -61,29 +61,44 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
 
       add: function (e, data) {
         file = data.files[0];
-        file2 = data.files[1];
-        $("#track-title").val(file.name.replace(/\.[^/.]+$/, ""));
-        // that.$(".track-avatar").addClass("block");
-        // that.$("#choose-track-avatar").css("display","inline-block");
-        that.$("#track-extra-info").show("fade",1000);
+        if (data.files[0]) {
+          
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            if (Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+              $('.track-avatar').attr('src', e.target.result);
+            }
+          };
+          reader.readAsDataURL(data.files[0]);
+        }
+        if (!Cloudsound.hasExtension('track-audio', ['.mp3', '.aac', '.ogg', '.wav'])) {
+          that.$("#track-extra-info").hide("fade",1000);
+          $(".file-type-error ").fadeIn(500, function () {
+            window.setTimeout(function () {
+              $(".file-type-error ").fadeOut(500);
+            },8000);
+          });
 
-        $('#save').click(function () {
-          var types = /(\.|\/)(mp3|aac|ogg|wav)$/i;
-
-
-          $(".file-type-error").css("display", "none").empty();
-
-          if (types.test(file.type) || types.test(file.name)) {
+        } else {
+          $("#track-title").val($("#track-audio").val().replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, ""));
+          that.$("#track-extra-info").show("fade",1000);
+          $('#save').click(function () {
             if ($("#track-title").val()) {
+              if (!Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+                $(".avatar-errors").fadeIn(500, function () {
+                  window.setTimeout(function () {
+                    $(".avatar-errors").fadeOut(500);
+                  },8000);
+                });
+                return
+              }
               that.$('.meter').css("visibility", "visible");
               data.submit();
             }
-          }
-          else {
-            $(".file-type-error").css("display", "block").append("Please upload mp3, wav, aac, or ogg file formats");
-            // $("#track-audio").effect( "shake", 500 );
-          }
-        });
+          });
+
+
+        }
       },
 
       done: function (e, data) {

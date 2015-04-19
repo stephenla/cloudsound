@@ -9,12 +9,13 @@
 <div class="new-track-wrapper">
 
   <h3 id="upload-header">Upload a sound</h3>
-    <div style="display: none;" class="alert alert-danger alert-dismissible fade in">
+    <div style="display: none;" class="alert alert-danger alert-dismissible">
       <p class="title-error"> </p>
       <p class="file-error"> </p>
     </div>
 
-    <div class="file-type-error alert alert-danger alert-dismissible fade in">
+    <div class="file-type-error alert alert-danger alert-dismissible">
+      Please upload mp3, wav, aac, or ogg file formats
     </div>
 
   <div>
@@ -76,35 +77,35 @@
   </div>
 
   <script charset="utf-8">
-    function readURL(input) {
-
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-
-              if (!Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
-
-                $(".avatar-errors").fadeIn(500, function () {
-                  window.setTimeout(function () {
-                    $(".avatar-errors").fadeOut(500);
-                  },8000);
-                });
-              } else {
-
-                $('.track-avatar').attr('src', e.target.result);
-              }
-
-            }
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#edit-track-avatar").change(function(){
-
-        readURL(this);
-    });
+    // function readURL(input) {
+    //
+    //     if (input.files && input.files[0]) {
+    //         var reader = new FileReader();
+    //
+    //         reader.onload = function (e) {
+    //
+    //           if (!Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+    //
+    //             $(".avatar-errors").fadeIn(500, function () {
+    //               window.setTimeout(function () {
+    //                 $(".avatar-errors").fadeOut(500);
+    //               },8000);
+    //             });
+    //           } else {
+    //
+    //             $('.track-avatar').attr('src', e.target.result);
+    //           }
+    //
+    //         }
+    //
+    //         reader.readAsDataURL(input.files[0]);
+    //     }
+    // }
+    //
+    // $("#edit-track-avatar").change(function(){
+    //
+    //     readURL(this);
+    // });
 
     // document.getElementById('choose-track-avatar').addEventListener('click',function(){
     //   document.getElementById('edit-track-avatar').click();

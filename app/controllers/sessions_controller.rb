@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :require_login, only: [:new, :create]
+
   def create
     @user = User.find_by_credentials(
       params[:user][:username],
@@ -19,8 +21,14 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out!(current_user) if current_user
-    redirect_to new_session_url
+    user_session = current_user.sessions.find_by(session_token: session[:session_token])
+    session[:session_token] = nil
+    if user_session
+      user_session.destroy
+      redirect_to new_session_url
+    else
+      redirect_to new_session_url
+    end
   end
 
   def guest
@@ -36,4 +44,28 @@ class SessionsController < ApplicationController
       render :new
     end
   end
+
+  def log_out_all
+    current_user.sessions.each do |session|
+      session.destroy unless session.session_token == session[:session_token]
+    end
+    redirect_to :back
+  end
+
+  def log_out_remote
+    user_session = current_user.sessions.find(params[:id])
+    if user_session
+      user_session.destroy
+    else
+      flash[:error] = "No session"
+    end
+    redirect_to :back
+  end
+
+  private
+    def require_login
+      if logged_in?
+        redirect_to new_session_url
+      end
+    end
 end

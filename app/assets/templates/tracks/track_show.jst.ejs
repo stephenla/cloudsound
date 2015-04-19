@@ -8,7 +8,7 @@
       <button class="glyphicon glyphicon-play play btn btn-default" id="button-<%= track.get("id") %>">
 
       </button>
-      <div class="track-item-wrapper">
+      <div class="track-item-wrapper time-ago">
         <a class="track-item-user" href="/#user/<%= track.get("user_id")%>" class="comment-username">
           <%= track.get("user").username %>
         </a>
@@ -74,9 +74,7 @@
 
   <div class="track-description">
     <%= track.get("description") %>
-    <div class="right-divider">
 
-    </div>
   </div>
 
   <div class="comments">

@@ -3,15 +3,17 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-
+  
   def current_user
-    return nil if self.session[:session_token].nil?
-    @current_user ||= User.find_by(session_token: self.session[:session_token])
+    @current_user ||= Session.find_by(:session_token => session[:session_token]).try(:user)
   end
 
   def log_in!(user)
-    user.reset_session_token!
-    self.session[:session_token] = user.session_token
+    loc = request.location
+    location = loc.city + ', ' + loc.state + ', ' + loc.country
+    user_agent = request.env["HTTP_USER_AGENT"]
+    new_session = user.sessions.create!(environment: user_agent, location: location)
+    self.session[:session_token] = new_session.session_token
   end
 
   def log_out!(user)
