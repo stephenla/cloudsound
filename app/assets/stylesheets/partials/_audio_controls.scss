@@ -1,5 +1,81 @@
 #control-bar {
+  width: 100%;
+  padding: 11px;
   position: fixed;
   bottom:0;
   left: 0;
+	z-index: 10;
+  background: #f2f2f2;
+  border-top: 1px solid #ccc;
+  .player-control {
+    max-width: $max-page-width;
+    min-width: $min-page-width;
+    margin: auto;
+  }
+  .glyphicon {
+    padding: 0 30px;
+    font-size: 22px;
+  }
+
+  #playlist {
+    display: none;
+  }
 }
+
+//
+// #control-bar{
+// 	display: -webkit-flex;
+// 	display: flex;
+// 	color: #3D464A;
+// 	text-align: left;
+//
+// 	position: relative;
+//
+// }
+//
+// #container.disabled #control-bar{
+// 	pointer-events: none;
+// }
+//
+// .player-control{
+// 	-webkit-flex: 2;
+// 	flex:2;
+// 	display: -webkit-flex;
+// 	display: flex;
+// }
+//
+// .player-control div{
+// 	-webkit-flex: 1;
+// 	flex: 1;
+// 	background-color: #fff;
+// 	text-align: center;
+// 	line-height: 60px;
+// 	height: 100%;
+// 	cursor: pointer;
+// }
+//
+// #container.disabled .player-control div{
+// 	color: #758389;
+// }
+//
+// #shuffle-button,
+// #repeat-button{
+// 	line-height: 60px;
+// 	color: #758389;
+// 	position: relative;
+// }
+//
+// #shuffle-button.active,
+// #repeat-button.active{
+// 	line-height: 60px;
+// 	color: #000;
+// }
+//
+// #repeat-button i span{
+// 	display: none;
+// 	position: absolute;
+// 	font: bold 12px sans-serif;
+// 	color: rgb(71, 91, 118);
+// 	top: 6px;
+// 	left: 13px;
+// }

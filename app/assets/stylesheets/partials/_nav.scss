@@ -16,6 +16,14 @@
       font-size: 16px;
     }
     &:hover {
+      animation-name: pulse;
+    	-webkit-animation-name: pulse;
+
+    	animation-duration: 1.5s;
+    	-webkit-animation-duration: 1.5s;
+
+    	animation-iteration-count: infinite;
+    	-webkit-animation-iteration-count: infinite;
       color: #eee!important;
     }
   }
@@ -24,6 +32,16 @@
     .glyphicon-cloud{
       font-size: 28px;
       color: $primary-color;
+      &:hover{
+        animation-name: tossing;
+      	-webkit-animation-name: tossing;
+
+      	animation-duration: 3.5s;
+      	-webkit-animation-duration: 3.5s;
+
+      	animation-iteration-count: infinite;
+      	-webkit-animation-iteration-count: infinite;
+      }
     }
   }
   .navbar-nav {

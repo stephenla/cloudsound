@@ -16,13 +16,17 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-
+    update_params = user_params
     @user = User.find(params[:id])
     if params[:delete_avatar] == "1"
       @user.avatar = nil
     end
-    if @user.update(user_params)
-      redirect_to "/#user/#{@user.id}/settings"
+    if (update_params[:username] == @user.username)
+      update_params.delete(:username)
+    end
+    if @user.update(update_params)
+      flash[:notice] = ["User information updated."]
+      redirect_to "/#user/#{@user.id}/settings?updated=true"
     else
       render @user.errors.full_messages, status: 422
     end
@@ -30,7 +34,7 @@ class Api::UsersController < ApplicationController
 
   private
   def user_params
-    self.params.require(:user).permit(:username, :password, :avatar)
+    self.params.require(:user).permit(:username, :password, :avatar, :first_name, :last_name, :description)
   end
 
 end

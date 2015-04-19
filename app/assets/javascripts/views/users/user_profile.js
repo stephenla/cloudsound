@@ -48,19 +48,6 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
       return subview.model === track;
     });
     this.removeSubview(".profile-tracks", subview);
-    // why do i need to wrap this in a setTimeout
-    window.setTimeout(function () {
-      $(".notice .msg").text("track deleted.");
-      $(".notice .msg").fadeIn(400, function () {
-        window.setTimeout(function () {
-          $(".notice .msg").fadeOut(400);
-        }, 2500);
-      });
-    }, 500);
-  },
-
-  addWaveSurfer: function () {
-
   },
 
   unfollowUser: function (event) {

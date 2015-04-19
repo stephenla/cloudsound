@@ -7,6 +7,9 @@ Cloudsound.Views.UserSettings = Backbone.View.extend({
   render: function () {
     var content = this.template({ user: this.model });
     this.$el.html(content);
+    window.setTimeout(function () {
+      this.$('.notice').hide("fade", 500, function () { this.$('.notice').removeClass("slideLeft"); });
+    }.bind(this), 8000);
     return this;
   }
 

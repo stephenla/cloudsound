@@ -7,12 +7,29 @@ body {
   font-size: 12px;
 }
 
+.notice {
+  display: none;
+  height: 50px;
+  width: 300px;
+  padding: 0;
+  position: fixed;
+  right: 60px;
+  border: 1px solid #ccc;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0,0,0,.2),inset 0 0 2px rgba(255,255,255,1);
+  padding: 5px 10px;
+  font-weight: bold;
+  .msg{
+    display: none;
+  }
+}
+
 .loader {
   display:none;
   // position: absolute;
   // width: 100%;
   // height: 100%;
-  background: url("https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/ajax-loader.gif?X-Amz-Date=20150417T163855Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=0c9137c672f457d5ad4b74eebf41c35e740cc71c95ef50b30a38e8c414af574b&X-Amz-Credential=ASIAI55HC3XTFM4PIFYQ/20150417/us-west-2/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=AQoDYXdzEBAagAOukEk9GoF8Lu5XowPsIo72o75Io5cdFiBjj5bBili4ofdFqNihjuLDSV/ntETGRKqIi6N1gGsrQ/v90gMZ5QLp/%2BtURMBkBSCsV2eAfOV/MYHFKIwt2AK5QJJBS70KUw564cWKJ/6vq%2BnKZ8gTjRX55bbhLBMNlj94V4K2RziYFfoR8X877VXMz0MBmSP3X%2BnzC0fK3O96vFnk%2B6UdaEiVjXtSQcuzfAuNXXZ6DLkLAEnqwxjVfVdZNQWK/hs8ee5Zjnn/REiEXo8cfSP5tXJDwDeIQ2pDiYZmjAVX5TrveoIk09Hc4n6FaIxP%2BBGbRFlXcRUkSJ7/pLcjWeBHbdDB%2BOEyw81BNjETR3WecNDtL5AqHRP/pMI0eGC%2BITQ1UqPjIr8h33kyY6BhjzSA2vn%2BapiRRTWrLjb0U6w5v/zZIYsLjkbRRXzEehBJsJ%2BSMa%2BQyeluqHZJEDSOTum1Tpy%2BRIWUIxhNMrl1C0krqO0pMRFybJZcCa4E4NVER55S5DAgkdPCqQU%3D") no-repeat center;
+  // background: url("https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/ajax-loader.gif?X-Amz-Date=20150417T163855Z&X-Amz-Expires=300&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Signature=0c9137c672f457d5ad4b74eebf41c35e740cc71c95ef50b30a38e8c414af574b&X-Amz-Credential=ASIAI55HC3XTFM4PIFYQ/20150417/us-west-2/s3/aws4_request&X-Amz-SignedHeaders=Host&x-amz-security-token=AQoDYXdzEBAagAOukEk9GoF8Lu5XowPsIo72o75Io5cdFiBjj5bBili4ofdFqNihjuLDSV/ntETGRKqIi6N1gGsrQ/v90gMZ5QLp/%2BtURMBkBSCsV2eAfOV/MYHFKIwt2AK5QJJBS70KUw564cWKJ/6vq%2BnKZ8gTjRX55bbhLBMNlj94V4K2RziYFfoR8X877VXMz0MBmSP3X%2BnzC0fK3O96vFnk%2B6UdaEiVjXtSQcuzfAuNXXZ6DLkLAEnqwxjVfVdZNQWK/hs8ee5Zjnn/REiEXo8cfSP5tXJDwDeIQ2pDiYZmjAVX5TrveoIk09Hc4n6FaIxP%2BBGbRFlXcRUkSJ7/pLcjWeBHbdDB%2BOEyw81BNjETR3WecNDtL5AqHRP/pMI0eGC%2BITQ1UqPjIr8h33kyY6BhjzSA2vn%2BapiRRTWrLjb0U6w5v/zZIYsLjkbRRXzEehBJsJ%2BSMa%2BQyeluqHZJEDSOTum1Tpy%2BRIWUIxhNMrl1C0krqO0pMRFybJZcCa4E4NVER55S5DAgkdPCqQU%3D") no-repeat center;
   z-index: 999;
   position: fixed;
   top: 0; left: 0;

@@ -62,7 +62,7 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
       add: function (e, data) {
         file = data.files[0];
         if (data.files[0]) {
-          
+
           var reader = new FileReader();
           reader.onload = function (e) {
             if (Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
@@ -84,13 +84,13 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
           that.$("#track-extra-info").show("fade",1000);
           $('#save').click(function () {
             if ($("#track-title").val()) {
-              if (!Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+              if (document.getElementById('edit-track-avatar').value && !Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
                 $(".avatar-errors").fadeIn(500, function () {
                   window.setTimeout(function () {
                     $(".avatar-errors").fadeOut(500);
                   },8000);
                 });
-                return
+                return;
               }
               that.$('.meter').css("visibility", "visible");
               data.submit();
