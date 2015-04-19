@@ -4,6 +4,18 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
   events: {
 
   },
+  _removeElement: function() {
+      this.$el.remove();
+  },
+
+  remove: function() {
+
+    this._removeElement();
+    this.stopListening();
+    this.wavesurfer.play();
+    this.wavesurfer.pause();
+    return this;
+  },
 
   initialize: function (options) {
     if (options.waveTracks) {
@@ -17,17 +29,43 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
   },
 
   playTrack: function (event) {
-
     event.preventDefault();
     $currentTarget = $(event.currentTarget);
+
+
+    if ($currentTarget.attr("class").indexOf("glyphicon-pause") > -1) {
+      this.wavesurfer.pause();
+      $currentTarget.removeClass("glyphicon-pause");
+      $currentTarget.addClass("glyphicon-play");
+      return;
+    }
+
+    this.wavesurfer.on('pause', function () {
+      // this.wavesurfer.un('pause');
+    });
+
+    this.wavesurfer.on('play', function () {
+      // this.wavesurfer.un('play');
+    });
+
+    // $.each($("button.glyphicon-pause"), function (index, value) {
+    //   value.removeClass("glyphicon-pause");
+    //   value.addClass("glyphicon-play");
+    // });
+
+    $("button.glyphicon-pause").removeClass("glyphicon-pause").addClass("glyphicon-play");
+
     this.waveTracks.forEach(function (track) {
       if (this.wavesurfer !== track) {
         track.play();
         track.pause();
       }
     }.bind(this));
-    $currentTarget.addClass("active");
-    this.wavesurfer.playPause();
+
+    this.wavesurfer.play();
+    $currentTarget.removeClass("glyphicon-play");
+    $currentTarget.addClass("glyphicon-pause");
+
 
   },
 
