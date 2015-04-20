@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :followers, only: [:show], defaults: { format: :json }
     resources :follows, only: [:show], defaults: { format: :json }
     resource :current_users, only: [:show], defaults: { format: :json }
+    resources :explores, only: [:show], defaults: { format: :json }
   end
 
   root to: "static_pages#index"

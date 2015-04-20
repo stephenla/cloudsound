@@ -4,7 +4,7 @@ json.following following do |user|
   json.extract! user, :username, :id
   json.followers_count user.followers.length
 
-  if @user.avatar.file?
+  if user.avatar.file?
     json.has_avatar true
   else
     json.has_avatar false
