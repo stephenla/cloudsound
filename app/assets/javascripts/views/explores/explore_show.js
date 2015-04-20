@@ -1,12 +1,12 @@
 Cloudsound.Views.ExploreShow = Backbone.CompositeView.extend({
-  template: JST['explores/show'],
+  template: JST['explores/explore_show'],
 
   initialize: function () {
     this.otherTracks = this.model.otherTracks();
     this.otherUsers = this.model.otherUsers();
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.otherUsers, "sync", this.addUser);
-    this.listenTo(this.otherTracks, "sync", this.addTrack);
+    this.listenTo(this.otherUsers, "add", this.addUser);
+    this.listenTo(this.otherTracks, "add", this.addTrack);
 
     this.waveTracks = Cloudsound.waveTracks = [];
   },
@@ -20,19 +20,16 @@ Cloudsound.Views.ExploreShow = Backbone.CompositeView.extend({
 
 
     subview.$el.show("fade", 1000);
-    this.addSubview(".feed", subview);
+    this.addSubview(".explore-tracks", subview);
   },
 
   addUser: function (user) {
-    var subview = new Cloudsound.Views.TrackItem({
-      model: user,
-      waveTracks: this.waveTracks
+    var subview = new Cloudsound.Views.ExploreUser({
+      model: user
     });
-    this.waveTracks.push(subview);
-
 
     subview.$el.show("fade", 1000);
-    this.addSubview(".feed", subview);
+    this.addSubview(".explore-users", subview);
   },
 
 
@@ -41,6 +38,7 @@ Cloudsound.Views.ExploreShow = Backbone.CompositeView.extend({
       explore: this.model
     });
     this.$el.html(content);
+    this.attachSubviews();
     return this;
   }
 
