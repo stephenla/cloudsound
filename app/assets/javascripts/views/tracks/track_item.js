@@ -48,6 +48,7 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
     $("#control-bar").show();
     Cloudsound.currentlyPlaying = this.wavesurfer;
     Cloudsound.currentlyPlayingTarget = $currentTarget;
+    Cloudsound.currentlyPlayingTitle = this.model.get("title");
     //set control bar title
     $(".control-track-title").text(this.model.get("title"));
 

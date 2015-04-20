@@ -26,61 +26,69 @@ window.Cloudsound = {
   }
 };
 
+$(function () {
+  $("#next-button").click(function () {
 
-$("#next-button").click(function () {
+    var current = Cloudsound.currentlyPlaying ;
+    if (Cloudsound.waveTracks) {
+      Cloudsound.waveTracks.forEach(function (trackItem, index, arr) {
+        if (current === trackItem.wavesurfer && arr[index + 1]) {
+          $("#play-pause-button").removeClass("glyphicon-play");
+          $("#play-pause-button").addClass("glyphicon-pause");
+          Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
+          Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
+          Cloudsound.currentlyPlaying.pause();
 
-  var current = Cloudsound.currentlyPlaying ;
-  if (Cloudsound.waveTracks) {
-    Cloudsound.waveTracks.forEach(function (trackItem, index, arr) {
-      if (current === trackItem.wavesurfer && arr[index + 1]) {
-        $("#play-pause-button").removeClass("glyphicon-play");
-        $("#play-pause-button").addClass("glyphicon-pause");
-        Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
-        Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
-        Cloudsound.currentlyPlaying.pause();
+          Cloudsound.currentlyPlaying = arr[index + 1].wavesurfer;
+          Cloudsound.currentlyPlayingTarget = arr[index + 1].$("button.glyphicon");
+          Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
+          Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
+          Cloudsound.currentlyPlayingTitle = arr[index + 1].model.get("title");
+          $(".control-track-title").text(Cloudsound.currentlyPlayingTitle);
 
-        Cloudsound.currentlyPlaying = arr[index + 1].wavesurfer;
-        Cloudsound.currentlyPlayingTarget = arr[index + 1].$("button.glyphicon");
-        Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
-        Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
-        Cloudsound.currentlyPlaying.play();
-      }
-    });
-  }
-});
-$("#previous-button").click(function () {
-  var current = Cloudsound.currentlyPlaying ;
-  if (Cloudsound.waveTracks) {
-    Cloudsound.waveTracks.forEach(function (trackItem, index, arr) {
-      if (current === trackItem.wavesurfer && arr[index - 1]) {
-        $("#play-pause-button").removeClass("glyphicon-play");
-        $("#play-pause-button").addClass("glyphicon-pause");
-        Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
-        Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
-        Cloudsound.currentlyPlaying.pause();
+          Cloudsound.currentlyPlaying.play();
+        }
+      });
+    }
+  });
+  $("#previous-button").click(function () {
+    var current = Cloudsound.currentlyPlaying ;
+    if (Cloudsound.waveTracks) {
+      Cloudsound.waveTracks.forEach(function (trackItem, index, arr) {
+        if (current === trackItem.wavesurfer && arr[index - 1]) {
+          $("#play-pause-button").removeClass("glyphicon-play");
+          $("#play-pause-button").addClass("glyphicon-pause");
+          Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
+          Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
+          Cloudsound.currentlyPlaying.pause();
 
-        Cloudsound.currentlyPlaying = arr[index - 1].wavesurfer;
-        Cloudsound.currentlyPlayingTarget = arr[index - 1].$("button.glyphicon");
-        Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
-        Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
-        Cloudsound.currentlyPlaying.play();
-      }
-    });
-  }
-});
+          Cloudsound.currentlyPlaying = arr[index - 1].wavesurfer;
+          Cloudsound.currentlyPlayingTarget = arr[index - 1].$("button.glyphicon");
+          Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
+          Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
+          Cloudsound.currentlyPlayingTitle = arr[index - 1].model.get("title");
+          debugger
+          $(".control-track-title").text(Cloudsound.currentlyPlayingTitle);
+          Cloudsound.currentlyPlaying.play();
+        }
+      });
+    }
+  });
 
-$("#play-pause-button").click(function () {
-  if ($("#play-pause-button").attr("class").indexOf("glyphicon-pause") > -1) {
-    $("#play-pause-button").removeClass("glyphicon-pause");
-    $("#play-pause-button").addClass("glyphicon-play");
-    Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
-    Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
-    Cloudsound.currentlyPlaying.pause();
-  } else {
-    $("#play-pause-button").addClass("glyphicon-pause");
-    $("#play-pause-button").removeClass("glyphicon-play");
-    Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
-    Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
-    Cloudsound.currentlyPlaying.play();
-  }
+  $("#play-pause-button").click(function () {
+    if ($("#play-pause-button").attr("class").indexOf("glyphicon-pause") > -1) {
+      $("#play-pause-button").removeClass("glyphicon-pause");
+      $("#play-pause-button").addClass("glyphicon-play");
+      Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
+      Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
+      Cloudsound.currentlyPlaying.pause();
+    } else {
+      $("#play-pause-button").addClass("glyphicon-pause");
+      $("#play-pause-button").removeClass("glyphicon-play");
+      Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
+      Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
+      $(".control-track-title").text(Cloudsound.currentlyPlayingtitle);
+      Cloudsound.currentlyPlaying.play();
+    }
+  });
 });
