@@ -5,6 +5,15 @@
   background: $navbar-color;
   border-radius: 0px;
 
+
+  .nav-or {
+    font-size: 16px;
+    padding: 15px 15px;
+    color: #ccc !important;
+    line-height: 20px;
+    background-color: transparent;
+  }
+
   .container {
     background: #333;
   }
@@ -58,20 +67,19 @@
 
   .navbar-nav {
 
-    .navbar-btn{
-      @include button-size(
-        $padding-base-vertical,
-        $padding-base-horizontal,
-        $font-size-base,
-        $line-height-base,
-        $border-radius-base
-      );
-      color: $btn-default-color;
-      background: $btn-default-bg;
-      &:hover, &:focus {
-        color: lighten($btn-default-color, 20%);
-        background: $button-hover-bg;
-      }
+    .sign-in{
+      font-size: 16px;
+      padding: 15px 15px;
+      color: #ccc !important;
+      line-height: 20px;
+      background-color: transparent;
+    }
+    .sign-up{
+      font-size: 16px;
+      padding: 15px 15px;
+      color: $primary-color !important;
+      line-height: 20px;
+      background-color: transparent;
     }
 
   }

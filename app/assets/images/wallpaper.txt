@@ -1,0 +1,15 @@
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/3wBPUcDrR9KaduD3PvkY_DSC_0915.JPG
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/8S64npOgTu2eWTZIXEfy_DSC_0955.JPG
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/Ept9mCvnTiahpYXPi9Ej_DSC_0010.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/IPEivX6xSBaiYOukY88V_DSC06462_tonemapped.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/fPuLkQNXRUKI6HQ2cMPf_IMG_4761.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1414912925664-0c502cc25dde.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1418225043143-90858d2301b4.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1420819453217-57b6badd9e19.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1421930451953-73c5c9ae9abf.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1421940975339-33bdde74a873.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1421977870504-378093748ae6.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1422310299561-e3b8b45d859f.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1422433555807-2559a27433bd.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1422640805998-18a4dd89bec2.jpg
+https://s3-us-west-2.amazonaws.com/cloudsound-development/assets/images/welcome/photo-1423483641154-5411ec9c0ddf.jpg

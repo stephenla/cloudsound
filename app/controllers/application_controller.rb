@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :current_user
-  
+  helper_method :welcome_image
+
   def current_user
     @current_user ||= Session.find_by(:session_token => session[:session_token]).try(:user)
   end
@@ -25,4 +26,8 @@ class ApplicationController < ActionController::Base
     current_user
   end
 
+  def welcome_image
+    contents = File.readlines("#{Rails.root}/app/assets/images/wallpaper.txt")
+    contents.sample.chomp
+  end
 end

@@ -1,0 +1,22 @@
+<%= javascript_tag "Cloudsound.welcome = '#{welcome_image}';" %>
+<div class="welcome-screen">
+
+</div>
+<div class="welcome">
+  <h1 class="welcome-header">Listen to the best sounds from around the world</h1>
+  <p class="welcome-body small">
+    CloudSound is a social music sharing application based on the popular SoundCloud.
+  </p>
+  <p class="welcome-body center">
+    Take a tour by clicking on the link below!
+  </p>
+</div>
+
+
+<form class="guest-login" action="/session/guest" method="post">
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+<input class="guest-login" type="submit" name="name" value="Take a tour">
+</form>

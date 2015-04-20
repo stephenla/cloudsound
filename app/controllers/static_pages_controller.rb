@@ -1,10 +1,11 @@
 class StaticPagesController < ApplicationController
   def index
+
     if current_user
       @user = current_user
       render :index
     else
-      redirect_to new_user_url
+      render :welcome
     end
   end
 end
