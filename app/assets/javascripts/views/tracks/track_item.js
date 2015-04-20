@@ -27,6 +27,29 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
 
     this.events["click #button-" + this.model.id] = "playTrack";
     this.wavesurfer = Object.create(WaveSurfer);
+
+
+    this.wavesurfer.on('pause', function () {
+      window.clearInterval(this.interval);
+      // this.wavesurfer.un('pause');
+      // $(".total-time").text("");
+    }.bind(this));
+
+    //start global seeker interval when track plays
+    this.wavesurfer.on('play', function () {
+      if (this.interval) {
+        window.clearInterval(this.interval);
+      }
+      var seconds = Math.floor(this.wavesurfer.getCurrentTime()) % 60;
+      var minutes = Math.floor(this.wavesurfer.getCurrentTime() / 60);
+      $(".current-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
+      seconds = Math.floor(this.wavesurfer.getDuration()) % 60;
+      minutes = Math.floor(this.wavesurfer.getDuration() / 60);
+      $(".total-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
+      this.interval = window.setInterval(this.startTrackProgress.bind(this), 1000);
+    }.bind(this));
+
+
   },
 
   startTrackProgress: function () {
@@ -72,25 +95,7 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
     }
 
     //remove global seeker interval when track pauses
-    this.wavesurfer.on('pause', function () {
-      window.clearInterval(this.interval);
-      // this.wavesurfer.un('pause');
-      // $(".total-time").text("");
-    }.bind(this));
 
-    //start global seeker interval when track plays
-    this.wavesurfer.on('play', function () {
-      if (this.interval) {
-        window.clearInterval(this.interval);
-      }
-      var seconds = Math.floor(this.wavesurfer.getCurrentTime()) % 60;
-      var minutes = Math.floor(this.wavesurfer.getCurrentTime() / 60);
-      $(".current-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
-      seconds = Math.floor(this.wavesurfer.getDuration()) % 60;
-      minutes = Math.floor(this.wavesurfer.getDuration() / 60);
-      $(".total-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
-      this.interval = window.setInterval(this.startTrackProgress.bind(this), 1000);
-    }.bind(this));
 
 
     //remove pause icon from all the pause icons

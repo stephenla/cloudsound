@@ -7,7 +7,8 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     "user/:id/settings": "userSettings",
     "user/:user_id/track/:id": "trackShow",
     "user/:id/following": "userFollowing",
-    "user/:id/followers": "userFollowers"
+    "user/:id/followers": "userFollowers",
+    "explore": "explore"
   },
   initialize: function () {
     this.$rootEl = $("#content");
@@ -16,8 +17,15 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     this.feeds = new Cloudsound.Collections.Feeds();
     this.follows = new Cloudsound.Collections.Follows();
     this.followers = new Cloudsound.Collections.Followers();
+    this.explores = new Cloudsound.Collections.Followers();
 
+  },
 
+  explore: function () {
+    var explore = new Cloudsound.Models.Explore();
+    explore.fetch();
+    var view = new Cloudsound.Views.ExploreShow({ model: explore });
+    this._swapView(view);
   },
 
   userFeed: function () {
