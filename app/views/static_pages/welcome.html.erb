@@ -13,6 +13,65 @@
 </div>
 
 
+
+
+<!-- Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <form action="/session" method="POST">
+        <input type="hidden" name="authenticity_token" value="xkXyx8kC4DT/M5CE65p3DxFHu7xE8WQdlsHBoZhBb5zVaqhJSAbXmu9MmRCzpiJo7/9CZeyO+KRvQNJ958uSNQ==">
+        <h3 class="modal-sign-in">Sign in</h3>
+        <label for="user_username">Username</label>
+        <input class="form-control" type="text" name="user[username]" id="user_username">
+        <br>
+
+        <label for="user_password">Password</label>
+        <input class="form-control" type="password" name="user[password]" id="user_password">
+        <br>
+
+        <input class="modal-button btn btn-default" type="submit" value="Log in">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+
+
+      <form action="/users" method="POST">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+          <h3 class="modal-sign-in">Sign up</h3>
+        <label for="user_username">Username</label>
+        <input class="form-control" type="text" name="user[username]" id="user_username">
+        <br>
+        <label for="user_password">Password</label>
+        <input class="form-control" type="password" name="user[password]" id="user_password">
+        <br>
+        <input class="modal-button btn btn-default" type="submit" value="Sign Up">
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
 <form class="guest-login" action="/session/guest" method="post">
   <input
     type="hidden"
@@ -20,6 +79,7 @@
     value="<%= form_authenticity_token %>">
 <input class="guest-login" type="submit" name="name" value="Take a tour">
 </form>
+
 <script charset="utf-8">
 $(function () {
 

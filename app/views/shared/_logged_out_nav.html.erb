@@ -1,11 +1,17 @@
 <ul class="nav navbar-nav navbar-right">
   <li>
-    <%= link_to "Sign In", new_session_url, class: "sign-in navbar-links" %>
+    <div class="sign-in navbar-links" data-toggle="modal" data-target="#loginModal">
+      Sign In
+    </div>
+
   </li>
   <li>
     <div class="nav-or">or<div>
   </li>
   <li>
-    <%= link_to "Sign Up", new_user_url, class: "sign-up navbar-links" %>
+    <div class="sign-up navbar-links" data-toggle="modal" data-target="#signUpModal">
+      Sign Up
+    </div>
+
   </li>
 </ul>

@@ -38,3 +38,26 @@
   font-size: 30px;
 
 }
+
+.modal {
+  display: none;
+  outline: 0;
+  .modal-dialog {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    position: absolute;
+    top: 146px;
+    left: 544px;
+    border-radius: 5px;
+    width: 500px;
+    margin: auto;
+    background: #f2f2f2;
+    padding: 35px;
+  }
+  .modal-button{
+    float: left;
+  }
+  .modal-footer {
+    float: right;
+  }
+}
