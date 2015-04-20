@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       redirect_to root_url
     else
       flash.now[:errors] = ["Invalid username/password"]
-      render :new
+      render "static_pages/welcome"
     end
   end
 

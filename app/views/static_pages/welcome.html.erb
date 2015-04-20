@@ -1,4 +1,12 @@
 <%= javascript_tag "Cloudsound.welcome = '#{welcome_image}';" %>
+
+<% if flash.now[:errors] %>
+<div class="notice slideLeft">
+<% flash.now[:errors].each do |msg| %>
+  <%= msg %>
+<% end %>
+</div>
+<% end %>
 <div class="welcome-screen">
 
 </div>

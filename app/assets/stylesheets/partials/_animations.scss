@@ -84,7 +84,9 @@
 	-webkit-animation-duration: 1s;
 
 	animation-timing-function: ease-in-out;
+
 	-webkit-animation-timing-function: ease-in-out;
+
   display: block!important;
 	visibility: visible !important;
 }
@@ -130,7 +132,6 @@
 		-webkit-transform: translateX(0%);
 	}
 }
-
 
 .tossing{
 	animation-name: tossing;
