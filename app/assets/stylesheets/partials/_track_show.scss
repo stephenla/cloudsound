@@ -132,16 +132,26 @@
 
 
   .track-options {
-    padding: 10px;
+    padding: 7px 10px;
     border-bottom: 1px solid #f2f2f2;
+    min-height: 39px;
+    .track-option {
+      display: inline-block;
+
+
+      .glyphicon {
+        font-size: 14px;
+        padding: 5px;
+      }
+    }
   }
 
   .track-description {
     position: relative;
     height: 165px;
-    margin: 30px 332px 0 130px;
+    margin: 30px 332px 0 150px;
     min-width: 469px;
-    max-width: 730px;
+    max-width: 669px;
     float: none;
   }
 

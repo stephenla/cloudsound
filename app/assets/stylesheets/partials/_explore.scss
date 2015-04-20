@@ -1,0 +1,73 @@
+
+#explore {
+  padding: 30px;
+
+  .explore-heading {
+    border-bottom: 1px solid #000;
+    display: inline-block;
+  }
+}
+.explore-tracks {
+
+}
+.explore-users {
+  max-width: 1200px;
+  min-width: 975px;
+
+  .explore-user {
+    position:relative;
+    float: left;
+    margin: 0 8px 8px 0;
+  }
+
+}
+
+.user-item-username {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: black;
+  padding: 5px;
+  a {
+    font-size: 16px;
+    color:white;
+  }
+}
+.user-stats {
+  padding-top: 10px;
+}
+
+
+.user-item-followers {
+  position: absolute;
+  top: 37px;
+  left: 10px;
+  background: black;
+  padding: 5px;
+}
+.user-followers {
+  color: white;
+  display: inline-block;
+  padding-right: 4px;
+  font-size: 10px;
+  font-weight: 100;
+  line-height: 15px;
+
+  .count {
+    color: #fff;
+    font-size: 10px;
+    line-height: 12px;
+  }
+
+  &:before {
+    background-size: 16px 16px;
+    width: 16px;
+    height: 12px;
+    display: inline-block;
+    content: "";
+    vertical-align: top;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyOCIgaGVpZ2h0PSIyOCI+PHBhdGggZmlsbD0icmdiYSgxNTMsIDE1MywgMTUzLCAwLjcpIiBkPSJNMTguNCAxOC41bDIuNSA1IC4yLjVoNi45bC0yLjEtNC4zLTQuMS0xLjV2LTIuNWMxLjItMS4xIDEuOC0zLjIgMS44LTUuMSAwLTIuMS0yLTMuNi0zLjUtMy42cy0zLjUgMS42LTMuNSAzLjZjMCAxLjkuNSA0IDEuOCA1LjF2Mi41aC0uMWwuMS4zeiIvPjxwYXRoIGZpbGw9IiM5OTkiIGQ9Ik0xNy41IDE5bC01LTEuOHYtM2MxLjQtMS4yIDItMy44IDItNS45IDAtMi40LTIuMy00LjMtNC00LjMtMS43IDAtNCAxLjgtNCA0LjMgMCAyLjIuNiA0LjcgMiA1Ljl2M2wtNSAxLjgtMi41IDVoMTlsLTIuNS01eiIvPjwvc3ZnPg==)
+  }
+}

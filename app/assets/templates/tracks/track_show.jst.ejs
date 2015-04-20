@@ -41,9 +41,14 @@
 
   <div class="track-options">
     <% if(user.get("is_current_user")) {%>
-    <div>
+    <div class="track-option">
       <a class="delete-track" href="#">
         <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="track-option">
+      <a class="edit-track" href="#">
+        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
       </a>
     </div>
     <% } %>

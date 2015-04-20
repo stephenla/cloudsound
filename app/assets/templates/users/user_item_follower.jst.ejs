@@ -5,5 +5,12 @@
   <img class="follow-avatar" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
 <% } %>
 
-  <h5> <%= user.get("username") %></h5>
-  <h6> <%= user.get("followers_count") %></h6>
+<div class="user-item-username">
+  <a href="/#user/<%= user.get("id") %>"> <%= user.get("username") %> </a>
+
+</div>
+<div class="user-item-followers">
+  <span class="user-followers">
+    <span class="count"><%= user.get("followers_count") %></span>
+  </span>
+</div>

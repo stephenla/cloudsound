@@ -33,15 +33,15 @@ class SessionsController < ApplicationController
 
   def guest
     @user = User.find_by_credentials(
-      "frank_farrell",
+      "the_visitor",
       "password"
     )
     if @user
       log_in!(@user)
       redirect_to root_url
     else
-      flash.now[:errors] = ["Unexpected Error."]
-      render :new
+      flash.now[:errors] = ["Unexpected Error"]
+      render "static_pages/welcome"
     end
   end
 

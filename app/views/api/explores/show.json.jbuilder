@@ -1,6 +1,9 @@
 json.extract! @current_user, :id, :username, :created_at
+users_limited = @users.limit(50)
+tracks_limited = @tracks.limit(50)
 
-json.other_users @users do |user|
+
+json.other_users users_limited do |user|
   json.extract! user, :id, :username, :created_at
   json.followers_count user.followers.length
   if user.avatar.file?
@@ -14,7 +17,7 @@ json.other_users @users do |user|
 end
 
 
-json.other_tracks @tracks do |track|
+json.other_tracks tracks_limited do |track|
   json.extract! track, :id, :title, :user_id, :audio ,:audio_file_name,
   :audio_content_type,
   :audio_file_size,
