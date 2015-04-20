@@ -29,9 +29,6 @@
   }
 
   .navbar-header{
-    .glyphicon-cloud{
-      font-size: 28px;
-      color: $primary-color;
       &:hover{
         animation-name: tossing;
       	-webkit-animation-name: tossing;
@@ -42,8 +39,23 @@
       	animation-iteration-count: infinite;
       	-webkit-animation-iteration-count: infinite;
       }
+    .glyphicon-cloud{
+      font-size: 28px;
+      color: $primary-color;
     }
   }
+  .navbar-right {
+    @media (max-width: $screen-lg-min) {
+      padding-right: 100px;
+    }
+    @media (max-width: $screen-md-min) {
+      padding-right: 130px;
+    }
+    @media (max-width: $screen-sm-min) {
+      padding-right: 240px;
+    }
+  }
+
   .navbar-nav {
 
     .navbar-btn{

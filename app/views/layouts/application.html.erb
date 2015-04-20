@@ -19,17 +19,29 @@
   <%= yield %>
 </div>
 
-<div id="control-bar" >
+<div id="control-bar" class="expandUp" >
 
 	<div class="player-control">
 		<div id="previous-button" title="Previous" class="glyphicon glyphicon-backward"></div>
-		<div id="play-button"  title="Play" class="glyphicon glyphicon-play"></div>
-		<div id="pause-button" title="Pause" class="glyphicon glyphicon-pause"></div>
-		<div id="stop-button" title="Stop" class="glyphicon glyphicon-stop"></div>
+		<div id="play-pause-button"  title="Play" class="glyphicon glyphicon-pause"></div>
 		<div id="next-button" title="Next" class="glyphicon glyphicon-forward"></div>
-		<div id="shuffle-button" title="Shuffle Off" class="fa fa-random"></div>
-		<div id="repeat-button" title="Repeat Off" class="fa fa-refresh"></div>
-	</div>
+
+    <div class="seeker">
+      <span class="current-time"></span>
+        <div class="seeker-bar">
+          <div class="seeker-progress">
+          </div>
+        </div>
+      <span class="total-time"></span>
+  	</div>
+    <div class="control-title">
+      <div class="control-avatar">
+
+      </div>
+      <span class="control-track-title"></span>
+    </div>
+
+  </div>
 
 	<div id="playlist">
 
@@ -50,6 +62,68 @@
 		</div>
 
 	</div>
+
+  <script charset="utf-8">
+
+    $("#next-button").click(function () {
+
+      var current = Cloudsound.currentlyPlaying ;
+      if (Cloudsound.waveTracks) {
+        Cloudsound.waveTracks.forEach(function (trackItem, index, arr) {
+          if (current === trackItem.wavesurfer && arr[index + 1]) {
+            $("#play-pause-button").removeClass("glyphicon-play");
+            $("#play-pause-button").addClass("glyphicon-pause");
+            Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
+            Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
+            Cloudsound.currentlyPlaying.pause();
+
+            Cloudsound.currentlyPlaying = arr[index + 1].wavesurfer;
+            Cloudsound.currentlyPlayingTarget = arr[index + 1].$("button.glyphicon");
+            Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
+            Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
+            Cloudsound.currentlyPlaying.play();
+          }
+        });
+      }
+    });
+    $("#previous-button").click(function () {
+      var current = Cloudsound.currentlyPlaying ;
+      if (Cloudsound.waveTracks) {
+        Cloudsound.waveTracks.forEach(function (trackItem, index, arr) {
+          if (current === trackItem.wavesurfer && arr[index - 1]) {
+            $("#play-pause-button").removeClass("glyphicon-play");
+            $("#play-pause-button").addClass("glyphicon-pause");
+            Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
+            Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
+            Cloudsound.currentlyPlaying.pause();
+
+            Cloudsound.currentlyPlaying = arr[index - 1].wavesurfer;
+            Cloudsound.currentlyPlayingTarget = arr[index - 1].$("button.glyphicon");
+            Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
+            Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
+            Cloudsound.currentlyPlaying.play();
+          }
+        });
+      }
+    });
+
+    $("#play-pause-button").click(function () {
+      if ($("#play-pause-button").attr("class").indexOf("glyphicon-pause") > -1) {
+        $("#play-pause-button").removeClass("glyphicon-pause");
+        $("#play-pause-button").addClass("glyphicon-play");
+        Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-pause");
+        Cloudsound.currentlyPlayingTarget.addClass("glyphicon-play");
+        Cloudsound.currentlyPlaying.pause();
+      } else {
+        $("#play-pause-button").addClass("glyphicon-pause");
+        $("#play-pause-button").removeClass("glyphicon-play");
+        Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
+        Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
+        Cloudsound.currentlyPlaying.play();
+      }
+    });
+  </script>
+
 </div>
 </body>
 </html>

@@ -67,6 +67,16 @@
           height: 110px;
           transform: translateY(5px);
         }
+
+        > wave {
+
+          >canvas {
+            margin-top: 0px;
+            height: 110px;
+            transform: translateY(5px);
+          }
+
+        }
       }
 
     }

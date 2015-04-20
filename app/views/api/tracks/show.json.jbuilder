@@ -13,6 +13,7 @@ json.time_ago time_ago_in_words(@track.created_at).gsub('about','').strip
 json.avatar_gradient @track.avatar_gradient
 json.description @track.description
 json.track_gradient @track.track_gradient
+json.avatar_micro @track.avatar.url(:micro)
 
 
 user = @track.user

@@ -1,24 +1,89 @@
 #control-bar {
+  display: none;
   width: 100%;
-  padding: 11px;
   position: fixed;
   bottom:0;
   left: 0;
-	z-index: 10;
+	z-index: 999;
   background: #f2f2f2;
   border-top: 1px solid #ccc;
+
+  .control-avatar {
+    height: 30px;
+    width: 30px;
+    float: left
+  }
+
   .player-control {
-    max-width: $max-page-width;
-    min-width: $min-page-width;
+    // max-width: $max-page-width;
+    width: $max-page-width;
+    // min-width: $min-page-width;
     margin: auto;
   }
   .glyphicon {
-    padding: 0 30px;
     font-size: 22px;
+    padding: 12px 30px;
+    cursor: pointer;
+
+    &.disabled {
+      cursor: default;
+      opacity: 0.5;
+    }
   }
 
   #playlist {
     display: none;
+  }
+  .current-time {
+    color: $primary-color;
+    vertical-align: sub;
+    padding: 0 5px;
+  }
+  .total-time {
+    vertical-align: sub;
+    padding: 0 5px;
+  }
+  .control-track-title {
+    color: #666;
+    font-size: 11px;
+    padding-left: 10px;
+    padding-top: 12px;
+    overflow:hidden;
+    display: block;
+    float: left;
+  }
+
+  .control-title {
+    width: 400px;
+    height: 23px;
+    display: inline-block;
+    padding: 0px 30px;
+    position: relative;
+    height: 25px;
+  }
+
+  .seeker {
+    width: 400px;
+    height: 23px;
+    display: inline-block;
+    padding: 0px 30px;
+    position: relative;
+    bottom: 5px;
+    .seeker-progress {
+      width: 0px;
+      background: $primary-color;
+      height: 1px;
+
+    }
+    .seeker-bar {
+      vertical-align: baseline;
+      display: inline-block;
+      width: 200px;
+      background: #ccc;
+      height: 1px;
+
+    }
+
   }
 }
 

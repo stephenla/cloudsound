@@ -15,6 +15,7 @@ json.is_current_user is_current_user
     :audio_file_size,
     :audio_updated_at
     json.avatar_gradient track.avatar_gradient
+    json.avatar_micro track.avatar.url(:micro)
     json.time_ago time_ago_in_words(track.created_at).gsub('about','').strip
 
     json.user do

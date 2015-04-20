@@ -23,7 +23,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     //   repeat = 0,			// Repeat flag
     //   lastPlayed = [],	// Array for last played (used when shuffling songs)
     //   timer = 0;			// An interval for the track's current time.
-    this.waveTracks = [];
+    this.waveTracks = Cloudsound.waveTracks = [];
   },
 
 
@@ -35,7 +35,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     //can more than one event go to the same event handler?
     subview.wavesurfer.on("finish", function () {
     }.bind(this));
-    this.waveTracks.push(subview.wavesurfer);
+    this.waveTracks.push(subview);
 
 
     subview.$el.show("fade", 1000);

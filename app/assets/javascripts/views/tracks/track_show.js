@@ -4,6 +4,24 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     "click .delete-track": "destroyTrack",
     "submit #new-comment-form": "createComment"
   },
+
+  _removeElement: function() {
+      this.$el.remove();
+  },
+
+  remove: function() {
+    if (this.wavesurfer.getCurrentTime() !== 0) {
+      this.wavesurfer.pause();
+    }
+    $("#next-button").toggleClass("disabled");
+    $("#previous-button").toggleClass("disabled");
+
+    this._removeElement();
+    this.stopListening();
+    return this;
+  },
+
+
   initialize: function (options) {
     this.comments = this.model.comments();
     this.user = options.user;
@@ -12,8 +30,12 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     this.listenTo(this.comments, "add", this.addComment);
     this.listenTo(this.user, "sync", this.render);
     // this.comments.each(this.addComment.bind(this));
+    this.events["click #button-" + this.model.id] = "playTrack";
+
     var commentNew = new Cloudsound.Views.CommentNew({ model: this.model });
     this.addSubview(".comment-box", commentNew);
+    $("#next-button").toggleClass("disabled");
+    $("#previous-button").toggleClass("disabled");
 
   },
 
@@ -29,9 +51,81 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
         height: 380
     });
     this.wavesurfer.load(this.model.get("audio"));
-    this.$el.find(".wave-track > wave").css("background",this.model.get("avatar_gradient"));
+    this.$el.find(".wave-track").css("background",this.model.get("avatar_gradient"));
 
   },
+
+  startTrackProgress: function () {
+    var pxPerSec = ($(".seeker-bar").width() / this.wavesurfer.getDuration());
+    var width = this.wavesurfer.getCurrentTime() * pxPerSec;
+    $(".seeker-progress").attr("style", "width: " + width + "px;");
+    var seconds = Math.floor(this.wavesurfer.getCurrentTime()) % 60;
+    var minutes = Math.floor(this.wavesurfer.getCurrentTime() / 60);
+    $(".current-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
+
+
+  },
+
+  playTrack: function (event) {
+    event.preventDefault();
+    $currentTarget = $(event.currentTarget);
+
+    $("#control-bar").show();
+    Cloudsound.currentlyPlaying = this.wavesurfer;
+    Cloudsound.currentlyPlayingTarget = $currentTarget;
+
+    $(".control-track-title").text(this.model.get("title"));
+    // $("#next-button")
+
+    if (this.model.get("has_avatar")) {
+      $(".control-avatar").css('background', this.model.get('avatar_micro'));
+    } else {
+      $(".control-avatar").css('background', this.model.get('avatar_gradient'));
+    }
+
+    if ($currentTarget.attr("class").indexOf("glyphicon-pause") > -1) {
+      if (trackItem.wavesurfer.getCurrentTime() !== 0) {
+        this.wavesurfer.pause();
+        $("#play-pause-button").addClass("glyphicon-play");
+        $("#play-pause-button").removeClass("glyphicon-pause");
+        $currentTarget.removeClass("glyphicon-pause");
+        $currentTarget.addClass("glyphicon-play");
+        return;
+      }
+    }
+
+
+    this.wavesurfer.on('pause', function () {
+      window.clearInterval(this.interval);
+      // this.wavesurfer.un('pause');
+      // $(".total-time").text("");
+    }.bind(this));
+
+    this.wavesurfer.on('play', function () {
+      if (this.interval) {
+        window.clearInterval(this.interval);
+      }
+      var seconds = Math.floor(this.wavesurfer.getCurrentTime()) % 60;
+      var minutes = Math.floor(this.wavesurfer.getCurrentTime() / 60);
+      $(".current-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
+      seconds = Math.floor(this.wavesurfer.getDuration()) % 60;
+      minutes = Math.floor(this.wavesurfer.getDuration() / 60);
+      $(".total-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
+      this.interval = window.setInterval(this.startTrackProgress.bind(this), 1000);
+    }.bind(this));
+
+
+
+
+    $currentTarget.removeClass("glyphicon-play");
+    $currentTarget.addClass("glyphicon-pause");
+    $("#play-pause-button").addClass("glyphicon-pause");
+    $("#play-pause-button").removeClass("glyphicon-play");
+    this.wavesurfer.play();
+
+
+  },
+
 
   destroyTrack: function (event) {
     var that = this;
