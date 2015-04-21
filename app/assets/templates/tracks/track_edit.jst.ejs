@@ -1,0 +1,43 @@
+
+
+<h1 id="settings-heading">Track Settings</h1>
+
+<div class="settings-links clearfix">
+  <span class="stream medium link active">Information</span>
+</div>
+
+<div class="edit-wrapper">
+  <form class="edit-track clearfix" id="edit-track" action="/api/tracks/<%= track.get('id') %>" accept-charset="UTF-8" method="post">
+    <input name="utf8" type="hidden" value="✓">
+    <input type="hidden" name="_method" value="patch">
+    <input type="hidden" name="authenticity_token" value="+9XeWK7qWy455VyHW/SeDhIwCRUaeGhIhLROag9DNQ/19hhr+T5SoymMSejwtaMhDpPrqixhC1GqyUia8E+saA==">
+    <div class="top-form-group clearfix">
+      <div class="track-edit-title">
+        <a href="/#user/<%= track.get('user_id') %>/track/<%= track.get('id') %>"><%= track.get('title') %></a>
+      </div>
+      <% if (track.get("has_avatar")) { %>
+        <img class="track-avatar" style="background:<%= track.get("avatar_gradient") %>" src="<%= track.get("avatar_medium") %>" />
+      <% } else { %>
+        <div class="track-avatar" style="background:<%= track.get("avatar_gradient") %>"> </div>
+      <% } %>
+      <div class="form-group-right clearfix">
+
+        <div class="form-group username">
+          <label class="edit-label title require">Title</label>
+          <input class="edit-field form-control" type="text" name="title" value="<%= track.get("title") %>">
+        </div>
+
+        <div class="form-group description">
+          <label class="edit-label">Description</label>
+          <textarea class="edit-field form-control" name="description"><%= track.get("description") %></textarea>
+        </div>
+
+        <div class="form-group">
+          <input class="btn btn-default" type="submit" name="commit" value="Save changes">
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+</div>

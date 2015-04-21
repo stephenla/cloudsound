@@ -8,7 +8,7 @@ User information updated
   <span class="stream medium link active">Profile</span>
 </div>
 <div class="edit-wrapper">
-  <form class="edit-user clearfix" id="edit-user" enctype="multipart/form-data" action="http://localhost:3000/api/users/1" accept-charset="UTF-8" method="post">
+  <form class="edit-user clearfix" id="edit-user" enctype="multipart/form-data" action="/api/users/<%= user.get('id') %>" accept-charset="UTF-8" method="post">
     <input name="utf8" type="hidden" value="✓">
     <input type="hidden" name="_method" value="patch">
     <input type="hidden" name="authenticity_token" value="+9XeWK7qWy455VyHW/SeDhIwCRUaeGhIhLROag9DNQ/19hhr+T5SoymMSejwtaMhDpPrqixhC1GqyUia8E+saA==">

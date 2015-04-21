@@ -96,6 +96,9 @@ input[type="text"],input[type="password"], input {
 input[type="file"] {
   color: transparent;
 }
+textarea {
+  resize: vertical;
+}
 
 .container {
   max-width: $max-page-width;

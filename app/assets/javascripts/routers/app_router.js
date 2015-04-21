@@ -6,6 +6,7 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
     "user/:id/tracks": "userProfile",
     "user/:id/settings": "userSettings",
     "user/:user_id/track/:id": "trackShow",
+    "track/:id/settings": "trackSettings",
     "user/:id/following": "userFollowing",
     "user/:id/followers": "userFollowers",
     "explore": "explore"
@@ -31,6 +32,12 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
   userFeed: function () {
     var user = this.feeds.getOrFetch(Cloudsound.current_user);
     var view = new Cloudsound.Views.UserFeed({ model: user });
+    this._swapView(view);
+  },
+
+  trackSettings: function (id) {
+    var track = this.tracks.getOrFetch(id);
+    var view = new Cloudsound.Views.TrackEdit({ model: track });
     this._swapView(view);
   },
 
