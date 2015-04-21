@@ -10,9 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in!(user)
-    loc = request.location
-    location = loc.city + ', ' + loc.state + ', ' + loc.country
-    user_agent = request.env["HTTP_USER_AGENT"]
     new_session = user.sessions.create!(environment: user_agent, location: location)
     self.session[:session_token] = new_session.session_token
   end
