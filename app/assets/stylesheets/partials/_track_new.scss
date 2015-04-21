@@ -127,7 +127,8 @@
 }
 
 .meter {
-    visibility:hidden;
+  text-align: center;
+  visibility:hidden;
   box-sizing: content-box;
   height: 10px;
   position: relative;
@@ -139,6 +140,10 @@
   box-shadow: inset 0 -1px 1px rgba(255,255,255,0.3);
   border: 1px solid  #ccc;
   // display: none;
+  .percent {
+    margin-top: 5px;
+    display: inline-block;
+  }
   &.nostripes {
     > .meter-bar:after {
       -webkit-animation: none;
