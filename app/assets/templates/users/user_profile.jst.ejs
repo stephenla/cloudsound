@@ -9,7 +9,7 @@
     <% if (user.get("has_avatar")) { %>
       <img class="profile-avatar" src="<%= user.get("avatar_medium") %>" />
     <% } else { %>
-      <img class="profile-avatar" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
+      <div class="profile-avatar" style="background:<%= user.get("avatar_gradient") %>" > </div>
     <% } %>
 
 
