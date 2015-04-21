@@ -59,8 +59,10 @@ Cloudsound.Routers.Router = Backbone.Router.extend({
 
   userFollowers: function (id) {
     var user = this.followers.getOrFetch(id);
+    var currentUser = this.users.getOrFetch(Cloudsound.current_user);
     var view = new Cloudsound.Views.UserFollowers({
-      model: user
+      model: user,
+      currentUser: currentUser
     });
     this._swapView(view);
   },

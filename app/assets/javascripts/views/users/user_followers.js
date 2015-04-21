@@ -6,10 +6,13 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     "click .follow" : "followUser"
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.currentUser = options.currentUser;
     this.followers = this.model.followers();
     this.listenTo(this.model, "sync", this.render);
+    this.listenTo(this.currentUser, "sync", this.render);
     this.listenTo(this.followers, "add", this.addFollower);
+    this.listenTo(this.followers, "remove", this.removeFollower);
     //why do i need this bind
     // this.followers.each(this.addFollower.bind(this));
   },
@@ -21,14 +24,23 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     this.addSubview(".follow-users", subview);
   },
 
+  removeFollower: function (user) {
+    debugger
+    var subview = _.find(this.subviews(".follow-users"), function (subview) {
+      return subview.model === user;
+    });
+    this.removeSubview(".follow-users", subview);
+  },
+
   unfollowUser: function (event) {
     event.preventDefault();
+    var that = this;
     var relationship = new Cloudsound.Models.Relationship({ id: this.model.get("relationship").relationship_id});
     relationship.fetch({
       success: function(model) {
         model.destroy();
-        this.model.fetch();
-      }.bind(this)
+        that.model.fetch();
+      }
     });
 
   },
