@@ -10,6 +10,7 @@ Cloudsound.Models.Follow = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.following) {
+      this.following().reset([]);
       this.following().set(response.following, { parse: true});
       delete response.following;
     }
