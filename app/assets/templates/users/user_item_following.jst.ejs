@@ -3,7 +3,7 @@
 <% if (user.get("has_avatar")) { %>
   <img class="follow-avatar" src="<%= user.get("avatar_medium") %>" />
 <% } else { %>
-  <img class="follow-avatar" style="background:<%= user.get("avatar_gradient") %>" src="//:0" />
+  <div class="follow-avatar" style="background:<%= user.get("avatar_gradient") %>"> </div>
 <% } %>
 
   <div class="user-item-username">
