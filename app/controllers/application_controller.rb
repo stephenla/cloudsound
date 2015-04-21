@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   end
 
   def log_in!(user)
-    new_session = user.sessions.create!(environment: user_agent, location: location)
+    new_session = user.sessions.create!()
     self.session[:session_token] = new_session.session_token
   end
 
