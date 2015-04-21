@@ -8,7 +8,6 @@
 #
 
 # Users ##
-
 stephen = User.create!(username: "cloudsound", password: "password",
 avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})"
 )
@@ -19,12 +18,12 @@ avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffff
 guest.follow(stephen)
 stephen.follow(guest)
 50.times do |n|
-  user = User.create!(username: Faker::Name.name, password: "password", avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})")
+  user = User.create!(username: Faker::Internet.user_name, password: "password", avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})")
   guest.follow(user)
   stephen.follow(user)
 end
 50.times do |n|
-  user = User.create!(username: Faker::Name.name, password: "password", avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})")
+  user = User.create!(username: Faker::Internet.user_name, password: "password", avatar_gradient: "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})")
   user.follow(guest)
   user.follow(stephen)
 end
