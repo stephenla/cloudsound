@@ -14,3 +14,12 @@
     <span class="count"><%= user.get("followers_count") %></span>
   </span>
 </div>
+<% if (user.get("relationship")) {%>
+  <div class="follow-links list">
+    <% if (user.get("relationship").is_following) {%>
+      <a href="#" class='unfollow btn btn-default'>Following</a>
+    <% } else if (!user.get("relationship").is_following) { %>
+      <a href="#" class='follow btn btn-default'>Follow</a>
+    <% } %>
+  </div>
+<% } %>

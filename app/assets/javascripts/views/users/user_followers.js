@@ -44,6 +44,14 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
 
   },
 
+  addScript: function () {
+    $("." + $(".follow-links.list").parent().attr('class')).hover(function () {
+      $(this).find('.follow-links.list').show('fade', 300);
+    }, function () {
+      $(this).find('.follow-links.list').hide('fade', 300);
+    });
+  },
+
   render: function () {
     var content = this.template({ user: this.model });
     this.$el.html(content);
@@ -51,6 +59,7 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     if (this.followers.length === 0) {
       this.$('.follow-users').append("<p>" + this.model.get('username') + " has no followers</p>");
     }
+    this.addScript();
     return this;
   }
 });

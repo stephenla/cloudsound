@@ -32,13 +32,20 @@ Cloudsound.Views.ExploreShow = Backbone.CompositeView.extend({
     this.addSubview(".explore-users", subview);
   },
 
-
+  addScript: function () {
+    $("." + $(".follow-links.list").parent().attr('class')).hover(function () {
+      $(this).find('.follow-links.list').show('fade', 300);
+    }, function () {
+      $(this).find('.follow-links.list').hide('fade', 300);
+    });
+  },
   render: function () {
     var content = this.template({
       explore: this.model
     });
     this.$el.html(content);
     this.attachSubviews();
+    this.addScript();
     return this;
   }
 

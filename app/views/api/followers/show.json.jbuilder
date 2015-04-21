@@ -9,9 +9,21 @@ json.followers followers do |user|
   else
     json.has_avatar false
   end
+
   json.avatar user.avatar
   json.avatar_medium user.avatar.url(:medium)
   json.avatar_gradient user.avatar_gradient
+
+  json.relationship do
+    if user.passive_relationships.where(follower_id: @current_user.id).empty?
+      json.is_following false
+      json.follower_id current_user.id
+      json.followed_id user.id
+    else
+      json.is_following true
+      json.relationship_id user.passive_relationships.where(follower_id: current_user.id).first.id
+    end
+  end
 end
 
 
