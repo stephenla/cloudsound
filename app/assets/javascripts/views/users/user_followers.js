@@ -15,7 +15,7 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
   },
 
   addFollower: function (user) {
-    
+
     var subview = new Cloudsound.Views.UserItemFollower({ model: user });
     subview.$el.show("fade", 1000);
     this.addSubview(".follow-users", subview);
@@ -48,6 +48,9 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
+    if (this.followers.length === 0) {
+      this.$('.follow-users').append("<p>" + this.model.get('username') + " has no followers</p>");
+    }
     return this;
   }
 });

@@ -77,6 +77,9 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
+    if (this.collection.length === 0) {
+      this.$('.tracks').append("<p>" + this.model.get('username') + " has no tracks</p>");
+    }
     return this;
   }
 

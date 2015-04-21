@@ -46,6 +46,9 @@ Cloudsound.Views.UserFollowing = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
+    if (this.followings.length === 0) {
+      this.$('.follow-users').append("<p>" + this.model.get('username') + " is not following any users</p>");
+    }
     return this;
   }
 });

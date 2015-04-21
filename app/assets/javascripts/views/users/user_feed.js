@@ -40,6 +40,10 @@ Cloudsound.Views.UserFeed = Backbone.CompositeView.extend({
     var content = this.template({ user: this.model });
     this.$el.html(content);
     this.attachSubviews();
+    if (this.feed.models.length === 0) {
+      this.$('.feed').append("<p>There are no tracks in your feed</p>");
+    }
+
     return this;
   }
 
