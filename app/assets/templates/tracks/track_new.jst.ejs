@@ -50,12 +50,7 @@
         </div>
 
         <div class="track-avatar-wrapper clearfix">
-          <img class="track-avatar" style="background:<%= gradient %>" src="//:0" />
-
-          <span class="avatar-errors alert alert-danger">Avatar only supports .jpg, .gif, and .png</span>
-
-          <label for="edit-track-avatar" id="choose-track-avatar" class="btn btn-default">Choose new image</label>
-          <input id="edit-track-avatar" class="edit-avatar" type="file" name="user[avatar]" id="user_avatar">
+          <div class="track-avatar" style="background:<%= gradient %>" > </div>
         </div>
 
         <div class="right">
@@ -76,39 +71,4 @@
 
   </div>
 
-  <script charset="utf-8">
-    // function readURL(input) {
-    //
-    //     if (input.files && input.files[0]) {
-    //         var reader = new FileReader();
-    //
-    //         reader.onload = function (e) {
-    //
-    //           if (!Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
-    //
-    //             $(".avatar-errors").fadeIn(500, function () {
-    //               window.setTimeout(function () {
-    //                 $(".avatar-errors").fadeOut(500);
-    //               },8000);
-    //             });
-    //           } else {
-    //
-    //             $('.track-avatar').attr('src', e.target.result);
-    //           }
-    //
-    //         }
-    //
-    //         reader.readAsDataURL(input.files[0]);
-    //     }
-    // }
-    //
-    // $("#edit-track-avatar").change(function(){
-    //
-    //     readURL(this);
-    // });
-
-    // document.getElementById('choose-track-avatar').addEventListener('click',function(){
-    //   document.getElementById('edit-track-avatar').click();
-    // });
-  </script>
 </div>
