@@ -11,7 +11,7 @@ User information updated
   <form class="edit-user clearfix" id="edit-user" enctype="multipart/form-data" action="/api/users/<%= user.get('id') %>" accept-charset="UTF-8" method="post">
     <input name="utf8" type="hidden" value="✓">
     <input type="hidden" name="_method" value="patch">
-    <input type="hidden" name="authenticity_token" value="+9XeWK7qWy455VyHW/SeDhIwCRUaeGhIhLROag9DNQ/19hhr+T5SoymMSejwtaMhDpPrqixhC1GqyUia8E+saA==">
+    <input type="hidden" name="authenticity_token" value="<%= AUTH_TOKEN %>">
     <div class="top-form-group clearfix">
       <% if (user.get("has_avatar")) { %>
         <img class="account-avatar" style="background:<%= user.get("avatar_gradient") %>" src="<%= user.get("avatar_medium") %>" />
