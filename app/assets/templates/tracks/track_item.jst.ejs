@@ -1,7 +1,7 @@
 <% if (track.get("has_avatar")) { %>
   <img class="feed-avatar" style="background:<%= track.get("avatar_gradient") %>" src="<%= user.get("avatar_small") %>" />
 <% } else { %>
-  <img class="feed-avatar" style="background:<%= track.get("avatar_gradient") %>" src="//:0" />
+  <div class="feed-avatar" style="background:<%= track.get("avatar_gradient") %>" > </div>
 <% } %>
 
 <div class="track-item">
