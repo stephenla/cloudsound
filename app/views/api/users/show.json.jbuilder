@@ -1,7 +1,7 @@
 # following = @user.following.includes(:followers)
 # followers = @user.followers.includes(:followers)
 is_current_user = (@user == @current_user)
-tracks = @user.tracks
+tracks = @user.tracks.order(created_at: :desc)
 json.extract! @user, :id, :username, :created_at, :first_name, :last_name, :description
 json.follower_count @user.followers.length
 json.track_count tracks.length

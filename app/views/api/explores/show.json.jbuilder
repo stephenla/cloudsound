@@ -1,6 +1,6 @@
 json.extract! @current_user, :id, :username, :created_at
-users_limited = @users.limit(50)
-tracks_limited = @tracks.limit(50)
+users_limited = @users
+tracks_limited = @tracks
 
 
 json.other_users users_limited do |user|
