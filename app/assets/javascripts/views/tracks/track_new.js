@@ -56,21 +56,22 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
         if (progress === 100) {
           // $('html').prepend($("<div class='loader'></div>").css("height", $('html').css('height')).append("<div class='fade-screen'></div>"));
           $('.loader').show();
+          that.$('.percent').addClass('tossing').text('Processing...');
         }
       },
 
       add: function (e, data) {
         file = data.files[0];
-        if (data.files[0]) {
-
-          var reader = new FileReader();
-          reader.onload = function (e) {
-            if (Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
-              $('.track-avatar').attr('src', e.target.result);
-            }
-          };
-          reader.readAsDataURL(data.files[0]);
-        }
+        // if (data.files[0]) {
+        //
+        //   var reader = new FileReader();
+        //   reader.onload = function (e) {
+        //     if (Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+        //       $('.track-avatar').attr('src', e.target.result);
+        //     }
+        //   };
+        //   reader.readAsDataURL(data.files[0]);
+        // }
         if (!Cloudsound.hasExtension('track-audio', ['.mp3', '.aac', '.ogg', '.wav'])) {
           that.$("#track-extra-info").hide("fade",1000);
           $(".file-type-error ").fadeIn(500, function () {
@@ -84,14 +85,14 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
           that.$("#track-extra-info").show("fade",1000);
           $('#save').click(function () {
             if ($("#track-title").val()) {
-              if (document.getElementById('edit-track-avatar').value && !Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
-                $(".avatar-errors").fadeIn(500, function () {
-                  window.setTimeout(function () {
-                    $(".avatar-errors").fadeOut(500);
-                  },8000);
-                });
-                return;
-              }
+              // if (document.getElementById('edit-track-avatar').value && !Cloudsound.hasExtension('edit-track-avatar', ['.jpg', '.gif', '.png'])) {
+              //   $(".avatar-errors").fadeIn(500, function () {
+              //     window.setTimeout(function () {
+              //       $(".avatar-errors").fadeOut(500);
+              //     },8000);
+              //   });
+              //   return;
+              // }
               that.$('.meter').css("visibility", "visible");
               data.submit();
             }
