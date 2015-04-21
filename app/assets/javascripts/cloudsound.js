@@ -66,7 +66,6 @@ $(function () {
           Cloudsound.currentlyPlayingTarget.removeClass("glyphicon-play");
           Cloudsound.currentlyPlayingTarget.addClass("glyphicon-pause");
           Cloudsound.currentlyPlayingTitle = arr[index - 1].model.get("title");
-          debugger
           $(".control-track-title").text(Cloudsound.currentlyPlayingTitle);
           Cloudsound.currentlyPlaying.play();
         }

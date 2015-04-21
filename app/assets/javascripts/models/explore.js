@@ -17,12 +17,10 @@ Cloudsound.Models.Explore = Backbone.Model.extend({
 
   parse: function (response) {
     if (response.other_tracks) {
-      this.otherTracks().reset([]);
       this.otherTracks().set(response.other_tracks, { parse: true });
       delete response.other_tracks;
     }
     if (response.other_users) {
-      this.otherUsers().reset([]);
       this.otherUsers().set(response.other_users, { parse: true });
       delete response.other_users;
     }
