@@ -34,9 +34,9 @@ Cloudsound.Views.ExploreShow = Backbone.CompositeView.extend({
 
   addScript: function () {
     $("." + $(".follow-links.list").parent().attr('class')).hover(function () {
-      $(this).find('.follow-links.list').show('fade', 300);
+      $(this).find('.follow-links.list').show('fade', 100);
     }, function () {
-      $(this).find('.follow-links.list').hide('fade', 300);
+      $(this).find('.follow-links.list').hide('fade', 100);
     });
   },
   render: function () {
