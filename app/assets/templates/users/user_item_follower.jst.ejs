@@ -14,7 +14,7 @@
     <span class="count"><%= user.get("followers_count") %></span>
   </span>
 </div>
-<% if (user.get("relationship")) {%>
+<% if (user.get("id") !== Cloudsound.current_user && user.get("relationship")) {%>
   <div class="follow-links list">
     <% if (user.get("relationship").is_following) {%>
       <a href="#" class='unfollow btn btn-default'>Following</a>
