@@ -2,7 +2,7 @@
 # followers = @user.followers.includes(:followers)
 is_current_user = (@user == @current_user)
 tracks = @user.tracks
-json.extract! @user, :id, :username, :created_at, :first_name, :last_name
+json.extract! @user, :id, :username, :created_at, :first_name, :last_name, :description
 json.follower_count @user.followers.length
 json.track_count tracks.length
 json.is_current_user is_current_user
