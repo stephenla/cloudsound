@@ -84,7 +84,7 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     }
 
     if ($currentTarget.attr("class").indexOf("glyphicon-pause") > -1) {
-      if (trackItem.wavesurfer.getCurrentTime() !== 0) {
+      if (this.wavesurfer.getCurrentTime() !== 0) {
         this.wavesurfer.pause();
         $("#play-pause-button").addClass("glyphicon-play");
         $("#play-pause-button").removeClass("glyphicon-pause");
