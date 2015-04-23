@@ -32,10 +32,7 @@ class SessionsController < ApplicationController
   end
 
   def guest
-    @user = User.find_by_credentials(
-      "the_visitor",
-      "password"
-    )
+    @user = User.find(2)
     if @user
       log_in!(@user)
       redirect_to root_url
