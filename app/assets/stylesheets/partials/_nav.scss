@@ -1,4 +1,6 @@
-
+.sign-in, .sign-up {
+  cursor: pointer;
+}
 .navbar-default {
   margin: 0;
   border: 0;
@@ -25,7 +27,7 @@
       font-size: 16px;
     }
     &:hover {
-      
+
       color: #eee!important;
     }
   }

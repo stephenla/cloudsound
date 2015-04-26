@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav navbar-right">
   <li>
-    <div class="sign-in navbar-links" data-toggle="modal" data-target="#loginModal">
+    <div class="sign-in navbar-links">
       Sign In
     </div>
 
@@ -9,9 +9,25 @@
     <div class="nav-or">or<div>
   </li>
   <li>
-    <div class="sign-up navbar-links" data-toggle="modal" data-target="#signUpModal">
+    <div class="sign-up navbar-links">
       Sign Up
     </div>
 
   </li>
 </ul>
+<script type="text/javascript">
+$(function () {
+  $(".sign-in").click(function () {
+    $("#signUpModal").hide();
+    $("#loginModal").show();
+  });
+  $(".sign-up").click(function () {
+    $("#loginModal").hide();
+    $("#signUpModal").show();
+  });
+  $(".btn.close").click(function () {
+    $("#loginModal").hide();
+    $("#signUpModal").hide();
+  });
+});
+</script>

@@ -144,3 +144,8 @@ textarea {
 #user-feed {
   padding-top: 30px;
 }
+button {
+  &:focus, &:active {
+    outline: 0!important;
+  }
+}
