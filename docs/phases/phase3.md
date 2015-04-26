@@ -1,31 +1,35 @@
-# Phase 3: Playlist show, playlist likes. Following users (~ 2 day)
+# Phase 3: Comments, following, user Feeds (~2 days)
 
 ## Rails
 ### Models
-* Playlist (has many tracks)
-* Track (belongs to playlist)
+* Following (belongs to followed, belongs to following)
+* Tracks (has many followed tracks through followings)
+* User (has many tracks)
 
 ### Controllers
-* API::PlaylistsController (index, create, show, update, destroy)
-* API::TracksController (show)
+* Api::TracksController (feed, search)
+* Api::UsersController (search)
 
 ### Views
-* playlists/index.json.jbuilder
-* playlists/show.json.jbuilder
-* track/show.json.jbuilder
+* tracks/feed.json.jbuilder
+* tracks/search.json.jbuilder
+* users/search.json.jbuilder
 
 ## Backbone
 ### Models
-* Playlist (parses nested `tracks` and `likes` association)
+* User (parses nested `followers` and `following` association)
+* User
 * Track
 
 ### Collections
-* Playlists
+* User
+* Track
 
 ### Views
-* PlaylistIndex (composite view, contains PlaylistIndexItem subview)
-* PlaylistIndexItem
-* PlaylistShow (composite view, contains TrackIndexItem subview)
-* PlaylistForm
+* SearchIndex (composite view, contains TrackIndex and UserIndex subview)
+* TrackIndex (composite view, contains TrackIndexItem subview)
+* TrackIndexItem
+* UserIndex (composite view, contains UserIndexItem subview)
+* UserIndexItem
 
 ## Gems/Libraries

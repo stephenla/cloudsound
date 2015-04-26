@@ -1,28 +1,33 @@
-# Soundcloud Mini
+# CloudSound
+[Live Link](www.cloudsound.com)
 
-<!-- [Heroku link][heroku] -->
+## TODO
 
-<!-- [heroku]: -->
 
 ## Minimum Viable Product
 Soundcloud mini is a clone of Soundcloud built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 Phase 1
-- [ ] Create User accounts
-- [ ] Create sessions (log in)
-- [ ] Upload tracks
+- [x] Create User accounts
+- [x] Create sessions (log in)
+- [x] Upload tracks
 
 Phase 2
-- [ ] User profile view
-- [ ] User account view
-- [ ] Index tracks
-- [ ] Show tracks
-- [ ] Delete tracks
-- [ ] Edit tracks
-- [ ] Play tracks
+- [x] User profile view
+- [x] User account view
+- [x] Explore tracks
+- [x] Show tracks
+- [x] Delete tracks
+- [x] Edit tracks
+- [x] Play tracks
 
 Phase 3
+- [x] Add comments to tracks
+- [x] Follow users
+- [x] User feeds
+
+Phase 4
 - [ ] Create playlists
 - [ ] Index playlists
 - [ ] Show playlists
@@ -30,17 +35,13 @@ Phase 3
 - [ ] Edit playlists
 - [ ] Add track to playlists
 
-Phase 4
-- [ ] Add comments to tracks
-- [ ] Follow users
-- [ ] User feeds
-- [ ] See other users feeds?
-
 Phase 5
 - [ ] Track likes
 - [ ] Playlist likes
 - [ ] User search
 - [ ] Track search
+
+Phase 6
 - [ ] Drag n Drop tracks to playlists and likes
 
 ## Design Docs
@@ -74,18 +75,7 @@ Implement track show, delete, edit.
 
 [Details][phase-two]
 
-### Phase 3: Playlist create, show, edit, delete. Add track to playlist (~2 day)
-Create Playlist link and form.
-
-Playlist show page will show short user bio, tracks belonging to the playlist,
-and users who liked the playlist. Implement playlist create, show, edit, delete.
-
-Implement adding tracks to playlist.
-
-
-[Details][phase-three]
-
-### Phase 4: Comments, following, user Feeds. (~3 days)
+### Phase 3: Comments, following, user Feeds. (~3 days)
 Implement adding comments to tracks.
 
 Implement following between users. Add following and unfollowing button to user
@@ -97,7 +87,19 @@ also show users likes and playlists.
 
 
 
+[Details][phase-three]
+
+### Phase 4: Playlist create, show, edit, delete. Add track to playlist (~2 day)
+Create Playlist link and form.
+
+Playlist show page will show short user bio, tracks belonging to the playlist,
+and users who liked the playlist. Implement playlist create, show, edit, delete.
+
+Implement adding tracks to playlist.
+
+
 [Details][phase-four]
+
 
 ### Phase 5: Likes for playlist and tracks. User and track search. (~2 days)
 Implement liking tracks and playlists.
@@ -125,6 +127,3 @@ with TrackIndexItems will have drag and drop.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-
-
-### TODO
