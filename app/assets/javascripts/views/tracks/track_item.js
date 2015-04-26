@@ -9,9 +9,9 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
   },
 
   remove: function() {
-    if (this.wavesurfer.getCurrentTime() !== 0) {
-      this.wavesurfer.pause();
-    }
+    // if (this.wavesurfer.getCurrentTime() !== 0) {
+    //   this.wavesurfer.pause();
+    // }
 
     this._removeElement();
     this.stopListening();

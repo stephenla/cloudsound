@@ -5,6 +5,7 @@ window.Cloudsound = {
   Routers: {},
   initialize: function() {
     new Cloudsound.Routers.Router();
+    Cloudsound.waveTracks = [];
     Backbone.history.start();
   },
 

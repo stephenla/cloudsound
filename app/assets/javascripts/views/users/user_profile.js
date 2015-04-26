@@ -7,35 +7,24 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
   },
 
   initialize: function () {
-
     this.collection = this.model.tracks();
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.collection, "add", this.addTrack);
-    // this.addWaveSurfer();
     this.listenTo(this.collection, "remove", this.removeTrack);
     //strange behaviour without this
     // // this.collection.each(this.addTrack.bind(this));
-    // this.allTracks = [];		// An array for all the files loaded in the track
-    //   playlist = [] 		// An array for the current playlist
-    //   temporarySearchPlaylist = [],	// A helper array for when we are searching
-    //   i = 0, 				// The number of the current track
-    //   shuffle = false,	// Shuffle flag
-    //   repeat = 0,			// Repeat flag
-    //   lastPlayed = [],	// Array for last played (used when shuffling songs)
-    //   timer = 0;			// An interval for the track's current time.
-    this.waveTracks = Cloudsound.waveTracks = [];
   },
 
 
   addTrack: function (track) {
     var subview = new Cloudsound.Views.TrackItem({
       model: track,
-      waveTracks: this.waveTracks
+      waveTracks: Cloudsound.waveTracks
     });
     //can more than one event go to the same event handler?
     subview.wavesurfer.on("finish", function () {
     }.bind(this));
-    this.waveTracks.push(subview);
+    Cloudsound.waveTracks.push(subview);
 
 
     subview.$el.show("fade", 1000);

@@ -10,11 +10,11 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   },
 
   remove: function() {
-    if (this.wavesurfer.getCurrentTime() !== 0) {
-      this.wavesurfer.pause();
-    }
-    $("#next-button").toggleClass("disabled");
-    $("#previous-button").toggleClass("disabled");
+    // if (this.wavesurfer.getCurrentTime() !== 0) {
+    //   this.wavesurfer.pause();
+    // }
+    // $("#next-button").toggleClass("disabled");
+    // $("#previous-button").toggleClass("disabled");
 
     this._removeElement();
     this.stopListening();
@@ -73,6 +73,14 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     $("#control-bar").show();
     Cloudsound.currentlyPlaying = this.wavesurfer;
     Cloudsound.currentlyPlayingTarget = $currentTarget;
+
+    Cloudsound.waveTracks.forEach(function (trackItem) {
+      if (trackItem.wavesurfer.getCurrentTime() !== 0) {
+        trackItem.wavesurfer.pause();
+      }
+    }.bind(this));
+
+
 
     $(".control-track-title").text(this.model.get("title"));
     // $("#next-button")
