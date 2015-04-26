@@ -1,5 +1,5 @@
 # CloudSound
-##[Live Link](www.cloudsound.com)
+##[Live Link](http://www.cloudsound.io)
 
 ## Minimum Viable Product
 Soundcloud mini is a clone of Soundcloud built on Rails and Backbone. Users can:
