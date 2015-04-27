@@ -20,7 +20,7 @@
       width: 110px;
       background-image: url("https://s3-us-west-2.amazonaws.com/cloudsound/assets/images/backbone.png");
       background-repeat: no-repeat;
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(255,255,255,0.1);
     }
     #rails-logo{
       display: inline-block;
@@ -28,7 +28,7 @@
       width: 86px;
       background-repeat: no-repeat;
       background-image: url("https://s3-us-west-2.amazonaws.com/cloudsound/assets/images/rails.png");
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(255,255,255,0.1);
     }
     #github-logo{
       display: inline-block;
@@ -36,7 +36,7 @@
       width: 113px;
       background-image: url("https://s3-us-west-2.amazonaws.com/cloudsound/assets/images/github.png");
       background-repeat: no-repeat;
-      background-color: rgba(255,255,255,0.3);
+      background-color: rgba(255,255,255,0.1);
     }
     &.small {
       font-size: 22px;
