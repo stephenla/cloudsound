@@ -52,8 +52,8 @@ Create user account page, where user can edit and delete account. Add links to t
 Track show page will show short owner bio, track comments, and users who liked
 the track.
 
-Implement track show, delete, edit.
-
+Implement track show, delete, edit. Wavesurfer.js will be used to help play tracks
+on the webpage.
 
 [Details][phase-two]
 

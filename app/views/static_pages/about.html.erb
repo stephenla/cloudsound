@@ -1,0 +1,19 @@
+<%= javascript_tag "Cloudsound.welcome = '#{welcome_image}';" %>
+<div class="about">
+  <h1 class="about-header">About this project</h1>
+  <p class="about-body small">
+    CloudSound is built with Ruby on Rails and Backbone.js. Find out more about this project
+    through the github link below!
+  </p>
+  <p class="about-body center">
+    <a href="http://backbonejs.org/" id="backbone-logo"></a>
+    <a href="http://rubyonrails.org/" id="rails-logo"></a>
+    <a href="https://github.com/stephenla/cloudsound" id="github-logo"></a>
+  </p>
+</div>
+<script charset="utf-8">
+$(function () {
+  $("body").css("background", "url('" + Cloudsound.welcome + "') center no-repeat");
+  $("#content").css("background", "none");
+});
+</script>

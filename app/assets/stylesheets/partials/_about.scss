@@ -1,0 +1,49 @@
+.about {
+  padding: 60px 0 100px 0;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0,0,0, 0.5);
+  .about-header {
+    color: $primary-color;
+    font-size: 40px;
+    text-align: center;
+  }
+  .about-body {
+    color: white;
+    font-size: 34px;
+    margin-bottom: 30px;
+    margin-top: 60px;
+    text-align: center;
+
+    #backbone-logo{
+      display: inline-block;
+      height: 110px;
+      width: 110px;
+      background-image: url("https://s3-us-west-2.amazonaws.com/cloudsound/assets/images/backbone.png");
+      background-repeat: no-repeat;
+      background-color: rgba(255,255,255,0.3);
+    }
+    #rails-logo{
+      display: inline-block;
+      height: 110px;
+      width: 86px;
+      background-repeat: no-repeat;
+      background-image: url("https://s3-us-west-2.amazonaws.com/cloudsound/assets/images/rails.png");
+      background-color: rgba(255,255,255,0.3);
+    }
+    #github-logo{
+      display: inline-block;
+      height: 110px;
+      width: 113px;
+      background-image: url("https://s3-us-west-2.amazonaws.com/cloudsound/assets/images/github.png");
+      background-repeat: no-repeat;
+      background-color: rgba(255,255,255,0.3);
+    }
+    &.small {
+      font-size: 22px;
+      margin: auto;
+      width: 70%;
+    }
+    &.center{
+    }
+  }
+}
