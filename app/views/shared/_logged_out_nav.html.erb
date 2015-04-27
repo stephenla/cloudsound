@@ -20,6 +20,60 @@
 
   </li>
 </ul>
+<!-- Modal -->
+<div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog slideDown">
+    <button type="button" class="modal-close close btn"><span aria-hidden="true">&times;</span></button>
+    <div class="modal-content">
+      <form id="sign-in" action="/session" method="POST">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+        <h3 class="modal-sign-in">Sign in</h3>
+        <label for="user_username">Username</label>
+        <input class="form-control" type="text" name="user[username]" id="user_username">
+        <br>
+
+        <label for="user_password">Password</label>
+        <input class="form-control" type="password" name="user[password]" id="user_password">
+        <br>
+
+        <input class="modal-button btn btn-default" type="submit" value="Log in">
+        <div class="modal-footer">
+          <button type="button" class="close btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal " id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog slideDown">
+    <button type="button" class="modal-close close btn"><span aria-hidden="true">&times;</span></button>
+    <div class="modal-content">
+      <form id="sign-up" action="/users" method="POST">
+        <input
+          type="hidden"
+          name="authenticity_token"
+          value="<%= form_authenticity_token %>">
+          <h3 class="modal-sign-in">Sign up</h3>
+        <label for="user_username">Username</label>
+        <input class="form-control" type="text" name="user[username]" id="user_username">
+        <br>
+        <label for="user_password">Password</label>
+        <input class="form-control" type="password" name="user[password]" id="user_password">
+        <br>
+        <input class="modal-button btn btn-default" type="submit" value="Sign Up">
+        <div class="modal-footer">
+          <button type="button" class="close btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
 $(function () {
   $(".sign-in").click(function () {
