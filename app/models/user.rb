@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   before_validation :ensure_session_token
   has_many :tracks, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :liked_tracks, class_name: "Like", dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_tracks, through: :likes, source: :track
 
   has_many :passive_relationships,
            class_name: "Following",
@@ -58,11 +59,11 @@ class User < ActiveRecord::Base
   end
 
   def like(track)
-    liked_tracks.create!(track_id: track.id)
+    likes.create!(track_id: track.id)
   end
 
   def unlike(track)
-    liked_tracks.find_by(track_id: track.id).destroy!
+    likes.find_by(track_id: track.id).destroy!
   end
 
   # Follows a user.

@@ -2,7 +2,19 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   template: JST['tracks/track_show'],
   events: {
     "click .delete-track": "destroyTrack",
-    "submit #new-comment-form": "createComment"
+    "submit #new-comment-form": "createComment",
+    "click .like-track": "likeTrack",
+    "click .unlike-track": "unlikeTrack"
+  },
+
+  likeTrack: function () {
+    event.preventDefault();
+    var like = new Cloudsound.Model.Like();
+
+  },
+
+  unlikeTrack: function () {
+
   },
 
   _removeElement: function() {

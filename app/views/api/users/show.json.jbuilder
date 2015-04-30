@@ -39,7 +39,10 @@ if !is_current_user
       json.relationship_id @user.passive_relationships.where(follower_id: current_user.id).first.id
     end
   end
+
+  
 end
+
 
 
 if @user.avatar.file?
