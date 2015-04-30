@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :users, only: [:show, :index, :update], defaults: { format: :json }
     resources :tracks, defaults: { format: :json }
     resources :comments, defaults: { format: :json }
+    resources :likes, only: [:create, :destroy], defaults: { format: :json }
     resources :followings, only: [:show, :create, :destroy]
     resources :feeds, only: [:show], defaults: { format: :json }
     resources :followers, only: [:show], defaults: { format: :json }
