@@ -51,7 +51,7 @@
     border: 1px solid #e5e5e5;
     color: $primary-color;
     &:hover {
-      border-color: $primary-color;
+      border-color: $primary-color!important;
     }
 
   }
