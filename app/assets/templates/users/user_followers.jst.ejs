@@ -15,7 +15,7 @@
       <% if (user.get("relationship")) {%>
         <% if (user.get("relationship").is_following) {%>
           <a href="#" class='unfollow btn btn-default'>Following</a>
-        <% } else if (!user.get("relationship").is_following) { %>
+        <% } else { %>
           <a href="#" class='follow btn btn-default'>Follow</a>
         <% } %>
       <% } %>
