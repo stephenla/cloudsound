@@ -3,10 +3,10 @@ Cloudsound.Views.UserItemFollower = Backbone.View.extend({
   className: "follow-user",
 
   events: {
-    "click .unfollow" : "unfollowUser",
-    "click .follow" : "followUser"
+    "click .unfollowitem" : "unfollowUser",
+    "click .followitem" : "followUser"
   },
-  
+
   unfollowUser: function (event) {
     event.preventDefault();
     var relationship = new Cloudsound.Models.Relationship({ id: this.model.get("relationship").relationship_id});

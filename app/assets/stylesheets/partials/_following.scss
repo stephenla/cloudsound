@@ -47,7 +47,7 @@
     height: 25px;
     padding: 3px;
   }
-  .unfollow {
+  .unfollow, .unfollowitem {
     border: 1px solid #e5e5e5;
     color: $primary-color;
     &:hover {
@@ -55,7 +55,7 @@
     }
 
   }
-  .follow {
+  .follow, .followitem{
     border-color: $primary-color;
     background: $primary-color;
     color: white;

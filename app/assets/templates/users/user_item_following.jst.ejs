@@ -19,9 +19,9 @@
   <% if (user.get("id") !== parseInt(Cloudsound.current_user, 10) && user.get("relationship")) {%>
     <div class="follow-links list">
       <% if (user.get("relationship").is_following) {%>
-        <a href="#" class='unfollow btn btn-default'>Following</a>
+        <a href="#" class='unfollowitem btn btn-default'>Following</a>
       <% } else if (!user.get("relationship").is_following) { %>
-        <a href="#" class='follow btn btn-default'>Follow</a>
+        <a href="#" class='followitem btn btn-default'>Follow</a>
       <% } %>
     </div>
   <% } %>

@@ -3,8 +3,8 @@ Cloudsound.Views.UserItemFollowing = Backbone.View.extend({
   className: "follow-user",
 
   events: {
-    "click .unfollow" : "unfollowUser",
-    "click .follow" : "followUser"
+    "click .unfollowitem" : "unfollowUser",
+    "click .followitem" : "followUser"
   },
 
   unfollowUser: function (event) {

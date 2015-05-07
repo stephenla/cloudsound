@@ -37,7 +37,7 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     relationship.fetch({
       success: function(model) {
         model.destroy();
-        $(".unfollow").text("Follow").removeClass("unfollow").addClass("follow");
+        $(".user-info .unfollow").text("Follow").removeClass("unfollow").addClass("follow");
         that.model.fetch();
       }
     });
@@ -49,7 +49,7 @@ Cloudsound.Views.UserFollowers = Backbone.CompositeView.extend({
     var relationship = new Cloudsound.Models.Relationship();
     relationship.save(this.model.get("relationship"),{
       success: function(model) {
-        $(".follow").text("Following").removeClass("follow").addClass("unfollow");
+        $(".user-info .follow").text("Following").removeClass("follow").addClass("unfollow");
         this.model.fetch();
       }.bind(this)
     });
