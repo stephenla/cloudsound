@@ -108,6 +108,11 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
         }
       }
     }.bind(this));
+    if (Cloudsound.trackWaveurfer.getCurrentTime() !== 0) {
+      Cloudsound.trackWaveurfer.pause();
+    }
+
+
 
     this.wavesurfer.play();
     $("#play-pause-button").addClass("glyphicon-pause");

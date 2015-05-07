@@ -27,6 +27,12 @@ json.user do
   json.followers_count user.followers.length
 end
 
+  # 
+  # json.like do
+  #   if current_user.likes.where()
+  # end
+
+
 
 json.comment_count comments.length
 # if comments
