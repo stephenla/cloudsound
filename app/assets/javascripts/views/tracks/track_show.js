@@ -183,6 +183,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     var subview = new Cloudsound.Views.CommentItem({ model: comment });
     subview.$el.show("fade",1000);
     this.addSubview(".track-comments", subview);
+    oldCount = $('#comment-count').text();
+    $('#comment-count').text(parseInt(oldCount) + 1);
   },
 
   render: function () {
