@@ -45,6 +45,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     relationship.fetch({
       success: function(model) {
         model.destroy();
+        $(".unfollow").text("Follow").removeClass("unfollow").addClass("follow");
         this.model.fetch();
       }.bind(this)
     });
@@ -56,6 +57,7 @@ Cloudsound.Views.UserProfile = Backbone.CompositeView.extend({
     var relationship = new Cloudsound.Models.Relationship();
     relationship.save(this.model.get("relationship"),{
       success: function(model) {
+        $(".follow").text("Following").removeClass("follow").addClass("unfollow");
         this.model.fetch();
       }.bind(this)
     });
