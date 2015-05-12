@@ -108,8 +108,9 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
         }
       }
     }.bind(this));
-    if (Cloudsound.trackWaveurfer.getCurrentTime() !== 0) {
-      Cloudsound.trackWaveurfer.pause();
+
+    if (Cloudsound.trackWavesurfer && Cloudsound.trackWavesurfer.getCurrentTime() !== 0) {
+      Cloudsound.trackWavesurfer.pause();
     }
 
 
@@ -124,9 +125,6 @@ Cloudsound.Views.TrackItem = Backbone.View.extend({
   },
 
   addWaveSurfer: function () {
-
-
-
     this.wavesurfer.init({
         container: this.$el.find("#track-" + this.model.id)[0],
         waveColor: '#333',

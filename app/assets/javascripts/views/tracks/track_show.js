@@ -10,8 +10,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   },
 
   remove: function() {
-    // if (Cloudsound.trackWaveurfer.getCurrentTime() !== 0) {
-    //   Cloudsound.trackWaveurfer.pause();
+    // if (Cloudsound.trackWavesurfer.getCurrentTime() !== 0) {
+    //   Cloudsound.trackWavesurfer.pause();
     // }
     // $("#next-button").toggleClass("disabled");
     // $("#previous-button").toggleClass("disabled");
@@ -40,8 +40,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
   },
 
   addWaveSurfer: function () {
-    Cloudsound.trackWaveurfer = Object.create(WaveSurfer);
-    Cloudsound.trackWaveurfer.init({
+    Cloudsound.trackWavesurfer = Object.create(WaveSurfer);
+    Cloudsound.trackWavesurfer.init({
         container: this.$el.find("#track-" + this.model.id)[0],
         waveColor: '#333',
         progressColor: '#f51',
@@ -50,17 +50,17 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
         hideScrollbar: true,
         height: 380
     });
-    Cloudsound.trackWaveurfer.load(this.model.get("audio"));
+    Cloudsound.trackWavesurfer.load(this.model.get("audio"));
     this.$el.find(".wave-track").css("background",this.model.get("avatar_gradient"));
 
   },
 
   startTrackProgress: function () {
-    var pxPerSec = ($(".seeker-bar").width() / Cloudsound.trackWaveurfer.getDuration());
-    var width = Cloudsound.trackWaveurfer.getCurrentTime() * pxPerSec;
+    var pxPerSec = ($(".seeker-bar").width() / Cloudsound.trackWavesurfer.getDuration());
+    var width = Cloudsound.trackWavesurfer.getCurrentTime() * pxPerSec;
     $(".seeker-progress").attr("style", "width: " + width + "px;");
-    var seconds = Math.floor(Cloudsound.trackWaveurfer.getCurrentTime()) % 60;
-    var minutes = Math.floor(Cloudsound.trackWaveurfer.getCurrentTime() / 60);
+    var seconds = Math.floor(Cloudsound.trackWavesurfer.getCurrentTime()) % 60;
+    var minutes = Math.floor(Cloudsound.trackWavesurfer.getCurrentTime() / 60);
     $(".current-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
 
 
@@ -71,7 +71,7 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     $currentTarget = $(event.currentTarget);
 
     $("#control-bar").show();
-    Cloudsound.currentlyPlaying = Cloudsound.trackWaveurfer;
+    Cloudsound.currentlyPlaying = Cloudsound.trackWavesurfer;
     Cloudsound.currentlyPlayingTarget = $currentTarget;
 
     Cloudsound.waveTracks.forEach(function (trackItem) {
@@ -92,8 +92,8 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     }
 
     if ($currentTarget.attr("class").indexOf("glyphicon-pause") > -1) {
-      if (Cloudsound.trackWaveurfer.getCurrentTime() !== 0) {
-        Cloudsound.trackWaveurfer.pause();
+      if (Cloudsound.trackWavesurfer.getCurrentTime() !== 0) {
+        Cloudsound.trackWavesurfer.pause();
         $("#play-pause-button").addClass("glyphicon-play");
         $("#play-pause-button").removeClass("glyphicon-pause");
         $currentTarget.removeClass("glyphicon-pause");
@@ -103,21 +103,21 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     }
 
 
-    Cloudsound.trackWaveurfer.on('pause', function () {
+    Cloudsound.trackWavesurfer.on('pause', function () {
       window.clearInterval(this.interval);
-      // Cloudsound.trackWaveurfer.un('pause');
+      // Cloudsound.trackWavesurfer.un('pause');
       // $(".total-time").text("");
     }.bind(this));
 
-    Cloudsound.trackWaveurfer.on('play', function () {
+    Cloudsound.trackWavesurfer.on('play', function () {
       if (this.interval) {
         window.clearInterval(this.interval);
       }
-      var seconds = Math.floor(Cloudsound.trackWaveurfer.getCurrentTime()) % 60;
-      var minutes = Math.floor(Cloudsound.trackWaveurfer.getCurrentTime() / 60);
+      var seconds = Math.floor(Cloudsound.trackWavesurfer.getCurrentTime()) % 60;
+      var minutes = Math.floor(Cloudsound.trackWavesurfer.getCurrentTime() / 60);
       $(".current-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
-      seconds = Math.floor(Cloudsound.trackWaveurfer.getDuration()) % 60;
-      minutes = Math.floor(Cloudsound.trackWaveurfer.getDuration() / 60);
+      seconds = Math.floor(Cloudsound.trackWavesurfer.getDuration()) % 60;
+      minutes = Math.floor(Cloudsound.trackWavesurfer.getDuration() / 60);
       $(".total-time").text(minutes + ":" + (seconds < 10 ? "0" + seconds: seconds));
       this.interval = window.setInterval(this.startTrackProgress.bind(this), 1000);
     }.bind(this));
@@ -129,7 +129,7 @@ Cloudsound.Views.TrackShow = Backbone.CompositeView.extend({
     $currentTarget.addClass("glyphicon-pause");
     $("#play-pause-button").addClass("glyphicon-pause");
     $("#play-pause-button").removeClass("glyphicon-play");
-    Cloudsound.trackWaveurfer.play();
+    Cloudsound.trackWavesurfer.play();
 
 
   },

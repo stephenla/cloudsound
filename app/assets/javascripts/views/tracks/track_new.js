@@ -97,8 +97,6 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
               data.submit();
             }
           });
-
-
         }
       },
 
@@ -109,7 +107,6 @@ Cloudsound.Views.TrackNew = Backbone.View.extend({
         $('#create-track').css("display", "block");
         $('#progress-message').text('Upload finished.');
         Backbone.history.navigate("/user/" + that.user.id + "/track/" + data.result.files[0].id, { trigger: true });
-
       },
 
       fail: function (e, data) {

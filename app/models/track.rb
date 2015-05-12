@@ -40,4 +40,13 @@ class Track < ActiveRecord::Base
   belongs_to :user
   has_many :followers, through: :user, source: :followers
   has_many :comments, dependent: :destroy
+
+  before_create :set_gradient
+
+  private
+    def set_gradient
+      self.avatar_gradient = "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})"
+      self.track_gradient = "linear-gradient(#{rand(0..360)}deg, ##{"%06x" % (rand * 0xffffff)}, ##{"%06x" % (rand * 0xffffff)})"
+    end
+
 end

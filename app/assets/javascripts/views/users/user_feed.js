@@ -25,6 +25,11 @@ Cloudsound.Views.UserFeed = Backbone.CompositeView.extend({
       return subview.model === track;
     });
     this.removeSubview(".profile-tracks", subview);
+    Cloudsound.waveTracks.forEach(function (el) {
+      if (el === subview) {
+        delete Cloudsound.waveTracks.el;
+      }
+    });
     // why do i need to wrap this in a setTimeout
     window.setTimeout(function () {
       $(".notice .msg").text("track deleted.");
