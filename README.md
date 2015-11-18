@@ -121,3 +121,7 @@ with TrackIndexItems will have drag and drop.
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
+
+#Heroku
+##Set ENV['AWS_KEY_ID']
+##Set ENV['AWS_SECRET'], application.yml

@@ -34,14 +34,14 @@
 
   .navbar-header{
       &:hover{
-        animation-name: tossing;
-      	-webkit-animation-name: tossing;
+       //  animation-name: tossing;
+      	// -webkit-animation-name: tossing;
 
-      	animation-duration: 3.5s;
-      	-webkit-animation-duration: 3.5s;
+      	// animation-duration: 3.5s;
+      	// -webkit-animation-duration: 3.5s;
 
-      	animation-iteration-count: infinite;
-      	-webkit-animation-iteration-count: infinite;
+      	// animation-iteration-count: infinite;
+      	// -webkit-animation-iteration-count: infinite;
       }
     .glyphicon-cloud{
       font-size: 28px;
